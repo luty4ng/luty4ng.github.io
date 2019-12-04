@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="前言科三考试临近，眼看疲惫的练车时光就要结束，彩六也是打到手酸才突然想起要学习，回想起TSCTF那个卡了我半天（真的是半天，为什么我会去构造XSS）的注入题，于是我决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
+<meta name="description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
 <meta name="keywords" content="sqli,php,commandi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈注入攻击及小结">
 <meta property="og:url" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;index.html">
 <meta property="og:site_name" content="Luty">
-<meta property="og:description" content="前言科三考试临近，眼看疲惫的练车时光就要结束，彩六也是打到手酸才突然想起要学习，回想起TSCTF那个卡了我半天（真的是半天，为什么我会去构造XSS）的注入题，于是我决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
+<meta property="og:description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;1.jpg">
-<meta property="og:updated_time" content="2019-12-04T12:55:00.565Z">
+<meta property="og:updated_time" content="2019-12-04T13:32:11.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
 
@@ -379,7 +379,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>科三考试临近，眼看疲惫的练车时光就要结束，彩六也是打到手酸才突然想起要学习，回想起TSCTF那个卡了我半天（真的是半天，为什么我会去构造XSS）的注入题，于是我决定挤出了点时间研究下sql inject，在这里做下记录和小结。<br><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" alt="疲惫"></p>
+        <p>最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。</p>
+<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" alt="疲惫"></p>
 <a id="more"></a>
 
 <h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了`<strong>一切输入有害</strong>的重要安全思想。</p>
@@ -669,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是注入？"><span class="nav-number">2.</span> <span class="nav-text">什么是注入？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入如何产生？"><span class="nav-number">3.</span> <span class="nav-text">注入如何产生？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入"><span class="nav-number">4.</span> <span class="nav-text">SQL注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入绕过"><span class="nav-number">5.</span> <span class="nav-text">SQL注入绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是注入？"><span class="nav-number">1.</span> <span class="nav-text">什么是注入？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入如何产生？"><span class="nav-number">2.</span> <span class="nav-text">注入如何产生？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入"><span class="nav-number">3.</span> <span class="nav-text">SQL注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入绕过"><span class="nav-number">4.</span> <span class="nav-text">SQL注入绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

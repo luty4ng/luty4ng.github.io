@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="前言搞这玩意让自己熟悉数据资源获取-&amp;gt;数据持久化并整理-&amp;gt;数据可视化的数据处理流程，顺便记录下Scrapy的框架的使用过程。">
+<meta name="description" content="让自己熟悉数据资源获取-&amp;gt;数据持久化并整理-&amp;gt;数据可视化的数据处理流程，顺便记录下Scrapy的框架的使用过程。">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy豆瓣ADHD小组爬虫实例">
 <meta property="og:url" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;index.html">
 <meta property="og:site_name" content="Luty">
-<meta property="og:description" content="前言搞这玩意让自己熟悉数据资源获取-&amp;gt;数据持久化并整理-&amp;gt;数据可视化的数据处理流程，顺便记录下Scrapy的框架的使用过程。">
+<meta property="og:description" content="让自己熟悉数据资源获取-&amp;gt;数据持久化并整理-&amp;gt;数据可视化的数据处理流程，顺便记录下Scrapy的框架的使用过程。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;desc.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;result.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;result2.png">
-<meta property="og:updated_time" content="2019-12-04T12:58:53.701Z">
+<meta property="og:updated_time" content="2019-12-04T13:31:48.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;desc.png">
 
@@ -380,7 +380,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>搞这玩意让自己熟悉<code>数据资源获取</code>-&gt;<code>数据持久化并整理</code>-&gt;<code>数据可视化</code>的数据处理流程，顺便记录下Scrapy的框架的使用过程。</p>
+        <p>让自己熟悉<code>数据资源获取</code>-&gt;<code>数据持久化并整理</code>-&gt;<code>数据可视化</code>的数据处理流程，顺便记录下Scrapy的框架的使用过程。</p>
 <a id="more"></a>
 
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p><strong>数据获取及持久化：</strong>利用Scrapy爬取ADHD豆瓣小组的所有帖子的标题、作者、以及最后回复时间，保存在cvs文件中。</p>
@@ -681,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思路"><span class="nav-number">2.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy"><span class="nav-number">3.</span> <span class="nav-text">Scrapy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本结构"><span class="nav-number">3.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">3.2.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#adhdspider-py"><span class="nav-number">3.2.1.</span> <span class="nav-text">adhdspider.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#piplines-py"><span class="nav-number">3.2.2.</span> <span class="nav-text">piplines.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setting-py"><span class="nav-number">3.2.3.</span> <span class="nav-text">setting.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#items-py"><span class="nav-number">3.2.4.</span> <span class="nav-text">items.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-py"><span class="nav-number">3.2.5.</span> <span class="nav-text">run.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行结果"><span class="nav-number">3.2.6.</span> <span class="nav-text">运行结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">4.</span> <span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.2.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化"><span class="nav-number">5.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思路"><span class="nav-number">1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy"><span class="nav-number">2.</span> <span class="nav-text">Scrapy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">2.2.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#adhdspider-py"><span class="nav-number">2.2.1.</span> <span class="nav-text">adhdspider.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#piplines-py"><span class="nav-number">2.2.2.</span> <span class="nav-text">piplines.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setting-py"><span class="nav-number">2.2.3.</span> <span class="nav-text">setting.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#items-py"><span class="nav-number">2.2.4.</span> <span class="nav-text">items.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-py"><span class="nav-number">2.2.5.</span> <span class="nav-text">run.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行结果"><span class="nav-number">2.2.6.</span> <span class="nav-text">运行结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">3.</span> <span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">3.2.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化"><span class="nav-number">4.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
