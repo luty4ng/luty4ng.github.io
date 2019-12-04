@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="Luty">
 <meta property="og:description" content="前言搞这玩意让自己熟悉数据资源获取-&amp;gt;数据持久化并整理-&amp;gt;数据可视化的数据处理流程，顺便记录下Scrapy的框架的使用过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;desc.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;result.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;result2.png">
-<meta property="og:updated_time" content="2019-08-06T23:02:06.000Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;desc.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;result.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;result2.png">
+<meta property="og:updated_time" content="2019-12-04T12:58:53.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;desc.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;10&#x2F;26&#x2F;Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B&#x2F;desc.png">
 
 
 
@@ -386,7 +386,7 @@
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p><strong>数据获取及持久化：</strong>利用Scrapy爬取ADHD豆瓣小组的所有帖子的标题、作者、以及最后回复时间，保存在cvs文件中。</p>
 <p><strong>数据处理：</strong>对每一个标题字符串过滤无意义词汇、分词、关键字提取，Kmeans近义词聚类，统计出现次数最多的10个关键词。</p>
 <p><strong>数据可视化：</strong>使用Echarts自动生成前十关键词图表。</p>
-<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/desc.png" alt="原理图"></p>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/desc.png" alt="原理图"></p>
 <blockquote>
 <p>Scrapy 原理图</p>
 </blockquote>
@@ -410,7 +410,7 @@
 
 <h4 id="run-py"><a href="#run-py" class="headerlink" title="run.py"></a>run.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> scrapy <span class="keyword">import</span> cmdline</span><br><span class="line">cmdline.execute(<span class="string">"scrap crawl adhd"</span>.split())</span><br></pre></td></tr></table></figure>
 <hr>
-<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/result.png" alt="运行结果"></p>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/result.png" alt="运行结果"></p>
 <h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><blockquote>
 <ol>
 <li>使用jieba库进行了简单的分词和关键词提取</li>
@@ -418,7 +418,7 @@
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> jieba.analyse</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter </span><br><span class="line"></span><br><span class="line">jieba.load_userdict(<span class="string">'/home/luty/桌面/dict.txt'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'/home/luty/桌面/result.csv'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    reader = csv.reader(csvfile)</span><br><span class="line">    column = [row[<span class="number">2</span>] <span class="keyword">for</span> row <span class="keyword">in</span> reader]</span><br><span class="line">    </span><br><span class="line">list=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> column:</span><br><span class="line">    <span class="keyword">if</span>(i!=<span class="string">'title'</span>):</span><br><span class="line">    	<span class="comment">#利用正则库去除标点</span></span><br><span class="line">        temp=re.sub(<span class="string">"[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&amp;*（）]+"</span>,<span class="string">""</span>,i)</span><br><span class="line">        result = jieba.analyse.extract_tags(temp, topK=<span class="number">20</span>)</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> result:</span><br><span class="line">            list.append(j)</span><br><span class="line">            <span class="comment">#print(j)</span></span><br><span class="line"><span class="comment">#print(list)</span></span><br><span class="line">dic=Counter(list)</span><br><span class="line"><span class="keyword">for</span> key,vaule <span class="keyword">in</span> dic.items():</span><br><span class="line">	print(key)</span><br><span class="line">	print(vaule)</span><br></pre></td></tr></table></figure>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/result2.png" alt="运行结果"></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/result2.png" alt="运行结果"></p>
 <h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>等待添加…</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://scrapy-chs.readthedocs.io/zh_CN/0.24/intro/tutorial.html" target="_blank" rel="noopener">Scrapy官方文档</a></p>
 <p><a href="https://github.com/fxsjy/jieba/" target="_blank" rel="noopener">jieba仓库</a></p>

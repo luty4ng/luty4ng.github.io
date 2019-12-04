@@ -89,11 +89,11 @@
 <meta property="og:site_name" content="Luty">
 <meta property="og:description" content="前言科三考试临近，眼看疲惫的练车时光就要结束，彩六也是打到手酸才突然想起要学习，回想起TSCTF那个卡了我半天（真的是半天，为什么我会去构造XSS）的注入题，于是我决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;1.jpg">
-<meta property="og:updated_time" content="2019-08-06T23:04:28.000Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;1.jpg">
+<meta property="og:updated_time" content="2019-12-04T12:55:00.565Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
 
 
 
@@ -379,7 +379,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>科三考试临近，眼看疲惫的练车时光就要结束，彩六也是打到手酸才突然想起要学习，回想起TSCTF那个卡了我半天（真的是半天，为什么我会去构造XSS）的注入题，于是我决定挤出了点时间研究下sql inject，在这里做下记录和小结。<br><img src="%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" alt="疲惫"></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>科三考试临近，眼看疲惫的练车时光就要结束，彩六也是打到手酸才突然想起要学习，回想起TSCTF那个卡了我半天（真的是半天，为什么我会去构造XSS）的注入题，于是我决定挤出了点时间研究下sql inject，在这里做下记录和小结。<br><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" alt="疲惫"></p>
 <a id="more"></a>
 
 <h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了`<strong>一切输入有害</strong>的重要安全思想。</p>
@@ -410,7 +410,7 @@
 <p>后续会慢慢添加实例帮助理解和实践。</p>
 <p>参考:<br><a href="https://www.cnblogs.com/Vinson404/p/7253255.html" target="_blank" rel="noopener">SQL注入绕过技巧</a><br><a href="https://blog.csdn.net/wy_97/article/details/78085664" target="_blank" rel="noopener">sql关键词绕过【积累中】</a></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>无论是XSS、sqli还是commandi，只要有输入数据添加到指令的场景，就有注入攻击发生的风险，开发者也在努力寻找通用性解决方案。<br>PHP和python中不正确的使用<code>system()</code> <code>exec()</code>等函数会导致命令注入，前段不对js代码进行过滤会导致XSS，windows平台还有dll注入（不明觉厉），感觉都很刺激啊。<br>PHP5.4后使用的PDO技术和Mysqli几乎已经杜绝了sql注入，其他平台的防御策略也越来越完善，所以sql在实际渗透环境中可能作用并不大，但是这种思想还是很有意思的。</p>
-<p><img src="%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/1.jpg" alt="我也很绝望啊"><br>吐槽几句，贵阳这天气是魔鬼吗，阳光直射出门半小时后大暴雨，学车能遇到军事行动，四妹又在发情期，真是每天都有新乐趣hhhh</p>
+<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/1.jpg" alt="我也很绝望啊"><br>吐槽几句，贵阳这天气是魔鬼吗，阳光直射出门半小时后大暴雨，学车能遇到军事行动，四妹又在发情期，真是每天都有新乐趣hhhh</p>
 <p>```</p>
 
       
