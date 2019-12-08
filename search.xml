@@ -6,7 +6,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>《死亡搁浅》是小岛工作室于2019年11月8日于索尼PlayStation4平台发售的游戏，同样也是小岛秀夫在离职科纳美之后的第一部作品。小岛秀夫作品个人风格明显：大段的过场CG，惊艳的镜头和光影设计，隐晦而深刻的主题，其之前《合金装备》《寂静岭》等作品都因此而广受好评。《死亡搁浅》是我关注时间最久的作品，从第一次TGA宣传到正式发售一直跟进，现通关之后借短暂回味的时间记录下一些想法。（略带安利性质）</p>
 <p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/1A543B87E3DC9E601D4569DF6C76D00D.jpg" alt="1A543B87E3DC9E601D4569DF6C76D00D"></p>
 
-    <div id="aplayer-LaIfcvVE" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-mFUzCjJP" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 <a id="more"></a>
 
 
@@ -15,6 +15,8 @@
 <h1 id="分层四元法"><a href="#分层四元法" class="headerlink" title="分层四元法"></a>分层四元法</h1><p>Jesse Schell在《游戏设计艺术》一书中提出四元法，即游戏的四个基本元素：机制，美学，剧情，技术。之后Jeremy Gibson在其书《游戏、设计原型与开发》中对四元法、MDA、FDD进行了结合与拓展，提出了在四大元素的基础上将游戏分为内嵌层、动态层、文化层的分层四元法。分层四元法的游戏分析框架作为一个帮助理解游戏的工具，它也能帮助我们定义游戏内外的意义。</p>
 <h1 id="内嵌层"><a href="#内嵌层" class="headerlink" title="内嵌层"></a>内嵌层</h1><p>内嵌层仅仅描述了游戏层面，从最底层、最基础的视角去分析游戏，而更少考虑互动性质和文化性质。</p>
 <h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>  《死亡搁浅》中玩家扮演送货员山姆，其主要目标就是送快递。在一个开放地图中，玩家需要从特定结点领取包裹，并尽可能快速、安全、完整的送到目标节点。长期来看，游戏的目标是要将美国从东部节点到西部节点通过送快递的方式重新连接起来。</p>
+<img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/DA4909E584D37F9D0F0EFEB3027AF2B0.jpg" alt="DA4909E584D37F9D0F0EFEB3027AF2B0" style="zoom:67%;">
+
 <p>  摒弃了ACT传统的战斗玩法，而是原本最无趣的“跑路”作为主要玩法，这是导致《死亡搁浅》难以被定义的一项原因。这种目标设计的一个问题就是难以多样化的玩法，因此许多游戏会将跑路作为辅助要素（《消逝的光芒》《刺客信条》）或者是在做种强调心流（《风之旅人》）和快节奏的流畅体验（《镜之边缘》），而《死亡搁浅》更注重的是路线的优化。</p>
 <h3 id="玩家关系"><a href="#玩家关系" class="headerlink" title="玩家关系"></a>玩家关系</h3><p>  《死亡搁浅》的玩家关系是一大创新点，全世界玩家在开放地图上建立的设施，会有几率被分配其他玩家的地图并提供帮助，并且有些设施是需要玩家共同建造的，例如公路、桥梁、安全屋。这种机制的本质是合作，但相比传统合作中即时、明确的反馈，其制造了一种更大的不确定性。这种合作机制和《死亡搁浅》主题——连接，有密切的关系。</p>
 <p>  《死亡搁浅》的合作机制有一个很相似的原型。《史丹利的寓言》的作者Davey在他的一个视频中提到过他一个朋友做的游戏Demo，Demo中玩家能在地图中看到许多其他玩家的留言，Davey表示他很喜欢这种玩家间不确定连接的微妙感觉，但遗憾的是他朋友没能实现这个功能，这个有趣的点子最后只是一堆本地数据的模拟，这位朋友最终也在屡屡受挫之后彻底退出了游戏开发界。当然这已经是12年的事了。</p>
@@ -158,7 +160,10 @@
 <p>  小岛工作室官方曾经对《死亡搁浅》中人物的受欢迎程度做过一个榜单，我个人更喜欢CLIFF、MAMA、HEARTMAN者三个角色，因为在《死亡搁浅》世界观里他们都是小人物，CLIFF是被政府利用后失去妻女的退役特种士兵，MAMA和HEARTMAN分别是是失去与妹妹联系和失去家人的科学家。死亡搁浅摧毁了他们重要的联系，他们都变成了某种意义上的搁浅物，却仍在不断同与命运抗争。相反地，《死亡搁浅》HIGGS，FRAGILE，DIE-HARDMAN这三个角色的塑造相对羸弱许多。</p>
 <h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><p>我无法以一个开发者和设计师的角度对技术作评价。但作为一个玩家，我对建筑分布的算法很感兴趣。详细的之后再补充相关资料。</p>
 
-    <div id="aplayer-xwmKgzLl" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-hjxwqoCG" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+
+<h1 id="BTW"><a href="#BTW" class="headerlink" title="BTW"></a>BTW</h1><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/E7A60F2991C8A961F4796E0A31C41F0A.jpg" alt="E7A60F2991C8A961F4796E0A31C41F0A" style="zoom:50%;">
+
 ]]></content>
       <categories>
         <category>games</category>
