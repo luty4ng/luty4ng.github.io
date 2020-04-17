@@ -3,7 +3,11 @@
   <entry>
     <title>Ori and the will of the wisps 游玩体验.md</title>
     <url>/2020/03/15/Ori%20and%20the%20will%20of%20the%20wisps%20%E6%B8%B8%E7%8E%A9%E4%BD%93%E9%AA%8C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="安全区设计"><a href="#安全区设计" class="headerlink" title="安全区设计"></a><strong>安全区设计</strong></h3><p>设立了一个类似基地和安全区一样的场景——泉源林地，在这里你可以和基莫聊天，了解它们的故事，可以和各类功能性NPC对话提升自己的能力，同样通过以种树和修缮的方式看到自己冒险对森林和栖息之中的生物带来的改变。“安全区”的设定容易与剧情关联增强代入感，同时提供更持久更完整且贯穿游戏主线的反馈。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了克服游戏分析的海森堡现象，我就在通过后快速记录下自己关注到的一些想法吧，因为是随笔性质可能比较混乱哈哈哈。</p>
+<p>不走框架了直接开冲！</p>
+<a id="more"></a>
+
+<h3 id="安全区设计"><a href="#安全区设计" class="headerlink" title="安全区设计"></a><strong>安全区设计</strong></h3><p>设立了一个类似基地和安全区一样的场景——泉源林地，在这里你可以和基莫聊天，了解它们的故事，可以和各类功能性NPC对话提升自己的能力，同样通过以种树和修缮的方式看到自己冒险对森林和栖息之中的生物带来的改变。“安全区”的设定容易与剧情关联增强代入感，同时提供更持久更完整且贯穿游戏主线的反馈。</p>
 <h3 id="Level-up机制"><a href="#Level-up机制" class="headerlink" title="Level-up机制"></a><strong>Level-up机制</strong></h3><p>Level-up机制：奥日中的level-up机制主要由精灵碎片（装备）和精灵技能（技能）组成。精灵碎片可以通过地图探索或精灵之光获得，升级则中能通过精灵之光；精灵技能可以通过探索吸收精灵之树获得，或者通过精灵之光购买。这种level-up机制显然提供了更多样性的体验，Ori2 将游戏的探索体验和战斗体验大致分离，分别由碎片和技能两个不同的机制承担，但探索和战斗的分离却不是完全独立的，精灵碎片同样提供了战斗加成（例如增伤和减防等熟悉BUFF），精灵技能同样为探索提供了便利（炮弹跳跃，精灵猛击，闪光，灵光迸发，煽动），但是不难发现，技能对探索和碎片对战斗提供的帮助并不是必要的，但是能够提供非常多样的游戏策略和体验。</p>
 <p>以精灵碎片和精灵技能作为主导，以精灵生命、精灵能量和碎片栏位提供基本属性加强，就是Ori2基本的level-up机制，也是提供本质体验的游戏机制。我记忆中前作的三维线性技能树，三条线分别管理战斗、属性、探索，都使用技能加点的机制来推进，而Ori2这种明确特定机制创造特定体验更符合设计直觉和设计逻辑，而这种机制-体验对应的设计也并非完全分离的，部分非必要机制的交错往往可以增强体验的多样性，这种设计方法虽然看似基础仍是值得学习并贯穿游戏设计的全过程。</p>
 <h3 id="BOSS战设计"><a href="#BOSS战设计" class="headerlink" title="BOSS战设计"></a><strong>BOSS战设计</strong></h3><p>BOSS战设计：游戏中总共6个BOSS，老狼，蜘蛛，青蛙，甲虫，大鸟和…石头圈？Metroidvania游戏拥有景深的BOSS设计是个难点，主要难在设计合理的碰撞体的同时还要保证其与动画效果的契合。例如DeadCell的巨人，动画效果让人感觉是拳头在带动肢体，Skeleton仍然有僵硬感。蜘蛛和大鸟在这一点上很优秀，动画效果流畅得让人怀疑他们根本没做Skeleton。单看BOSS机制的话总的来说比较传统，有景深的碰撞体放头部，没景深的全身碰撞体，放技能你就躲，放完技能僵直你就揍他，玩家唯一能选择就是如何揍他，BOSS战线性感十足，难度也不大，基本交完学费而且不像我这么手残就能很轻松过。</p>
@@ -40,12 +44,70 @@
       </tags>
   </entry>
   <entry>
+    <title>游戏解构的基本框架</title>
+    <url>/2020/02/17/%E6%B8%B8%E6%88%8F%E8%A7%A3%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前根据游戏框架做过一些解构，但因为选择有问题导致思考过程很难受，写得也很渣，所以打算扎实一下理论基础。</p>
+<p>文章主要根据个人的学习情况记录一些游戏分析与解构的常用框架，后续会补充一些关注重心和实际方法。</p>
+<p>文章仅代表个人观点，可能与他人观点或书本有出入。</p>
+<a id="more"></a>
+
+<h3 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h3><p>这里首先需要明确框架的意义，其主要目的是通过提供偏范式化的思维体系帮助游戏设计师更全面而细致的观察、分析或是构建一款游戏，切勿陷入完全的教条主义，使用时需同时结合思维体系和实践经验对游戏无论是优秀或是缺陷的设计进行更深入的认知。</p>
+<p>常见的游戏分析框架有三种：MDA、FDD和四元法，每种框架都有各自的侧重点。</p>
+<h4 id="MDA"><a href="#MDA" class="headerlink" title="MDA"></a>MDA</h4><p><strong>MDA</strong>即机制（Mechanics）、动态（Dynamics）、美学（Aesthetics），于2004年的游戏学论文《MDA：游戏设计的和研究的形式方法》中正式提出，主要强调设计师应首先关注游戏的美学，其次再处理动态和机制。</p>
+<p>使用MDA框架的重点在于如何认知包含的机制、动态、美学三大元素。它们的标准化定义如下：</p>
+<p><strong>机制</strong>：游戏数据层面的组件、算法和逻辑</p>
+<p><strong>动态</strong>：玩家行为与游戏系统之间的互动反馈</p>
+<p><strong>美学</strong>：玩家交互时产生的体验与情感。</p>
+<p>说简洁点，机制、动态、美学分别代表工程，互动和体验。这里容易产生的一个误区是，美术、音效、音乐等资源更适合归类于动态范畴而否美学，美学的描述对象应是更抽象更主观的玩家体验。</p>
+<p>举一个实际的案例，奥日与萤火意志，机制描述内容包括精灵碎片系统、精灵之光系统、技能系统、移动系统、场景构建、BOSS战设计、追逐战设计等；动态可以描述为“通过精灵之光解锁新技能”、“通过猛击反弹敌人攻击”、“利用精灵冲击探索地图收集碎片”等；美学的描述可能会更加主观：“通过孤立无援的情况下与豪尔的战斗营造紧张感与沮丧感”、“通过收集种子修缮家园让玩家感到自豪与成就”、“通过连续无落地的猛击关卡使玩家保持持续的专注”等。</p>
+<p>大致理解上述描述后再思考MDA关系图，如下所示。</p>
+<p><img src="/2020/02/17/%E6%B8%B8%E6%88%8F%E8%A7%A3%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/1.jpg" alt></p>
+<p>我们发现MDA实际上是鼓励设计师从玩家的角度出发，将玩家的体验向底层描述归纳为动态和机制，在从机制出发，反向递推出设计师想要构建的体验。这是很常见也是习惯性的设计思路，也抓住了游戏的核心目的：创造玩家的体验。但是MDA作为一个早期的分析思路也存在一些问题。</p>
+<p><strong>首先，MDA的基本假设之一从机制推导到玩家体验，这一过程存在很大的混沌性。</strong>这个问题的本质源于以客观理论描述主观体验的难度，以客述主的困难也是客观存在的，但从我找到的资料中，MDA并给出一些指导性方案帮助设计师推理。</p>
+<p><strong>其次，MDA框架忽略了游戏设计的实现。</strong>游戏是一个复杂的系统，它同时具有商品、工程和艺术品的性质，MDA将业务逻辑过于抽象的封装在“机制”元素中，缺乏对游戏工程性质的描述。使用MDA解构游戏时可能问题不大，但将MDA用在设计游戏时思路容易受到限制。</p>
+<p><strong>最后，MDA缺乏对体验界定性描述。</strong>MDA理论的文章中，很大程度强调了玩家体验的重要性，却没有对玩家体验进行深入的研究和分类，例如空洞骑士和奥日2，同样是Metroivania作品，但两者强调的体验中心却有很大区别，空洞希望玩家专注于用简单的攻击解决多样的问题，例如利用骨钉攻击造成的回弹辅助位移，而奥日则强调的是同一类问题使用多样化的解决思路，例如利用气泡、猛击或者三级跳符文推进探索。因此，两者强调的体验是完全不同的，玩空洞骑士时，玩家需要更仔细观察BOSS的攻击，突出攻击的节奏；而奥日等多样化的选择，需要玩家熟知个技能的性质，突出攻击的策略。这两种体验如果不去复盘其实很容易混淆，在设计时如果陷入这类误区很容易让游戏的体验低于预期。因此，游戏设计师一定需要有清晰的体验界定能力，而这一点MDA并没有提供多大帮助。</p>
+<p>这些问题也可以理解为MDA的特点或者是优势，<strong>工程忽略性</strong>使其在解构难以复现的大型3A游戏时更加精简，<strong>体验界定和推导的不确定性</strong>也使后来的游戏设计师有更多的理论研究空间。</p>
+<h3 id="FDD"><a href="#FDD" class="headerlink" title="FDD"></a>FDD</h3><p><strong>FDD</strong> 即形式（Formal）、戏剧（Dramatic）、动态（Dynamic Elements），最早从《游戏设计梦工厂》中提出，是更对设计师或学生具有指导意义的分析工具。学习的过程中发现网络上FDD的相关资料实在少得可怜，唯一系统的描述书《游戏设计梦工厂》还没有开读，所以理解十分有限，会在读到《游梦》的时候在再进行更正和修改，这里先从其他游戏设计书籍的复述和网络资料记录下现在浅显的理解。</p>
+<p>对于认知有限的结构首先要做一定是<strong>同类比较</strong>，对比MDA的精简，FDD的三大元素的内容就细致很多：形式元素包括玩家交互模式、目标、规则、过程、资源、边界、结局；戏剧元素包括前提、角色、戏剧；动态元素包括涌现、涌现叙事、试玩。整体来看，这类细致的结构化思维意图很明显，就是能够知道实际的设计开发工作。三大元素下的细节之间的联系虽然不密切，但是都是在提出实际的问题，类似于《游戏设计艺术》中提到的<strong>透镜思维</strong>，透镜就是一系列的自我提问，Jesse Schell希望设计师能在实际开发中经常性的提问反思。实际上，我认为<strong>自问自答是解决实际设计项目基本也是核心方法</strong>。</p>
+<p>简单来看一下FDD的三大元素分别强调了什么。</p>
+<p><strong>形式元素</strong>在时间上强调了游戏目标、流程、结局，在空间上强调了游戏资源、边界，在规则上强调了限制、交互。实际上我这样的归类比较牵强，每个子元素之间的交叉实际很多，例如结局就可能通过包括时间和空间上的终点。但是我们能发现再这样的归类下，<strong>形式元素描述的是游戏的实际表现</strong>，因此设计师可以通过这一系列透镜<strong>复现一款优质游戏的玩法</strong>，从而判断<strong>此类玩法是否适合于其他的场景</strong>。</p>
+<p><strong>戏剧元素</strong>全部描述的文案类的思路，其提到的前提（即世界观）、角色、情节是构成优秀游戏剧本不可或缺的部分，为游戏的剧情分析提供了三个维度。当然这三点一般能容易想到，但戏剧元素强调了<strong>利用剧情帮助玩家理解规则</strong>，例如武士零通过时间类药物解释为什么主角能够频繁读档但是记忆是连续的。因此戏剧元素是在帮助设计师<strong>复现文案的同时与游戏规则有所联系</strong>。</p>
+<p><strong>动态元素</strong>是我理解比较懵的，它没有想MDA中的美学一样脱离游戏关注玩家体验，而是希望设计师去<strong>解释规则与体验间的作用关系</strong>，作者称之为<strong>涌现</strong>，这要求设计对玩家体验有清晰认知同时能够理解游戏规则的内涵。作者也为理解涌现提供了一个方法，充分的试玩和重复测试，说白了就是爆肝。</p>
+<h3 id="四元法"><a href="#四元法" class="headerlink" title="四元法"></a>四元法</h3><p><strong>四元法</strong>即美学、机制、剧情、技术四大元素，Jesse Schell在其《游戏设计艺术》中提出。四元法是本文三类分析框架中实用性最高的（个人观点），常见的游戏行业传统职位都能够根据四元法进行归类（排除技术美术这类交叉职能）。例如概念设计师、原画师、建模师关注美学部分，主策划、系统策划、关卡策划、数值策划主要关注机制部分，文案策划关注剧情部分，客户端工程师、图形工程师、架构工程师关注技术部分。</p>
+<p>此外，四元法分别根据玩家和设计建立一种思维方式，其核心关系如下图。</p>
+<p><img src="/2020/02/17/%E6%B8%B8%E6%88%8F%E8%A7%A3%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/2.jpg" alt="FDC75F852F7E7972670C41BF68D789D8"></p>
+<p>于<strong>玩家</strong>而言，他们优先关注的是游戏的美学部分，其次是机制和剧情，最后才有一小部分群体会去关注技术（例如一些MOD作者、新设计师），但是于<strong>设计师</strong>而言，这四大元素是<strong>同样重要</strong>的，技术支撑了上层了机制与交互剧情的实现，最后以不同的美学形式展现。四元法和MDA一样同样考虑了玩家与设计师的角度。</p>
+<p>想要更好理解四元法的四大元素，我们需要先理解《游戏设计艺术》一书的结构（然而只是因为我看了说得出来，个人感觉这本书最有用的都是目录前的架构图和一系列透镜了），在描述到游戏元素时Jesse的思维结构如下。</p>
+<p><img src="/2020/02/17/%E6%B8%B8%E6%88%8F%E8%A7%A3%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/3.jpg" alt="E600E86826260FB697BBF239F69DC58A"></p>
+<p>一句话概括：<strong>游戏设计师本质的工作式设计玩家的体验，体验受限于场景，而游戏作为载体由元素构成并服务于特定主题。</strong>重中之重的是<strong>这四大元素是否都在为同一主题而努力</strong>，例如死亡搁浅，所有的游戏元素都是为了阐述“连接”这一主题，从机制上解锁开罗尔网络和送快递，故事上连接USC和冥滩，美学上BT的“尾巴”和冥滩与生界渗透场景，甚至技术上通过实现“共同基建”的机制将玩家们隐秘的连接起来。因此<strong>四元法的根本目标是服务游戏主题，而主题本质上又是服务于体验。</strong></p>
+<p>基于上述想法我们同样以Jesse的透镜思维来简单理解这四大元素，不细致阐述（因为真的是太多了）。</p>
+<p><strong>机制：</strong>玩家的目标是什么？这一目标服务于什么体验？玩家需要受限于什么规则？规则是否能起到加强玩家游戏理解或是强化体验的作用？玩家这一阶段需要受到什么反馈？这样的反馈能否使玩家保持在心流之中？机制描述了游戏基本运行逻辑，但仍需要下层技术提供实现，并通过上层美学反馈。</p>
+<p><strong>故事：</strong>游戏的故事是要线性的还是碎片化的？这对玩家的游戏体验会造成什么差异？是否会阻碍游戏理解？剧情架构会对玩家的关注点产什么影响？故事同样需要下层技术提供实现，由上层美学反馈。</p>
+<p><strong>美学：</strong>游戏的视觉效果、音效、音乐目的是营造什么体验？如何使用游戏美学让玩家保持沉浸？如何在正确的时机强调游戏美学展现出最大的影响力？美学对玩家体验有直接影响，关键要思考<strong>展现什么？什么时候展现/强调？</strong></p>
+<p><strong>技术：</strong>技术要素比较独特，其本质是一种媒介，<em>美学通过它展现，机制通过它作用，故事通过它讲述</em>，既然是媒介而其根本目的又是服务体验，那最重要的就是<strong>合适</strong>的技术。但需要强调的是，现有的技术实际上服务于未来的游戏，因此技术是否合适还需要从时间发展角度去思考。</p>
+<p>这是我认为四元法需要抓住的核心理解：在四元法的大体的思维架构下，需要同相应的<strong>透镜</strong>，也就是问题，在游戏设计的流程中时刻反思。当然四元法也包含很多实际设计的指导细节，但限于篇幅不予赘述（主要是太多说不明白），如有兴趣可以自读《游戏设计艺术》。</p>
+<p>这里还需要提一下分层四元法，由Jeremy Gibson在《游戏设计、原型与开发：基于Unity与C#从构思到实现》一书中提出（Unity的部分很老了，建议优先设计部分）。他将四元法分在了内嵌层、动态层和文化层，对游戏设计的整体思路做出了更多的拓展，实际上分层四元法和Jesse目录的思维导图有很多相似点，都是从脱离游戏本身而对游戏对玩家、设计师、社群甚至社会的影响进行了拓展，有兴趣的可以详细阅读一下。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>咳咳，写得有点累，这篇文章的理论部分偏多，大部分属于个人理解的记录，可能比较晦涩和抽象，我也找了几个例子尝试简化。</p>
+<p>嗯，扯远了，还是做一下简单的总结吧</p>
+<p><strong>MDA</strong>展示了玩家与设计师对于游戏不同的思维方式与价值取向，强调设计师应通过玩家视角更完整有效的审视自己的作品，着重强调了美学，即玩家的游玩体验。</p>
+<p><strong>FDD</strong>对游戏设计的细节进行了归类并提出了指导性建议，为设计师和学生提供了实质性的帮助，着重强调了叙事对玩家体验的作用，即叙事涌现。</p>
+<p><strong>四元法</strong>实际偏向设计师角度去看待游戏，对游戏的元素进行了细致的分类，并提供了学多细节作为指导性建议，着重强调了游戏-主题-体验的统一。</p>
+]]></content>
+      <categories>
+        <category>games</category>
+      </categories>
+      <tags>
+        <tag>games</tag>
+        <tag>Analysis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记一次《死亡搁浅》的解构</title>
-    <url>/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/</url>
+    <url>/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>
-    <div id="aplayer-QghLeWVq" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-ScsNAwCq" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 <p>《死亡搁浅》是小岛工作室于2019年11月8日于索尼PlayStation4平台发售的游戏，同样也是小岛秀夫在离职科纳美之后的第一部作品。小岛秀夫作品个人风格明显：大段的过场CG，惊艳的镜头和光影设计，隐晦而深刻的主题，其之前《合金装备》《寂静岭》等作品都因此而广受好评。《死亡搁浅》是我关注时间最久的作品，从第一次TGA宣传到正式发售一直跟进，现通关之后借短暂回味的时间记录下一些想法。（略带安利性质）</p>
-<p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/1A543B87E3DC9E601D4569DF6C76D00D.jpg" alt="1A543B87E3DC9E601D4569DF6C76D00D"></p>
+<p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/1A543B87E3DC9E601D4569DF6C76D00D.jpg" alt="1A543B87E3DC9E601D4569DF6C76D00D"></p>
 <a id="more"></a>
 
 
@@ -54,41 +116,41 @@
 <h1 id="分层四元法"><a href="#分层四元法" class="headerlink" title="分层四元法"></a>分层四元法</h1><p>Jesse Schell在《游戏设计艺术》一书中提出四元法，即游戏的四个基本元素：机制，美学，剧情，技术。之后Jeremy Gibson在其书《游戏、设计原型与开发》中对四元法、MDA、FDD进行了结合与拓展，提出了在四大元素的基础上将游戏分为内嵌层、动态层、文化层的分层四元法。分层四元法的游戏分析框架作为一个帮助理解游戏的工具，它也能帮助我们定义游戏内外的意义。</p>
 <h1 id="内嵌层"><a href="#内嵌层" class="headerlink" title="内嵌层"></a>内嵌层</h1><p>内嵌层仅仅描述了游戏层面，从最底层、最基础的视角去分析游戏，而更少考虑互动性质和文化性质。</p>
 <h2 id="PART1-机制"><a href="#PART1-机制" class="headerlink" title="PART1 机制"></a>PART1 机制</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>  《死亡搁浅》中玩家扮演送货员山姆，其主要目标就是送快递。在一个开放地图中，玩家需要从特定结点领取包裹，并尽可能快速、安全、完整的送到目标节点。长期来看，游戏的目标是要将美国从东部节点到西部节点通过送快递的方式重新连接起来。</p>
-<img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/DA4909E584D37F9D0F0EFEB3027AF2B0.jpg" alt="DA4909E584D37F9D0F0EFEB3027AF2B0" style="zoom:67%;">
+<img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/DA4909E584D37F9D0F0EFEB3027AF2B0.jpg" alt="DA4909E584D37F9D0F0EFEB3027AF2B0" style="zoom:67%;">
 
 <p>  摒弃了ACT传统的战斗玩法，而是原本最无趣的“跑路”作为主要玩法，这是导致《死亡搁浅》难以被定义的一项原因。这种目标设计的一个问题就是难以多样化的玩法，因此许多游戏会将跑路作为辅助要素（《消逝的光芒》《刺客信条》）或者是在做种强调心流（《风之旅人》）和快节奏的流畅体验（《镜之边缘》），但《死亡搁浅》更注重的是路线的优化。</p>
-<h3 id="玩家关系"><a href="#玩家关系" class="headerlink" title="玩家关系"></a>玩家关系</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/6E1693EC2F6555E9AD769FBF2B942CD4.png" alt="6E1693EC2F6555E9AD769FBF2B942CD4"></p>
+<h3 id="玩家关系"><a href="#玩家关系" class="headerlink" title="玩家关系"></a>玩家关系</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/6E1693EC2F6555E9AD769FBF2B942CD4.png" alt="6E1693EC2F6555E9AD769FBF2B942CD4"></p>
 <p>  《死亡搁浅》的玩家关系是一大创新点，玩家在开放地图上建立的设施，会有几率被分配其他玩家的地图并提供帮助，并且有些设施是需要玩家共同建造的，例如公路、桥梁、安全屋。这种机制的本质是合作，但相比传统合作中即时、明确的反馈，其制造了一种更大的不确定性。这种合作机制和《死亡搁浅》主题——连接，有密切的关系。</p>
 <p>  《死亡搁浅》的合作机制有一个很相似的原型。《史丹利的寓言》的作者Davey在他的一个视频中提到过他一个朋友做的游戏Demo，Demo中玩家能在地图中看到许多其他玩家的留言，Davey表示他很喜欢这种玩家间不确定连接的微妙感觉，但遗憾的是他朋友没能实现这个功能，这个有趣的点子最后只是一堆本地数据的模拟，这位朋友最终也在屡屡受挫之后彻底退出了游戏开发界。当然这已经是12年的事了。</p>
-<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/F1B0E6EC1CE045AB4B21388A73CC3FEC.jpg" alt="F1B0E6EC1CE045AB4B21388A73CC3FEC"></p>
+<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/F1B0E6EC1CE045AB4B21388A73CC3FEC.jpg" alt="F1B0E6EC1CE045AB4B21388A73CC3FEC"></p>
 <p>  《死亡搁浅》提供了一个很有趣的边界设定——背包问题。游戏中携带物品都质量、重心和物理碰撞体积的设定，质量过可能导致步伐缓慢，重心过高可能导致转向时摔倒，而物理碰撞体积是货物损坏的根本原因。这种多参数影响下的背包问题，是《死亡搁浅》作为“快递模拟器”的核心机制，同时转化出了游戏的一个重要子目标：携带物品的最优化。</p>
 <p>  另外一个边界就是路线问题，不同陡峭程度和不同类型的地形会对玩家送货造成不同程度的影响。非常精妙的是游戏中的每一个系统都能一定程度的优化路线，包括天气预报、网络覆盖，高度观测、路线标记等。假设玩家能够将所有系统的信息都充分利用起来，《死亡搁浅》其实可以看做带有混沌系统的ACT视角策略游戏，从策略游戏的视角来看《死亡搁浅》的话，那么这部作品的确具有开创意义。</p>
 <p>《死亡搁浅》将单线程RTS游戏特性引入了ACT游戏（当然我个人认为当初设计的时候并没有刻意这么做）同样引出了一个问题——难以层次化的反馈。你的决策并不会得到明显的奖励和惩罚，优秀决策的结果只是成果送货和一些枯燥的数字评分，而糟糕的决策也只会导致一些无伤大雅的货箱损坏率或者重新开始任务。玩家在游戏中的决策多样，但是结果的区别却没有得到涌现。</p>
-<h3 id="空间"><a href="#空间" class="headerlink" title="空间"></a>空间</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/71AB25C18167BAC03B6FB6D46937AC08.jpg" alt="71AB25C18167BAC03B6FB6D46937AC08"></p>
+<h3 id="空间"><a href="#空间" class="headerlink" title="空间"></a>空间</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/71AB25C18167BAC03B6FB6D46937AC08.jpg" alt="71AB25C18167BAC03B6FB6D46937AC08"></p>
 <p>  《死亡搁浅》原始的地图的设计可以说是优秀得普通，在其他玩家设施的帮助下所有任务都能在不用任何功能物品的情况下完成（亲测），地图流畅度良好。令人惊叹的是共享设施的分布，送货路线中共享设施的出现位置大多十分自然，玩家总是能借此找出一条流畅但又不至于过于简单的线路。</p>
 <p>  这样不突兀的设施分布不会是随机的，而是和地图的抽象结构建模有密切关系（地形颜色 绿、蓝、黄、红），某个强大的生成算法作用下最终达到了这种路线流畅的效果。</p>
 <p>  此外，将建筑原子化后随机分布的设计其实非常有意思。我们都知道Roguelike游戏最大的趣味之一是随机化的地图（《死亡细胞》《以撒的结合》），3D游戏采用这种策略则会导致极大的渲染代价。但如果转变一种思维呢？地图保持不变，反而对地图内所有的可互动要素做随机呢？</p>
 <h2 id="PART2-美学"><a href="#PART2-美学" class="headerlink" title="PART2 美学"></a>PART2 美学</h2><h3 id="视觉"><a href="#视觉" class="headerlink" title="视觉"></a>视觉</h3><p>  《死亡搁浅》是一场视觉盛宴，其画面精美程度绝对是业界顶尖。</p>
 <p>  《死亡搁浅》的视觉设计也完美体现了小岛强烈的个人风格——不想做电影的游戏制作人不是一个好的设计师。游戏的颜色主体低对比度的暗冷色调为主，能够恰到好处地烘托死亡搁浅后的末世氛围。</p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208143725779.png" alt="image-20191208143725779"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208143750155.png" alt="image-20191208143750155"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208143824991.png" alt="image-20191208143824991"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143725779.png" alt="image-20191208143725779"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143750155.png" alt="image-20191208143750155"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143824991.png" alt="image-20191208143824991"></p>
 <p>  《死亡搁浅》的CG表现可以说是十分优秀，小岛常用镜头手法是代入身份的隐变。虽然镜头全程是以第三方观测者为视角，但其变化混淆了第一人称和第三人称的界限。</p>
 <p>  以心人剧情的开场CG为例，玩家在观察完心人的房间后，镜头切回主角山姆，再缓慢移动到心人的身体和全息仪表，此时的镜头可以代表山姆的视角，山姆与玩家同为观察主体。</p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208141225790.png" alt="image-20191208141225790"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208141312392.png" alt="image-20191208141312392"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141225790.png" alt="image-20191208141225790"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141312392.png" alt="image-20191208141312392"></p>
 <p>  由于上一个镜头已经交代山姆的焦点在心人，在下一步复活的场景中没有进一步描述的必要，故将镜头移到心人侧面特写后旋转运镜到正面特写（山姆显然看不到正面特写），此时主要视觉呈现对象是玩家而非山姆。之后画面突然终止，转黑并显示章节名，镜头结束。在复活的镜头中我们同样可以看到主色彩的变化，又昏暗的蓝紫光转变为自然的白光，象征HEARTMAN从死亡状态到存活状态的转变。</p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208141412759.png" alt="image-20191208141412759"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208141451011.png" alt="image-20191208141451011"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208141714253.png" alt="image-20191208141714253"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141412759.png" alt="image-20191208141412759"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141451011.png" alt="image-20191208141451011"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141714253.png" alt="image-20191208141714253"></p>
 <p>  在设计针对玩家的视觉效果的时候，小岛最喜欢采用的就是面部特写，而演员的表演也十分惊艳。</p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208142509205.png" alt="image-20191208142509205"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208143050709.png" alt="image-20191208143050709"></p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/image-20191208143152743.png" alt="image-20191208143152743"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208142509205.png" alt="image-20191208142509205"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143050709.png" alt="image-20191208143050709"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143152743.png" alt="image-20191208143152743"></p>
 <p>  此外《死亡搁浅》同样也继承了小岛风格的一项典例：频繁的转场动画，这导致游玩体验流畅度下降。</p>
 <h3 id="听觉"><a href="#听觉" class="headerlink" title="听觉"></a>听觉</h3><p>  《死亡搁浅》拥有年度最强大的soundtrack，每一首歌曲都能恰到好处地契合游戏氛围。很可惜的是玩家并不能在送货过程中自定义歌曲播放，需要到雨亭、私人套间或特殊剧情区域才能够触发。《死亡搁浅》优秀音乐作为游戏一大亮点，却不能在乏味的跑路过程让玩家自定义播放，这点着实让人迷惑。</p>
 
-    <div id="aplayer-cSzetflz" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-BYjrTqHW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 
 <h3 id="触觉"><a href="#触觉" class="headerlink" title="触觉"></a>触觉</h3><p>  游戏中主角身体失衡反馈到手柄的震动有不小的区分度，我借此可以变成一个没有感情（和视觉的）的跑图机器，甚至游戏后期大部分路段能够闭着眼睛过去，当然这一块并不是重点。</p>
 <h2 id="PART3-叙事"><a href="#PART3-叙事" class="headerlink" title="PART3 叙事"></a>PART3 叙事</h2><h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><p>《死亡搁浅》的世界里，人类死后灵魂被搁浅在冥滩而没有去到死者的世界，尸体出现了一种叫开罗尔的黑色物质，在开罗尔物质的作用下，被搁浅在冥滩的灵魂以BT的形式重新渗透进入了生者的世界，当生者被BT吞噬后会触发巨大的虚爆，就像反物质和物质的湮灭一般。虚爆将世界摧毁得支离玻碎，但开罗尔物质带来物质却不知如此，大量的开罗尔物质聚集成的云产生的雨水，会使其所接触所有物体的时间快速流逝，幸存的人类从地表撤离转入地下城，人类之间的联系被彻底隔断。</p>
@@ -115,7 +177,7 @@
 </li>
 </ol>
 <h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>  《死亡搁浅》的角色设计非常棒，甚至剧情的推进都是以角色名为章节。（剧透预警）</p>
-<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84%E2%80%94%E2%80%94%E5%86%85%E5%B5%8C%E5%B1%82/4D180ADAD0499E054598628B64D32BA6.jpg" alt="img"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/4D180ADAD0499E054598628B64D32BA6.jpg" alt="img"></p>
 <p><strong>SAM</strong></p>
 <blockquote>
 <p>Lou?</p>
@@ -197,7 +259,7 @@
 
 <p>​      </p>
 <p>  小岛工作室官方曾经对《死亡搁浅》中人物的受欢迎程度做过一个榜单，个人更喜欢CLIFF、MAMA、HEARTMAN者三个角色，因为在《死亡搁浅》世界观里他们都是小人物，CLIFF是被政府利用后失去妻女的退役特种士兵，MAMA和HEARTMAN分别是是失去与妹妹联系和失去家人的科学家。死亡搁浅摧毁了他们重要的联系，他们都变成了某种意义上的搁浅物，却仍在不断同与命运抗争。相反地，《死亡搁浅》HIGGS，FRAGILE，DIE-HARDMAN这三个角色的塑造相对羸弱许多。</p>
-<h2 id="PART4-技术"><a href="#PART4-技术" class="headerlink" title="PART4 技术"></a>PART4 技术</h2><p>我无法以一个开发者和设计师的角度对技术作评价。但作为一个玩家，我对建筑分布的算法很感兴趣。</p>
+<h2 id="PART4-技术"><a href="#PART4-技术" class="headerlink" title="PART4 技术"></a>PART4 技术</h2><p>有一说一，水平不够，看不出实现。</p>
 ]]></content>
       <categories>
         <category>games</category>
@@ -274,6 +336,7 @@
     <title>CTF题解记录-web篇</title>
     <url>/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>记录打比赛时期做的一些web练习题</p>
+<p>后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。</p>
 <a id="more"></a>
 
 <h1 id="WEEK-1"><a href="#WEEK-1" class="headerlink" title="WEEK 1"></a>WEEK 1</h1><h2 id="加了报错的注入"><a href="#加了报错的注入" class="headerlink" title="加了报错的注入"></a>加了报错的注入</h2><blockquote>
@@ -475,7 +538,7 @@
 <h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了`<strong>一切输入有害</strong>的重要安全思想。</p>
 <h2 id="注入如何产生？"><a href="#注入如何产生？" class="headerlink" title="注入如何产生？"></a>注入如何产生？</h2><p>个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。</p>
 <p>例如在PHP + MySQL平台下：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$name = $_POST[<span class="string">'name'</span>]; </span><br><span class="line">$con = mysqli_connect(<span class="string">"127.0.0.1"</span>,<span class="string">"root"</span>,<span class="string">""</span>,<span class="string">"test"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"error"</span>);</span><br><span class="line"></span><br><span class="line">$query = <span class="string">"SELECT * FROM person WHERE name='$name';"</span>;</span><br><span class="line">$result = mysqli_query($con,$query);</span><br><span class="line"><span class="keyword">while</span>($row=mysqli_fetch_assoc($result))</span><br><span class="line">	<span class="keyword">echo</span> $row[<span class="string">'age'</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$name = $_POST[<span class="string">'name'</span>]; </span><br><span class="line">$con = mysqli_connect(<span class="string">"127.0.0.1"</span>,<span class="string">"root"</span>,<span class="string">""</span>,<span class="string">"test"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"error"</span>);</span><br><span class="line"></span><br><span class="line">$query = <span class="string">"SELECT * FROM person WHERE name='$name';"</span>;</span><br><span class="line">$result = mysqli_query($con,$query);</span><br><span class="line"><span class="keyword">while</span>($row=mysqli_fetch_assoc($result))</span><br><span class="line">	<span class="keyword">echo</span> $row[<span class="string">'age'</span>];</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
 
 <p>这是一个用户通过输入name从person表查询对应age的场景，但是代码中没有对输入变量$name进行任何检测和过滤，如果我们构造$name为<code>1&#39;or&#39;1&#39;=&#39;1</code>，那么查询语句$query就会变成：<code>&quot;SELECT * FROM person WHERE name=&#39;1&#39; or &#39;1&#39;=&#39;1&#39;;&quot;</code>，然而该查询语句恒成立，意味着这样的输入将会爆出数据库person表中所有人的age，造成信息泄露。</p>
 <p>在上面这个案例中，如果我们对$name或者$query进行过滤，比如将<code>&#39;</code>和<code>&quot;</code>转义，或者字符处理掉<code>=</code>，那么上面构造的输入数据不会被执行。这只是一个最简单的案例，想了解和实践更多可以部署<a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">DVWA</a>进行本地或者远程测试。</p>
@@ -510,6 +573,93 @@
         <tag>sqli</tag>
         <tag>php</tag>
         <tag>commandi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Hexo和Github快速搭建个人博客</title>
+    <url>/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。</p>
+<blockquote>
+<p>为阅读本文章，你需要同时阅读：<br><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo官方文档</a><br><a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">Next主题官方文档</a><br><a href="https://github.com/younghz/Markdown" target="_blank" rel="noopener">Markdown语法参考</a></p>
+</blockquote>
+<h2 id="Hexo-Github模式优点"><a href="#Hexo-Github模式优点" class="headerlink" title="Hexo + Github模式优点"></a>Hexo + Github模式优点</h2><ul>
+<li>节省购置服务器的费用</li>
+<li>快速搭建，快速部署</li>
+<li>学习成本低，学习价值高<a id="more"></a>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><blockquote>
+<p>一. 建立github仓库<br>二. 建立本地Hexo博客<br>三. 配置本地Hexo博客<br>四. 连接本地Hexo与gitpages</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="开始搭建吧！"><a href="#开始搭建吧！" class="headerlink" title="开始搭建吧！"></a>开始搭建吧！</h2><h3 id="建立github仓库"><a href="#建立github仓库" class="headerlink" title="建立github仓库"></a>建立github仓库</h3><p>开始之前确保已注册github帐号并下载gitbash。<br>如果还没有，请参考：<a href="http://wiki.jikexueyuan.com/project/github-basics/sign-up.html" target="_blank" rel="noopener">极客学院github初识教程</a>完成注册和下载。</p>
+<blockquote>
+<p>点击创建仓库</p>
+</blockquote>
+<p><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/github1.png" alt="github1"></p>
+<blockquote>
+<p>如图输入仓库名，其中方框部分应与github用户名一致</p>
+</blockquote>
+<p><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/github2.png" alt="github2"></p>
+<p><strong>强调：红色方框中的输入内容应为用户名，否则无法托管。</strong></p>
+<h3 id="建立本地Hexo博客"><a href="#建立本地Hexo博客" class="headerlink" title="建立本地Hexo博客"></a>建立本地Hexo博客</h3><p>请先自主阅读<a href>Hexo官方文档-概述</a>，若按照官方文档已完成安装，可以跳过该步骤。</p>
+<ol>
+<li><p><strong>安装Node.js</strong><br>从<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js官网</a>下载并安装Node.js环境，推荐LTS（Long-Term-Support）版本。</p>
+</li>
+<li><p><strong>本地下载Hexo</strong><br>首先选择你要配置本地博客的目录，右击选择 <strong>Git Bash Here</strong>，<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash.png" alt="gitbahs"><br>从而进入如图gitbash环境<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash_cli.png" alt="gitbash2"></p>
+</li>
+</ol>
+<p><strong>注意：明白这一步直很重要，之后所有命令都是在gitbash中完成！</strong></p>
+<ol start="3">
+<li><strong>安装hexo</strong><br>gitbash输入:<code>npm install -g hexo-cli</code>会开始安装Hexo，安装完成后会有如图所示目录文件。</li>
+</ol>
+<p>各目录的作用请参考：<a href>Hexo官方文档-建站</a></p>
+<h3 id="配置本地Hexo博客"><a href="#配置本地Hexo博客" class="headerlink" title="配置本地Hexo博客"></a>配置本地Hexo博客</h3><p>请先自主阅读<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo官方文档-配置</a>与<a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT官网文档-开始使用</a>，若按照官方文档已完成部署，可以跳过该步骤。</p>
+<ol>
+<li><p><strong>下载并部署NexT主题</strong><br>前往<a href="https://github.com/iissnan/hexo-theme-next/releases" target="_blank" rel="noopener">NexT版本发布页面</a>下载官方Source code.zip并解压，将解压后的文件名修改为<strong>next</strong>后置于你本地博客目录的themes文件夹。</p>
+</li>
+<li><p><strong>本地预览</strong><br>在博客目录下的gitbash中输入<br><code>hexo clean</code><br><code>hexo g</code><br>完成初始化，之后使用命令<br><code>hexo s</code><br>完成本地部署。<br>本地部署后可，通过访问<code>localhost:4000</code>从而访问本地博客。至此，你已经可以看到你的博客首页了。<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A2%84%E8%A7%88.png" alt="预览"></p>
+</li>
+</ol>
+<ol start="3">
+<li><strong>区别本地配置和主题配置</strong><br>两个配置文件均为<code>_config.yml</code>，但有本质区别，之后配置需注意不要混淆。</li>
+</ol>
+<p><strong>本地配置</strong>：位于 本地博客根目录下<code>_config.yml</code><br><strong>主题配置</strong>：位于 本地博客目录/themes/主题目录(如next)下的<code>_config.yml</code></p>
+<ol start="4">
+<li><strong>配置本地配置</strong><br>打开本地配置的<code>_config.yml</code>，找到如图Themes字段：<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/theme.png" alt="theme"><br>将字段修改为<code>theme: next</code>从而应用布置好的NexT主题<br>同样可以找到如图字段：<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/site.png" alt="site"><br>将language字段修改为<code>language: zh-Hans</code>即可应用主题为中文版，在其他字段中可以直接修改个人博客的标题、子标题、描述等信息。</li>
+</ol>
+<ol start="5">
+<li><p><strong>配置主题配置</strong><br>打开主题配置中的<code>_config.yml</code>可以看到主题配置内容，此步骤只强调几个终点配置。</p>
+<ul>
+<li><p><strong>配置菜单</strong><br>找到如图menu配置，修改menu中的字段对应博客主页菜单的变化<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/menu.png" alt="menu"></p>
+</li>
+<li><p><strong>配置NexT主题</strong><br>找到如图Schemes配置，修改scheme字段可以修改NexT子主题<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/scheme.png" alt="scheme"></p>
+</li>
+<li><p><strong>配置博客头像</strong><br>在配置文件任意独立行输入<code>avatar: /images/avatar.png</code>，之后在本地博客目录下<code>source</code>文件夹下新建文件夹<code>images</code>，选择自己喜欢的博客头像改为<code>avatar.png</code>同名文件放置在该目录下即可。</p>
+</li>
+<li><p><strong>配置favicon图标</strong><br>所谓favicon如图，可以想<code>images</code>文件夹下添加名为<code>favicon.ico</code>的图标文件修改。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="连接本地Hexo和gitpages"><a href="#连接本地Hexo和gitpages" class="headerlink" title="连接本地Hexo和gitpages"></a>连接本地Hexo和gitpages</h3><ol>
+<li><p><strong>配置与Github Pages关联</strong><br>打开本地配置的<code>_config.yml</code>，找到如图deploy字段：<br><img src="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy.png" alt="deploy">)并如图配置,其中红框为你的github帐号，白框为github密码，灰框(最右)为你建立的仓库地址。</p>
+</li>
+<li><p><strong>部署github托管</strong><br>很简单，本地博客目录打开gitbash，输入<code>hexo d</code>即完成在线部署。</p>
+</li>
+</ol>
+<p><strong>至此，你的个人博客线上部署已经完成！</strong></p>
+<h2 id="接下来还有什么呢？"><a href="#接下来还有什么呢？" class="headerlink" title="接下来还有什么呢？"></a>接下来还有什么呢？</h2><p>你接下来可能涉及到的问题可能会有:</p>
+<blockquote>
+<p>如何让个人网站绑定个人域名？<br>如何利用markdown编写个人博客？<br>如何加入第三方样式和js文件？<br>……</p>
+</blockquote>
+<p>由于我不会所以拓展是没戏了，大家自行Google吧哈哈哈哈</p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
       </tags>
   </entry>
 </search>

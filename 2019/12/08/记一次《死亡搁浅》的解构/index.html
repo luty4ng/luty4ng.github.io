@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="games,ps4,death stranding,kojima," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Luty" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="《死亡搁浅》是小岛工作室于2019年11月8日于索尼PlayStation4平台发售的游戏，同样也是小岛秀夫在离职科纳美之后的第一部作品。小岛秀夫作品个人风格明显：大段的过场CG，惊艳的镜头和光影设计，隐晦而深刻的主题，其之前《合金装备》《寂静岭》等作品都因此而广受好评。《死亡搁浅》是我关注时间最久的作品，从第一次TGA宣传到正式发售一直跟进，现通关之后借短暂回味的时间记录下一些想法。（略带安利">
+<meta name="keywords" content="games,ps4,death stranding,kojima">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次《死亡搁浅》的解构">
+<meta property="og:url" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;index.html">
+<meta property="og:site_name" content="Luty">
+<meta property="og:description" content="《死亡搁浅》是小岛工作室于2019年11月8日于索尼PlayStation4平台发售的游戏，同样也是小岛秀夫在离职科纳美之后的第一部作品。小岛秀夫作品个人风格明显：大段的过场CG，惊艳的镜头和光影设计，隐晦而深刻的主题，其之前《合金装备》《寂静岭》等作品都因此而广受好评。《死亡搁浅》是我关注时间最久的作品，从第一次TGA宣传到正式发售一直跟进，现通关之后借短暂回味的时间记录下一些想法。（略带安利">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;1A543B87E3DC9E601D4569DF6C76D00D.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;DA4909E584D37F9D0F0EFEB3027AF2B0.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;6E1693EC2F6555E9AD769FBF2B942CD4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;F1B0E6EC1CE045AB4B21388A73CC3FEC.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;71AB25C18167BAC03B6FB6D46937AC08.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208143725779.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208143750155.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208143824991.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208141225790.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208141312392.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208141412759.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208141451011.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208141714253.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208142509205.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208143050709.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;image-20191208143152743.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;4D180ADAD0499E054598628B64D32BA6.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530003816344.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530003908778.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530011902367.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530003834583.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530005409436.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530003840479.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;19053000391457.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530003854421.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;img01.vgtime.com&#x2F;game&#x2F;cover&#x2F;2019&#x2F;05&#x2F;30&#x2F;190530003829399.jpg">
+<meta property="og:updated_time" content="2020-04-17T16:34:44.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84&#x2F;1A543B87E3DC9E601D4569DF6C76D00D.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Luty.tech/2019/12/08/记一次《死亡搁浅》的解构/"/>
+
+
+
+
+
+  <title>记一次《死亡搁浅》的解构 | Luty</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Luty</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">睡眠是第一生产力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Luty.tech/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luty">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luty">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记一次《死亡搁浅》的解构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-08T13:29:44+08:00">
+                2019-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/games/" itemprop="url" rel="index">
+                    <span itemprop="name">games</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+    <div id="aplayer-ScsNAwCq" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+<p>《死亡搁浅》是小岛工作室于2019年11月8日于索尼PlayStation4平台发售的游戏，同样也是小岛秀夫在离职科纳美之后的第一部作品。小岛秀夫作品个人风格明显：大段的过场CG，惊艳的镜头和光影设计，隐晦而深刻的主题，其之前《合金装备》《寂静岭》等作品都因此而广受好评。《死亡搁浅》是我关注时间最久的作品，从第一次TGA宣传到正式发售一直跟进，现通关之后借短暂回味的时间记录下一些想法。（略带安利性质）</p>
+<p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/1A543B87E3DC9E601D4569DF6C76D00D.jpg" alt="1A543B87E3DC9E601D4569DF6C76D00D"></p>
+<a id="more"></a>
+
+
+
+<h1 id="为什么要解构"><a href="#为什么要解构" class="headerlink" title="为什么要解构"></a>为什么要解构</h1><p>《死亡搁浅》自其发售以来就引起了巨大的争议，有的人认为小岛在这部作品里将个人风格和第九艺术的美学发挥到了极致，有的人认为《死亡搁浅》玩法单一、剧情拖沓、故弄玄虚。我想要尝试用一些成熟的框架去分析《死亡搁浅》，用结构化的思维去思考游戏中的表达、内涵和反思。在这样的解构中，我们也许能够从更多样更深刻的角度去认识一款作品。</p>
+<h1 id="分层四元法"><a href="#分层四元法" class="headerlink" title="分层四元法"></a>分层四元法</h1><p>Jesse Schell在《游戏设计艺术》一书中提出四元法，即游戏的四个基本元素：机制，美学，剧情，技术。之后Jeremy Gibson在其书《游戏、设计原型与开发》中对四元法、MDA、FDD进行了结合与拓展，提出了在四大元素的基础上将游戏分为内嵌层、动态层、文化层的分层四元法。分层四元法的游戏分析框架作为一个帮助理解游戏的工具，它也能帮助我们定义游戏内外的意义。</p>
+<h1 id="内嵌层"><a href="#内嵌层" class="headerlink" title="内嵌层"></a>内嵌层</h1><p>内嵌层仅仅描述了游戏层面，从最底层、最基础的视角去分析游戏，而更少考虑互动性质和文化性质。</p>
+<h2 id="PART1-机制"><a href="#PART1-机制" class="headerlink" title="PART1 机制"></a>PART1 机制</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>  《死亡搁浅》中玩家扮演送货员山姆，其主要目标就是送快递。在一个开放地图中，玩家需要从特定结点领取包裹，并尽可能快速、安全、完整的送到目标节点。长期来看，游戏的目标是要将美国从东部节点到西部节点通过送快递的方式重新连接起来。</p>
+<img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/DA4909E584D37F9D0F0EFEB3027AF2B0.jpg" alt="DA4909E584D37F9D0F0EFEB3027AF2B0" style="zoom:67%;">
+
+<p>  摒弃了ACT传统的战斗玩法，而是原本最无趣的“跑路”作为主要玩法，这是导致《死亡搁浅》难以被定义的一项原因。这种目标设计的一个问题就是难以多样化的玩法，因此许多游戏会将跑路作为辅助要素（《消逝的光芒》《刺客信条》）或者是在做种强调心流（《风之旅人》）和快节奏的流畅体验（《镜之边缘》），但《死亡搁浅》更注重的是路线的优化。</p>
+<h3 id="玩家关系"><a href="#玩家关系" class="headerlink" title="玩家关系"></a>玩家关系</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/6E1693EC2F6555E9AD769FBF2B942CD4.png" alt="6E1693EC2F6555E9AD769FBF2B942CD4"></p>
+<p>  《死亡搁浅》的玩家关系是一大创新点，玩家在开放地图上建立的设施，会有几率被分配其他玩家的地图并提供帮助，并且有些设施是需要玩家共同建造的，例如公路、桥梁、安全屋。这种机制的本质是合作，但相比传统合作中即时、明确的反馈，其制造了一种更大的不确定性。这种合作机制和《死亡搁浅》主题——连接，有密切的关系。</p>
+<p>  《死亡搁浅》的合作机制有一个很相似的原型。《史丹利的寓言》的作者Davey在他的一个视频中提到过他一个朋友做的游戏Demo，Demo中玩家能在地图中看到许多其他玩家的留言，Davey表示他很喜欢这种玩家间不确定连接的微妙感觉，但遗憾的是他朋友没能实现这个功能，这个有趣的点子最后只是一堆本地数据的模拟，这位朋友最终也在屡屡受挫之后彻底退出了游戏开发界。当然这已经是12年的事了。</p>
+<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/F1B0E6EC1CE045AB4B21388A73CC3FEC.jpg" alt="F1B0E6EC1CE045AB4B21388A73CC3FEC"></p>
+<p>  《死亡搁浅》提供了一个很有趣的边界设定——背包问题。游戏中携带物品都质量、重心和物理碰撞体积的设定，质量过可能导致步伐缓慢，重心过高可能导致转向时摔倒，而物理碰撞体积是货物损坏的根本原因。这种多参数影响下的背包问题，是《死亡搁浅》作为“快递模拟器”的核心机制，同时转化出了游戏的一个重要子目标：携带物品的最优化。</p>
+<p>  另外一个边界就是路线问题，不同陡峭程度和不同类型的地形会对玩家送货造成不同程度的影响。非常精妙的是游戏中的每一个系统都能一定程度的优化路线，包括天气预报、网络覆盖，高度观测、路线标记等。假设玩家能够将所有系统的信息都充分利用起来，《死亡搁浅》其实可以看做带有混沌系统的ACT视角策略游戏，从策略游戏的视角来看《死亡搁浅》的话，那么这部作品的确具有开创意义。</p>
+<p>《死亡搁浅》将单线程RTS游戏特性引入了ACT游戏（当然我个人认为当初设计的时候并没有刻意这么做）同样引出了一个问题——难以层次化的反馈。你的决策并不会得到明显的奖励和惩罚，优秀决策的结果只是成果送货和一些枯燥的数字评分，而糟糕的决策也只会导致一些无伤大雅的货箱损坏率或者重新开始任务。玩家在游戏中的决策多样，但是结果的区别却没有得到涌现。</p>
+<h3 id="空间"><a href="#空间" class="headerlink" title="空间"></a>空间</h3><p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/71AB25C18167BAC03B6FB6D46937AC08.jpg" alt="71AB25C18167BAC03B6FB6D46937AC08"></p>
+<p>  《死亡搁浅》原始的地图的设计可以说是优秀得普通，在其他玩家设施的帮助下所有任务都能在不用任何功能物品的情况下完成（亲测），地图流畅度良好。令人惊叹的是共享设施的分布，送货路线中共享设施的出现位置大多十分自然，玩家总是能借此找出一条流畅但又不至于过于简单的线路。</p>
+<p>  这样不突兀的设施分布不会是随机的，而是和地图的抽象结构建模有密切关系（地形颜色 绿、蓝、黄、红），某个强大的生成算法作用下最终达到了这种路线流畅的效果。</p>
+<p>  此外，将建筑原子化后随机分布的设计其实非常有意思。我们都知道Roguelike游戏最大的趣味之一是随机化的地图（《死亡细胞》《以撒的结合》），3D游戏采用这种策略则会导致极大的渲染代价。但如果转变一种思维呢？地图保持不变，反而对地图内所有的可互动要素做随机呢？</p>
+<h2 id="PART2-美学"><a href="#PART2-美学" class="headerlink" title="PART2 美学"></a>PART2 美学</h2><h3 id="视觉"><a href="#视觉" class="headerlink" title="视觉"></a>视觉</h3><p>  《死亡搁浅》是一场视觉盛宴，其画面精美程度绝对是业界顶尖。</p>
+<p>  《死亡搁浅》的视觉设计也完美体现了小岛强烈的个人风格——不想做电影的游戏制作人不是一个好的设计师。游戏的颜色主体低对比度的暗冷色调为主，能够恰到好处地烘托死亡搁浅后的末世氛围。</p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143725779.png" alt="image-20191208143725779"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143750155.png" alt="image-20191208143750155"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143824991.png" alt="image-20191208143824991"></p>
+<p>  《死亡搁浅》的CG表现可以说是十分优秀，小岛常用镜头手法是代入身份的隐变。虽然镜头全程是以第三方观测者为视角，但其变化混淆了第一人称和第三人称的界限。</p>
+<p>  以心人剧情的开场CG为例，玩家在观察完心人的房间后，镜头切回主角山姆，再缓慢移动到心人的身体和全息仪表，此时的镜头可以代表山姆的视角，山姆与玩家同为观察主体。</p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141225790.png" alt="image-20191208141225790"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141312392.png" alt="image-20191208141312392"></p>
+<p>  由于上一个镜头已经交代山姆的焦点在心人，在下一步复活的场景中没有进一步描述的必要，故将镜头移到心人侧面特写后旋转运镜到正面特写（山姆显然看不到正面特写），此时主要视觉呈现对象是玩家而非山姆。之后画面突然终止，转黑并显示章节名，镜头结束。在复活的镜头中我们同样可以看到主色彩的变化，又昏暗的蓝紫光转变为自然的白光，象征HEARTMAN从死亡状态到存活状态的转变。</p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141412759.png" alt="image-20191208141412759"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141451011.png" alt="image-20191208141451011"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208141714253.png" alt="image-20191208141714253"></p>
+<p>  在设计针对玩家的视觉效果的时候，小岛最喜欢采用的就是面部特写，而演员的表演也十分惊艳。</p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208142509205.png" alt="image-20191208142509205"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143050709.png" alt="image-20191208143050709"></p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/image-20191208143152743.png" alt="image-20191208143152743"></p>
+<p>  此外《死亡搁浅》同样也继承了小岛风格的一项典例：频繁的转场动画，这导致游玩体验流畅度下降。</p>
+<h3 id="听觉"><a href="#听觉" class="headerlink" title="听觉"></a>听觉</h3><p>  《死亡搁浅》拥有年度最强大的soundtrack，每一首歌曲都能恰到好处地契合游戏氛围。很可惜的是玩家并不能在送货过程中自定义歌曲播放，需要到雨亭、私人套间或特殊剧情区域才能够触发。《死亡搁浅》优秀音乐作为游戏一大亮点，却不能在乏味的跑路过程让玩家自定义播放，这点着实让人迷惑。</p>
+
+    <div id="aplayer-BYjrTqHW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+
+<h3 id="触觉"><a href="#触觉" class="headerlink" title="触觉"></a>触觉</h3><p>  游戏中主角身体失衡反馈到手柄的震动有不小的区分度，我借此可以变成一个没有感情（和视觉的）的跑图机器，甚至游戏后期大部分路段能够闭着眼睛过去，当然这一块并不是重点。</p>
+<h2 id="PART3-叙事"><a href="#PART3-叙事" class="headerlink" title="PART3 叙事"></a>PART3 叙事</h2><h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><p>《死亡搁浅》的世界里，人类死后灵魂被搁浅在冥滩而没有去到死者的世界，尸体出现了一种叫开罗尔的黑色物质，在开罗尔物质的作用下，被搁浅在冥滩的灵魂以BT的形式重新渗透进入了生者的世界，当生者被BT吞噬后会触发巨大的虚爆，就像反物质和物质的湮灭一般。虚爆将世界摧毁得支离玻碎，但开罗尔物质带来物质却不知如此，大量的开罗尔物质聚集成的云产生的雨水，会使其所接触所有物体的时间快速流逝，幸存的人类从地表撤离转入地下城，人类之间的联系被彻底隔断。</p>
+<p>  《死亡搁浅》世界观设定很优秀，其核心主题连接能够在其世界观下得到多样的解释。</p>
+<ol>
+<li><p>生者与死者的连接</p>
+</li>
+<li><p>生者与生者的连接</p>
+</li>
+<li><p>抗争和命运的连接</p>
+</li>
+</ol>
+<h3 id="情节"><a href="#情节" class="headerlink" title="情节"></a>情节</h3><p>三条线索：</p>
+<ol>
+<li><p>连接UCA，解救AMELIE。 </p>
+<p>主要人物：AMELIE, HIGGS, FRAGILE, DIE-HARDMAN</p>
+</li>
+<li><p>研究死亡搁浅、冥滩和开罗尔物质</p>
+<p>主要人物：HEARTMAN, MAMA</p>
+</li>
+<li><p>BB的来源</p>
+<p>主要人物：CLIFF, DEADMAN</p>
+<p>展开思路很好，但节奏存在一些问题，前三章情节缺少有效的推进，中期从和DEADMAN洗澡那段开始反转从而缓慢推进，最后三章则疯狂反转甩剧情。不熟悉套路的玩家或非核心粉丝大多会因为这种诡异的节奏早早弃坑。</p>
+</li>
+</ol>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>  《死亡搁浅》的角色设计非常棒，甚至剧情的推进都是以角色名为章节。（剧透预警）</p>
+<p>  <img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/4D180ADAD0499E054598628B64D32BA6.jpg" alt="img"></p>
+<p><strong>SAM</strong></p>
+<blockquote>
+<p>Lou?</p>
+</blockquote>
+<p>玩家控制的游戏主角，是一个能够死后从冥滩返回生界的遣返者，同样也是能够感知BT的灭绝因子杜姆斯的携带者。在他特殊能力的帮助下他成为了死亡搁浅后一名送货员。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530003816344.jpg" alt="test image size" style="zoom:33%;">
+
+
+
+
+<p><strong>CLIFF</strong></p>
+<blockquote>
+<p>My bridge to the future.</p>
+</blockquote>
+<p>《死亡搁浅》中CLIFF贯穿了整个游戏最长的一条暗线，分别在游戏的三个不同阶段占据了三个章节。这个角色在游戏中作用巨大，他的出现引出了山姆的身世，BB、冥滩、开罗尔物质设定的相关细节，并提供游戏三个出彩的BOSS战。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530003908778.jpg" alt="img" style="zoom:33%;">
+
+
+<p><strong>AMELIE</strong></p>
+<blockquote>
+<p>Ame is a French for soul, A soul that’s lie.</p>
+</blockquote>
+<p>AMELIE是《死亡搁浅》的核心人物，是SAM同意帮助连接开罗尔网络的动机，她在第一次远征过程中遭到恐怖分子攻击，受困于西部结点等待救援。但实际上她是一个灭绝体，意味着她必须一直在冥滩等待正确的时机制造一次虚空爆炸灭绝人类，但在意识到自己的使命后，她却不堪在冥滩忍受数千年，于是在一次偶然的错误后，她决定将灭绝提前。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530011902367.jpg" alt="img" style="zoom:33%;">
+
+
+
+<p><strong>MAMA</strong></p>
+<blockquote>
+<p>Take me home. To Lockne.</p>
+</blockquote>
+<p>MAMA在游戏中被设定为第一批尝试连接UCA的远征队成员是开罗尔网络的设计师。剧情中MAMA的故事引出了开罗尔密度和冥滩、BT、死亡搁浅现象的关系，并且是后续解决死亡搁浅现象的关键。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530003834583.jpg" alt="img" style="zoom:33%;">
+
+
+<p><strong>DIE-HARDMAN</strong></p>
+<blockquote>
+<p>There is no atoning for what I’ve done.</p>
+</blockquote>
+<p>DIE-HARDMAN是山姆远征的总指挥官。游戏中用于指引玩家接受订单，剧情中……感觉只是为了剧情合理化和衬托CLIFF的工具人。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530005409436.jpg" alt="img" style="zoom:33%;">
+
+
+
+<p><strong>HEARTMAN</strong></p>
+<blockquote>
+<p>Two hundred and eighteen thousand five hundred and forty-nine times</p>
+</blockquote>
+<p>HEARTMAN同样是第一远征队成员，并且是一名冥滩科学家。剧情中他最终找出了死亡搁浅发生原因。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530003840479.jpg" alt="img" style="zoom:33%;">
+
+
+
+<p><strong>DEADMAN</strong></p>
+<blockquote>
+<p>I’m a Frankenstein monster.</p>
+</blockquote>
+<p>DEADMAN是一名BB科学家，一个人造人，在剧情前中期起到了为数不多的推进作用。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/19053000391457.jpg" alt="img" style="zoom:33%;">
+
+
+
+<p><strong>FRAGILE</strong></p>
+<blockquote>
+<p>I’m Fragile, but not that fragile.</p>
+</blockquote>
+<p>FRAGILE在游戏中使结点传送合理化，前中期她与HIGGS的矛盾是剧情一大推动力。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530003854421.jpg" alt="img" style="zoom:33%;">
+
+
+
+<p><strong>HIGGS</strong></p>
+<blockquote>
+<p>I’m the God particle everywhere</p>
+</blockquote>
+<p>HIGGS是占据西部结点的恐怖分子头领，在死亡搁浅的剧情中是前中期的核心反派，表面上他很吊但实际上也是工具人。</p>
+<img src="https://img01.vgtime.com/game/cover/2019/05/30/190530003829399.jpg" alt="img" style="zoom:33%;">
+
+
+<p>​      </p>
+<p>  小岛工作室官方曾经对《死亡搁浅》中人物的受欢迎程度做过一个榜单，个人更喜欢CLIFF、MAMA、HEARTMAN者三个角色，因为在《死亡搁浅》世界观里他们都是小人物，CLIFF是被政府利用后失去妻女的退役特种士兵，MAMA和HEARTMAN分别是是失去与妹妹联系和失去家人的科学家。死亡搁浅摧毁了他们重要的联系，他们都变成了某种意义上的搁浅物，却仍在不断同与命运抗争。相反地，《死亡搁浅》HIGGS，FRAGILE，DIE-HARDMAN这三个角色的塑造相对羸弱许多。</p>
+<h2 id="PART4-技术"><a href="#PART4-技术" class="headerlink" title="PART4 技术"></a>PART4 技术</h2><p>有一说一，水平不够，看不出实现。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/games/" rel="tag"># games</a>
+          
+            <a href="/tags/ps4/" rel="tag"># ps4</a>
+          
+            <a href="/tags/death-stranding/" rel="tag"># death stranding</a>
+          
+            <a href="/tags/kojima/" rel="tag"># kojima</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/25/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9D%9F/" rel="next" title="TensorFlow从入门到入坟">
+                <i class="fa fa-chevron-left"></i> TensorFlow从入门到入坟
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/17/%E6%B8%B8%E6%88%8F%E8%A7%A3%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/" rel="prev" title="游戏解构的基本框架">
+                游戏解构的基本框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Luty" />
+            
+              <p class="site-author-name" itemprop="name">Luty</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/luty4ng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lutydata@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzkay.tech/" title="kay" target="_blank">kay</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.dimpurr.com/" title="dimpurr" target="_blank">dimpurr</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.boyblog.club/" title="sndav" target="_blank">sndav</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ctfd.merak.codes/" title="merak" target="_blank">merak</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要解构"><span class="nav-number">1.</span> <span class="nav-text">为什么要解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分层四元法"><span class="nav-number">2.</span> <span class="nav-text">分层四元法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内嵌层"><span class="nav-number">3.</span> <span class="nav-text">内嵌层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PART1-机制"><span class="nav-number">3.1.</span> <span class="nav-text">PART1 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">3.1.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#玩家关系"><span class="nav-number">3.1.2.</span> <span class="nav-text">玩家关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边界"><span class="nav-number">3.1.3.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间"><span class="nav-number">3.1.4.</span> <span class="nav-text">空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PART2-美学"><span class="nav-number">3.2.</span> <span class="nav-text">PART2 美学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视觉"><span class="nav-number">3.2.1.</span> <span class="nav-text">视觉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#听觉"><span class="nav-number">3.2.2.</span> <span class="nav-text">听觉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触觉"><span class="nav-number">3.2.3.</span> <span class="nav-text">触觉</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PART3-叙事"><span class="nav-number">3.3.</span> <span class="nav-text">PART3 叙事</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设定"><span class="nav-number">3.3.1.</span> <span class="nav-text">设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情节"><span class="nav-number">3.3.2.</span> <span class="nav-text">情节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#角色"><span class="nav-number">3.3.3.</span> <span class="nav-text">角色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PART4-技术"><span class="nav-number">3.4.</span> <span class="nav-text">PART4 技术</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luty</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'SKalXaL8nN90fQSFV6HtJDHh-gzGzoHsz',
+        appKey: 'R6AcIRw0b0kmbglNNRlc2IJX',
+        placeholder: '欢迎评论哟～',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</body>
+</html>
+
