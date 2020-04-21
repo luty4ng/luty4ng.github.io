@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>LudumDare46-Jam纪实</title>
+    <url>/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本着「 Learning by Doing 」的想法，刚入坑一个月的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。</p>
+<p>参加的类型是Jam，因为是独立开发并且本人基本不具备美术和音乐设计能力，没有能力参加Comp组，并且48h的时限对我来说还是太紧。</p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/find.png" alt></p>
+<a id="more"></a>
+
+<h3 id="Day1：-构思想法，实现原型"><a href="#Day1：-构思想法，实现原型" class="headerlink" title="Day1： 构思想法，实现原型"></a>Day1： 构思想法，实现原型</h3><p>第一天公布早上八点半起床，嗦碗粉到九点Twitter确认主题 <em>Keep it alive</em>。当时U3D技术水平只做过一些2D Platformer的实现，因此我能做的游戏形式并没有多少选择。很快我就决定做2D Platformer了，综合看来这一唯一可行的方案，回到主题 <em>Keep it alive</em>，当时立刻想到了一款忘记名字的游戏Demo，主角的生命进入倒计时，通过击杀敌人可以延续倒计时时长，玩家需要在固定场景内击杀不断涌现的敌人来延续生命（怒火攻心内味）。</p>
+<p>但是这种方案对我来说工作量可能较大，而且这个想法比较容易想到，就没有采用。之后我基本上是围绕 <em>it</em> 去想，代入了很多游戏元素，最后决定让 <em>it</em> = <em>the camera</em>，让玩家需要时刻保持游戏镜头的移动否则镜头会持续缩小，而移动会让镜头逐渐增大。</p>
+<p>镜头大小影响的核心机制肯定是探索和寻找，因此我没有多想就把游戏目标设为「 在一个开放场景下找到这个游戏的作者，然后Beat his ass off 」。</p>
+<p>由于玩家需要持续移动，所以2D Plateformer的移动系统一定要做好，要能够给玩家足够的移动控件，最后我决定参考《蔚蓝》的移动系统，将比较断节奏的爬墙改成了持续蹬墙。</p>
+<p>然后是决定游戏的互动机制，因为Jam作品要求小而精，所以在确定奖惩机制后如何互动的问题也就解决了，传统2D Plateformer里的尖刺、电锯啥的元素肯定都有（我也搞不出新的素材）。最后决定奖惩也围绕着核心机制设计：受伤缩小镜头，使用消耗品药片增大镜头。</p>
+<p>大概下午1点左右就基本确定了核心机制、游戏目标、移动系统和反馈机制，然后…..我就摸鱼去了，摸到3点开始用U3D做原型，晚上11点基本写完，查文档和论坛找解决方案的过程着实痛苦，那天晚上整个人昏昏沉沉的，像条死鱼。</p>
+<p><img src="https://media.giphy.com/media/VdWXU2JnrCstn0oSMs/giphy.gif" alt></p>
+<h3 id="Day2-优化机制，搞定美术"><a href="#Day2-优化机制，搞定美术" class="headerlink" title="Day2: 优化机制，搞定美术"></a>Day2: 优化机制，搞定美术</h3><p>第二天啥时候起的给忘了，总之是摸鱼到了中午才开始做。内容是优化原先设计的机制，主要分两点：一是调整手感，二是精简内容。调整手感本质上就是调整一系列动力参数，什么JumpForce, runSpeed, dashSpeed这些， 整个过程有DL炼丹内味了，总之就是不断的试错调整。精简内容上主要是删除了一些游戏元素，删掉了前一天做的磁力装置，考虑到磁力装置更多要求的玩家在慢节奏下做策略决定，然后确定了游戏元素的范围。</p>
+<p>然后是美术，这一点我不头大，我完全了解自己的上限，绘制简易Item动画和Tilemap就行，人物动作素材必须找，自己画就过于抽象了。</p>
+<p>人物素材就用了一个比较经典的 Virtual Boy 形象，B站不少UP的案例里用的也是这个，然后用Aseprite修改颜色统一素材基调。Item和Map素材比较简单就用Aseprite绘制了（因为Procreate怎么设置笔刷像素点都会扩散）。</p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/asset.png" alt></p>
+<h3 id="Day3：爆肝场景，解决杂项"><a href="#Day3：爆肝场景，解决杂项" class="headerlink" title="Day3：爆肝场景，解决杂项"></a>Day3：爆肝场景，解决杂项</h3><p>这一天基本都在做场景，当时还挺急的，一方面既然寻找是玩家的目标那么场景不能太小，另一方面绘制想metroidvania的大场景我没有经验，最后的场景基本就是一些小谜题放至在大场景框架下的不同地方。</p>
+<p>而且，在做场景期间我突然想到个点子，让玩家有能力与地图中的Item交换位置，这样玩家就有能力自己改变地形。当时没多想就去肝这个功能去了，最后完是完成了，但场景还有大半没做完，所有有些场景做的比较草率。</p>
+<p>然后就是杂项，音乐、UI、发布、托管这些基本都是按照最简单的方式去做的，音乐的话我觉得选的Dont touch it 还是不错的，音效没有找到适合的自己也不敢做就放弃了；UI也是精简为主，一个显示药品余量，一个表示镜头大小。最后就是itch托管和ludumdare发布，当时以为发布的游戏内容可以修改的，就没有挂图片，只提供了个Windows版的，后来发现改不了，有点难受。</p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/start.png" alt></p>
+<h3 id="关于游戏"><a href="#关于游戏" class="headerlink" title="关于游戏"></a>关于游戏</h3><p>以下是我写在KeepTheCamAive的游戏介绍</p>
+<blockquote>
+<p>You going to find the author of this game and beat his ass off(in game!), and always remember Keep the Camera Alive. </p>
+<p>↑↓←→ to move;</p>
+<p>Z to Dash </p>
+<p>X to Throw </p>
+<p>C to Switch </p>
+<p>E to Eat</p>
+</blockquote>
+<p>这里有个操作想稍微解释下（当时给朋友玩他就没懂），X会扔出一个小球，小球扔到游戏内某些Item会消失（原本想做一个爆炸的动画，但是忘掉了…），此时玩家就与这个Item联系上了，然后再Switch…..</p>
+<h3 id="经历反思"><a href="#经历反思" class="headerlink" title="经历反思"></a>经历反思</h3><p>整个过程体验其实比较憋屈，主要原因还是自己太菜了，没有能力快速实现自己的想法。而对于Jam而言，我的所有想法都受限于我的技术水平（我不敢跳脱出2D Plateformer），单从技术上去看，也没有用到U3D的一些关键技术URP啊Shader啊，最后有些问题我都没有解决，比如游戏画面的闪白线条，可能是由于素材重叠造成的，但是尝试了一系列解决方案后都无效。还是因为缺乏对图形学基本原理和引擎操作的扎实基础。</p>
+<p>收获仍然是有的，自己也算是经历了一款小游戏从设计到实现到优化到发布的全过程，好歹算是做出了个作品。</p>
+<p>LudumDare主要关注的仍然是创意和游戏音画的综合表现，但好的创意和想法，在这72h里也需要扎实的技术基础去实现，提高技术的深度和广度是提升Jam水平的重要方式。音画技能的基本技能也需要具备，当然更好的方式是合作。</p>
+]]></content>
+      <categories>
+        <category>gamejam</category>
+      </categories>
+      <tags>
+        <tag>metriodvania</tag>
+        <tag>games</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ori and the will of the wisps 游玩体验.md</title>
     <url>/2020/03/15/Ori%20and%20the%20will%20of%20the%20wisps%20%E6%B8%B8%E7%8E%A9%E4%BD%93%E9%AA%8C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了克服游戏分析的海森堡现象，我就在通过后快速记录下自己关注到的一些想法吧，因为是随笔性质可能比较混乱哈哈哈。</p>
@@ -38,9 +83,9 @@
         <category>games</category>
       </categories>
       <tags>
+        <tag>games</tag>
         <tag>pc</tag>
         <tag>ori</tag>
-        <tag>games</tag>
       </tags>
   </entry>
   <entry>
@@ -105,7 +150,7 @@
     <title>记一次《死亡搁浅》的解构</title>
     <url>/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>
-    <div id="aplayer-ScsNAwCq" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-IgtbUERh" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1401534489" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 <p>《死亡搁浅》是小岛工作室于2019年11月8日于索尼PlayStation4平台发售的游戏，同样也是小岛秀夫在离职科纳美之后的第一部作品。小岛秀夫作品个人风格明显：大段的过场CG，惊艳的镜头和光影设计，隐晦而深刻的主题，其之前《合金装备》《寂静岭》等作品都因此而广受好评。《死亡搁浅》是我关注时间最久的作品，从第一次TGA宣传到正式发售一直跟进，现通关之后借短暂回味的时间记录下一些想法。（略带安利性质）</p>
 <p><img src="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/1A543B87E3DC9E601D4569DF6C76D00D.jpg" alt="1A543B87E3DC9E601D4569DF6C76D00D"></p>
 <a id="more"></a>
@@ -150,7 +195,7 @@
 <p>  此外《死亡搁浅》同样也继承了小岛风格的一项典例：频繁的转场动画，这导致游玩体验流畅度下降。</p>
 <h3 id="听觉"><a href="#听觉" class="headerlink" title="听觉"></a>听觉</h3><p>  《死亡搁浅》拥有年度最强大的soundtrack，每一首歌曲都能恰到好处地契合游戏氛围。很可惜的是玩家并不能在送货过程中自定义歌曲播放，需要到雨亭、私人套间或特殊剧情区域才能够触发。《死亡搁浅》优秀音乐作为游戏一大亮点，却不能在乏味的跑路过程让玩家自定义播放，这点着实让人迷惑。</p>
 
-    <div id="aplayer-BYjrTqHW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-JVUfbaCv" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="1400013102" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 
 <h3 id="触觉"><a href="#触觉" class="headerlink" title="触觉"></a>触觉</h3><p>  游戏中主角身体失衡反馈到手柄的震动有不小的区分度，我借此可以变成一个没有感情（和视觉的）的跑图机器，甚至游戏后期大部分路段能够闭着眼睛过去，当然这一块并不是重点。</p>
 <h2 id="PART3-叙事"><a href="#PART3-叙事" class="headerlink" title="PART3 叙事"></a>PART3 叙事</h2><h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><p>《死亡搁浅》的世界里，人类死后灵魂被搁浅在冥滩而没有去到死者的世界，尸体出现了一种叫开罗尔的黑色物质，在开罗尔物质的作用下，被搁浅在冥滩的灵魂以BT的形式重新渗透进入了生者的世界，当生者被BT吞噬后会触发巨大的虚爆，就像反物质和物质的湮灭一般。虚爆将世界摧毁得支离玻碎，但开罗尔物质带来物质却不知如此，大量的开罗尔物质聚集成的云产生的雨水，会使其所接触所有物体的时间快速流逝，幸存的人类从地表撤离转入地下城，人类之间的联系被彻底隔断。</p>

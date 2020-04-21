@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="sqli,php,commandi," />
+  <meta name="keywords" content="metriodvania,games," />
 
 
 
@@ -81,19 +81,21 @@
 
 
 
-<meta name="description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
-<meta name="keywords" content="sqli,php,commandi">
+<meta name="description" content="前言本着「 Learning by Doing 」的想法，刚入坑一个月的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。 参加的类型是Jam，因为是独立开发并且本人基本不具备美">
+<meta name="keywords" content="metriodvania,games">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈注入攻击及小结">
-<meta property="og:url" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;index.html">
+<meta property="og:title" content="LudumDare46-Jam纪实">
+<meta property="og:url" content="http:&#x2F;&#x2F;luty.tech&#x2F;2020&#x2F;04&#x2F;21&#x2F;LudumDare46-Jam%E7%BA%AA%E5%AE%9E&#x2F;index.html">
 <meta property="og:site_name" content="Luty">
-<meta property="og:description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
+<meta property="og:description" content="前言本着「 Learning by Doing 」的想法，刚入坑一个月的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。 参加的类型是Jam，因为是独立开发并且本人基本不具备美">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;1.jpg">
-<meta property="og:updated_time" content="2020-04-17T16:30:09.973Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2020&#x2F;04&#x2F;21&#x2F;LudumDare46-Jam%E7%BA%AA%E5%AE%9E&#x2F;find.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;media.giphy.com&#x2F;media&#x2F;VdWXU2JnrCstn0oSMs&#x2F;giphy.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2020&#x2F;04&#x2F;21&#x2F;LudumDare46-Jam%E7%BA%AA%E5%AE%9E&#x2F;asset.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2020&#x2F;04&#x2F;21&#x2F;LudumDare46-Jam%E7%BA%AA%E5%AE%9E&#x2F;start.png">
+<meta property="og:updated_time" content="2020-04-21T05:32:37.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2018&#x2F;08&#x2F;08&#x2F;%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93&#x2F;2.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;luty.tech&#x2F;2020&#x2F;04&#x2F;21&#x2F;LudumDare46-Jam%E7%BA%AA%E5%AE%9E&#x2F;find.png">
 
 
 
@@ -123,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://Luty.tech/2018/08/08/浅谈注入攻击及小结/"/>
+  <link rel="canonical" href="http://Luty.tech/2020/04/21/LudumDare46-Jam纪实/"/>
 
 
 
 
 
-  <title>浅谈注入攻击及小结 | Luty</title>
+  <title>LudumDare46-Jam纪实 | Luty</title>
   
 
 
@@ -280,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Luty.tech/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://Luty.tech/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luty">
@@ -297,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈注入攻击及小结</h1>
+          <h1 class="post-title" itemprop="name headline">LudumDare46-Jam纪实</h1>
         
 
         <div class="post-meta">
@@ -309,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T11:24:09+08:00">
-                2018-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T11:30:32+08:00">
+                2020-04-21
               </time>
             
 
@@ -332,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/gamejam/" itemprop="url" rel="index">
+                    <span itemprop="name">gamejam</span>
                   </a>
                 </span>
 
@@ -350,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/" itemprop="commentCount"></span>
+                <a href="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -379,40 +381,39 @@
       
 
       
-        <p>最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。</p>
-<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" alt="疲惫"></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本着「 Learning by Doing 」的想法，刚入坑一个月的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。</p>
+<p>参加的类型是Jam，因为是独立开发并且本人基本不具备美术和音乐设计能力，没有能力参加Comp组，并且48h的时限对我来说还是太紧。</p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/find.png" alt></p>
 <a id="more"></a>
 
-<h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了`<strong>一切输入有害</strong>的重要安全思想。</p>
-<h2 id="注入如何产生？"><a href="#注入如何产生？" class="headerlink" title="注入如何产生？"></a>注入如何产生？</h2><p>个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。</p>
-<p>例如在PHP + MySQL平台下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$name = $_POST[<span class="string">'name'</span>]; </span><br><span class="line">$con = mysqli_connect(<span class="string">"127.0.0.1"</span>,<span class="string">"root"</span>,<span class="string">""</span>,<span class="string">"test"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"error"</span>);</span><br><span class="line"></span><br><span class="line">$query = <span class="string">"SELECT * FROM person WHERE name='$name';"</span>;</span><br><span class="line">$result = mysqli_query($con,$query);</span><br><span class="line"><span class="keyword">while</span>($row=mysqli_fetch_assoc($result))</span><br><span class="line">	<span class="keyword">echo</span> $row[<span class="string">'age'</span>];</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
-
-<p>这是一个用户通过输入name从person表查询对应age的场景，但是代码中没有对输入变量$name进行任何检测和过滤，如果我们构造$name为<code>1&#39;or&#39;1&#39;=&#39;1</code>，那么查询语句$query就会变成：<code>&quot;SELECT * FROM person WHERE name=&#39;1&#39; or &#39;1&#39;=&#39;1&#39;;&quot;</code>，然而该查询语句恒成立，意味着这样的输入将会爆出数据库person表中所有人的age，造成信息泄露。</p>
-<p>在上面这个案例中，如果我们对$name或者$query进行过滤，比如将<code>&#39;</code>和<code>&quot;</code>转义，或者字符处理掉<code>=</code>，那么上面构造的输入数据不会被执行。这只是一个最简单的案例，想了解和实践更多可以部署<a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">DVWA</a>进行本地或者远程测试。</p>
-<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>根据是否有直接反馈信息分为 普通注入 和 盲注，盲注往往要利用<code>sleep()</code>时间盲注或者利用<code>ascii()</code>进行布尔盲注。</p>
-<p>大概流程是这样的：<br>1.注入POC<br>2.猜字段数<br>3.猜字段顺序<br>4.爆数据库名<br>5.爆表名<br>6.爆字段<br>7.脱裤</p>
-<p>有些步骤根据实际情况可有可无的，爆库过程中需要用到<code>information_schema</code>，在这里我就不XJB说了，具体参考：<br><a href="http://www.freebuf.com/articles/web/120747.html" target="_blank" rel="noopener">DVWA-1.9全级别教程之SQL Injection</a><br><a href="http://www.freebuf.com/articles/web/120985.html" target="_blank" rel="noopener">DVWA-1.9全级别教程之SQL Injection(Blind)</a></p>
-<h2 id="SQL注入绕过"><a href="#SQL注入绕过" class="headerlink" title="SQL注入绕过"></a>SQL注入绕过</h2><p>我参考文章做了一些本地测试，记录了一些可能常用的绕过方法，环境为lamp，以下就算是是笔记了，一开简单记录，后面有时间会细化。</p>
-<ol>
-<li>空格：<code>/**/</code> <code>%a0</code> <code>()</code></li>
-<li><code>&#39;</code>引号：<code>hex()</code> <code>urlencode()</code></li>
-<li><code>=</code>等号：<code>like</code> <code>rlike</code> <code>regexp</code></li>
-<li><code>&lt;&gt;</code>比较符：<code>greatest()</code> <code>least()</code> <code>strcmp()</code> <code>in</code> <code>between</code></li>
-<li><code>,</code>逗号：<code>substr()</code>和<code>mid()</code>用<code>from to</code>代替，<code>limit</code>用<code>offset</code></li>
-<li>其他绕过： 大小写、字符嵌套、内联注释等<br>还有一个没看懂的先mark：<a href="https://blog.csdn.net/airuozhaoyang/article/details/47036923" target="_blank" rel="noopener">一些报错注入</a></li>
-</ol>
-<p><strong>宽字节注入</strong>：<br>这个注入方式比较特殊，有两个产生条件。</p>
-<ul>
-<li>涉及到gbk编码 (iconv等含有编码转化功能的函数)</li>
-<li>涉及到转义<code>\</code>(魔术引号、addslashes、htmlspecialchars)</li>
-</ul>
-<p>原理大概是，正常字符为2字节，汉字字符为4字节，在gbk的编码环境下可以<code>%df\</code>这样的字符，应为<code>\</code>的编码是<code>%5c</code>，结合起来为<code>%df%5c</code>，解码结果为汉字<code>運</code>，从而绕过了<code>\</code>的转义消毒。<br><strong>注：gbk2312应不存在低位范围无法进行宽字节注入，具体参考<a href="http://www.bubuko.com/infodetail-2100074.html" target="_blank" rel="noopener">这里</a>。</strong></p>
-<p>后续会慢慢添加实例帮助理解和实践。</p>
-<p>参考:<br><a href="https://www.cnblogs.com/Vinson404/p/7253255.html" target="_blank" rel="noopener">SQL注入绕过技巧</a><br><a href="https://blog.csdn.net/wy_97/article/details/78085664" target="_blank" rel="noopener">sql关键词绕过【积累中】</a></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>无论是XSS、sqli还是commandi，只要有输入数据添加到指令的场景，就有注入攻击发生的风险，开发者也在努力寻找通用性解决方案。<br>PHP和python中不正确的使用<code>system()</code> <code>exec()</code>等函数会导致命令注入，前段不对js代码进行过滤会导致XSS，windows平台还有dll注入（不明觉厉），感觉都很刺激啊。<br>PHP5.4后使用的PDO技术和Mysqli几乎已经杜绝了sql注入，其他平台的防御策略也越来越完善，所以sql在实际渗透环境中可能作用并不大，但是这种思想还是很有意思的。</p>
-<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/1.jpg" alt="我也很绝望啊"><br>吐槽几句，贵阳这天气是魔鬼吗，阳光直射出门半小时后大暴雨，学车能遇到军事行动，四妹又在发情期，真是每天都有新乐趣hhhh</p>
-<p>```</p>
+<h3 id="Day1：-构思想法，实现原型"><a href="#Day1：-构思想法，实现原型" class="headerlink" title="Day1： 构思想法，实现原型"></a>Day1： 构思想法，实现原型</h3><p>第一天公布早上八点半起床，嗦碗粉到九点Twitter确认主题 <em>Keep it alive</em>。当时U3D技术水平只做过一些2D Platformer的实现，因此我能做的游戏形式并没有多少选择。很快我就决定做2D Platformer了，综合看来这一唯一可行的方案，回到主题 <em>Keep it alive</em>，当时立刻想到了一款忘记名字的游戏Demo，主角的生命进入倒计时，通过击杀敌人可以延续倒计时时长，玩家需要在固定场景内击杀不断涌现的敌人来延续生命（怒火攻心内味）。</p>
+<p>但是这种方案对我来说工作量可能较大，而且这个想法比较容易想到，就没有采用。之后我基本上是围绕 <em>it</em> 去想，代入了很多游戏元素，最后决定让 <em>it</em> = <em>the camera</em>，让玩家需要时刻保持游戏镜头的移动否则镜头会持续缩小，而移动会让镜头逐渐增大。</p>
+<p>镜头大小影响的核心机制肯定是探索和寻找，因此我没有多想就把游戏目标设为「 在一个开放场景下找到这个游戏的作者，然后Beat his ass off 」。</p>
+<p>由于玩家需要持续移动，所以2D Plateformer的移动系统一定要做好，要能够给玩家足够的移动控件，最后我决定参考《蔚蓝》的移动系统，将比较断节奏的爬墙改成了持续蹬墙。</p>
+<p>然后是决定游戏的互动机制，因为Jam作品要求小而精，所以在确定奖惩机制后如何互动的问题也就解决了，传统2D Plateformer里的尖刺、电锯啥的元素肯定都有（我也搞不出新的素材）。最后决定奖惩也围绕着核心机制设计：受伤缩小镜头，使用消耗品药片增大镜头。</p>
+<p>大概下午1点左右就基本确定了核心机制、游戏目标、移动系统和反馈机制，然后…..我就摸鱼去了，摸到3点开始用U3D做原型，晚上11点基本写完，查文档和论坛找解决方案的过程着实痛苦，那天晚上整个人昏昏沉沉的，像条死鱼。</p>
+<p><img src="https://media.giphy.com/media/VdWXU2JnrCstn0oSMs/giphy.gif" alt></p>
+<h3 id="Day2-优化机制，搞定美术"><a href="#Day2-优化机制，搞定美术" class="headerlink" title="Day2: 优化机制，搞定美术"></a>Day2: 优化机制，搞定美术</h3><p>第二天啥时候起的给忘了，总之是摸鱼到了中午才开始做。内容是优化原先设计的机制，主要分两点：一是调整手感，二是精简内容。调整手感本质上就是调整一系列动力参数，什么JumpForce, runSpeed, dashSpeed这些， 整个过程有DL炼丹内味了，总之就是不断的试错调整。精简内容上主要是删除了一些游戏元素，删掉了前一天做的磁力装置，考虑到磁力装置更多要求的玩家在慢节奏下做策略决定，然后确定了游戏元素的范围。</p>
+<p>然后是美术，这一点我不头大，我完全了解自己的上限，绘制简易Item动画和Tilemap就行，人物动作素材必须找，自己画就过于抽象了。</p>
+<p>人物素材就用了一个比较经典的 Virtual Boy 形象，B站不少UP的案例里用的也是这个，然后用Aseprite修改颜色统一素材基调。Item和Map素材比较简单就用Aseprite绘制了（因为Procreate怎么设置笔刷像素点都会扩散）。</p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/asset.png" alt></p>
+<h3 id="Day3：爆肝场景，解决杂项"><a href="#Day3：爆肝场景，解决杂项" class="headerlink" title="Day3：爆肝场景，解决杂项"></a>Day3：爆肝场景，解决杂项</h3><p>这一天基本都在做场景，当时还挺急的，一方面既然寻找是玩家的目标那么场景不能太小，另一方面绘制想metroidvania的大场景我没有经验，最后的场景基本就是一些小谜题放至在大场景框架下的不同地方。</p>
+<p>而且，在做场景期间我突然想到个点子，让玩家有能力与地图中的Item交换位置，这样玩家就有能力自己改变地形。当时没多想就去肝这个功能去了，最后完是完成了，但场景还有大半没做完，所有有些场景做的比较草率。</p>
+<p>然后就是杂项，音乐、UI、发布、托管这些基本都是按照最简单的方式去做的，音乐的话我觉得选的Dont touch it 还是不错的，音效没有找到适合的自己也不敢做就放弃了；UI也是精简为主，一个显示药品余量，一个表示镜头大小。最后就是itch托管和ludumdare发布，当时以为发布的游戏内容可以修改的，就没有挂图片，只提供了个Windows版的，后来发现改不了，有点难受。</p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/start.png" alt></p>
+<h3 id="关于游戏"><a href="#关于游戏" class="headerlink" title="关于游戏"></a>关于游戏</h3><p>以下是我写在KeepTheCamAive的游戏介绍</p>
+<blockquote>
+<p>You going to find the author of this game and beat his ass off(in game!), and always remember Keep the Camera Alive. </p>
+<p>↑↓←→ to move;</p>
+<p>Z to Dash </p>
+<p>X to Throw </p>
+<p>C to Switch </p>
+<p>E to Eat</p>
+</blockquote>
+<p>这里有个操作想稍微解释下（当时给朋友玩他就没懂），X会扔出一个小球，小球扔到游戏内某些Item会消失（原本想做一个爆炸的动画，但是忘掉了…），此时玩家就与这个Item联系上了，然后再Switch…..</p>
+<h3 id="经历反思"><a href="#经历反思" class="headerlink" title="经历反思"></a>经历反思</h3><p>整个过程体验其实比较憋屈，主要原因还是自己太菜了，没有能力快速实现自己的想法。而对于Jam而言，我的所有想法都受限于我的技术水平（我不敢跳脱出2D Plateformer），单从技术上去看，也没有用到U3D的一些关键技术URP啊Shader啊，最后有些问题我都没有解决，比如游戏画面的闪白线条，可能是由于素材重叠造成的，但是尝试了一系列解决方案后都无效。还是因为缺乏对图形学基本原理和引擎操作的扎实基础。</p>
+<p>收获仍然是有的，自己也算是经历了一款小游戏从设计到实现到优化到发布的全过程，好歹算是做出了个作品。</p>
+<p>LudumDare主要关注的仍然是创意和游戏音画的综合表现，但好的创意和想法，在这72h里也需要扎实的技术基础去实现，提高技术的深度和广度是提升Jam水平的重要方式。音画技能的基本技能也需要具备，当然更好的方式是合作。</p>
 
       
     </div>
@@ -430,11 +431,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sqli/" rel="tag"># sqli</a>
+            <a href="/tags/metriodvania/" rel="tag"># metriodvania</a>
           
-            <a href="/tags/php/" rel="tag"># php</a>
-          
-            <a href="/tags/commandi/" rel="tag"># commandi</a>
+            <a href="/tags/games/" rel="tag"># games</a>
           
         </div>
       
@@ -462,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="next" title="使用Hexo和Github快速搭建个人博客">
-                <i class="fa fa-chevron-left"></i> 使用Hexo和Github快速搭建个人博客
+              <a href="/2020/03/15/Ori%20and%20the%20will%20of%20the%20wisps%20%E6%B8%B8%E7%8E%A9%E4%BD%93%E9%AA%8C/" rel="next" title="Ori and the will of the wisps 游玩体验.md">
+                <i class="fa fa-chevron-left"></i> Ori and the will of the wisps 游玩体验.md
               </a>
             
           </div>
@@ -471,10 +470,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/" rel="prev" title="Scrapy豆瓣ADHD小组爬虫实例">
-                Scrapy豆瓣ADHD小组爬虫实例 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -662,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是注入？"><span class="nav-number">1.</span> <span class="nav-text">什么是注入？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入如何产生？"><span class="nav-number">2.</span> <span class="nav-text">注入如何产生？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入"><span class="nav-number">3.</span> <span class="nav-text">SQL注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入绕过"><span class="nav-number">4.</span> <span class="nav-text">SQL注入绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day1：-构思想法，实现原型"><span class="nav-number">2.</span> <span class="nav-text">Day1： 构思想法，实现原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day2-优化机制，搞定美术"><span class="nav-number">3.</span> <span class="nav-text">Day2: 优化机制，搞定美术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day3：爆肝场景，解决杂项"><span class="nav-number">4.</span> <span class="nav-text">Day3：爆肝场景，解决杂项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于游戏"><span class="nav-number">5.</span> <span class="nav-text">关于游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经历反思"><span class="nav-number">6.</span> <span class="nav-text">经历反思</span></a></li></ol></div>
             
 
           </div>
