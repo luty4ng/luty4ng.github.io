@@ -89,17 +89,17 @@
 <meta property="og:url" content="http://luty.tech/posts/gamejam/2020/04/21/index.html">
 <meta property="og:site_name" content="Luty">
 <meta property="og:description" content="前言本着「 Learning by Doing 」的想法，刚入坑一个月的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。 参加的类型是Jam，因为是独立开发并且本人基本不具备美">
-<meta property="og:image" content="http://luty.tech/posts/undefined.htm/find.png">
+<meta property="og:image" content="http://luty.tech/posts/gamejam/2020/04/21/find.png">
 <meta property="og:image" content="https://media.giphy.com/media/VdWXU2JnrCstn0oSMs/giphy.gif">
-<meta property="og:image" content="http://luty.tech/posts/undefined.htm/asset.png">
-<meta property="og:image" content="http://luty.tech/posts/undefined.htm/start.png">
+<meta property="og:image" content="http://luty.tech/posts/gamejam/2020/04/21/asset.png">
+<meta property="og:image" content="http://luty.tech/posts/gamejam/2020/04/21/start.png">
 <meta property="article:published_time" content="2020-04-21T03:30:32.000Z">
-<meta property="article:modified_time" content="2020-04-21T05:32:37.787Z">
+<meta property="article:modified_time" content="2020-07-02T02:22:08.189Z">
 <meta property="article:author" content="Luty">
 <meta property="article:tag" content="metriodvania">
 <meta property="article:tag" content="games">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://luty.tech/posts/undefined.htm/find.png">
+<meta name="twitter:image" content="http://luty.tech/posts/gamejam/2020/04/21/find.png">
 
 
 
@@ -387,7 +387,7 @@
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本着「 Learning by Doing 」的想法，刚入坑一个月的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。</p>
 <p>参加的类型是Jam，因为是独立开发并且本人基本不具备美术和音乐设计能力，没有能力参加Comp组，并且48h的时限对我来说还是太紧。</p>
-<p><img src="/posts/undefined.htm/find.png" alt></p>
+<p><img src="/posts/gamejam/2020/04/21/find.png" alt></p>
 <a id="more"></a>
 
 <h3 id="Day1：-构思想法，实现原型"><a href="#Day1：-构思想法，实现原型" class="headerlink" title="Day1： 构思想法，实现原型"></a>Day1： 构思想法，实现原型</h3><p>第一天公布早上八点半起床，嗦碗粉到九点Twitter确认主题 <em>Keep it alive</em>。当时U3D技术水平只做过一些2D Platformer的实现，因此我能做的游戏形式并没有多少选择。很快我就决定做2D Platformer了，综合看来这一唯一可行的方案，回到主题 <em>Keep it alive</em>，当时立刻想到了一款忘记名字的游戏Demo，主角的生命进入倒计时，通过击杀敌人可以延续倒计时时长，玩家需要在固定场景内击杀不断涌现的敌人来延续生命（怒火攻心内味）。</p>
@@ -400,19 +400,15 @@
 <h3 id="Day2-优化机制，搞定美术"><a href="#Day2-优化机制，搞定美术" class="headerlink" title="Day2: 优化机制，搞定美术"></a>Day2: 优化机制，搞定美术</h3><p>第二天啥时候起的给忘了，总之是摸鱼到了中午才开始做。内容是优化原先设计的机制，主要分两点：一是调整手感，二是精简内容。调整手感本质上就是调整一系列动力参数，什么JumpForce, runSpeed, dashSpeed这些， 整个过程有DL炼丹内味了，总之就是不断的试错调整。精简内容上主要是删除了一些游戏元素，删掉了前一天做的磁力装置，考虑到磁力装置更多要求的玩家在慢节奏下做策略决定，然后确定了游戏元素的范围。</p>
 <p>然后是美术，这一点我不头大，我完全了解自己的上限，绘制简易Item动画和Tilemap就行，人物动作素材必须找，自己画就过于抽象了。</p>
 <p>人物素材就用了一个比较经典的 Virtual Boy 形象，B站不少UP的案例里用的也是这个，然后用Aseprite修改颜色统一素材基调。Item和Map素材比较简单就用Aseprite绘制了（因为Procreate怎么设置笔刷像素点都会扩散）。</p>
-<p><img src="/posts/undefined.htm/asset.png" alt></p>
+<p><img src="/posts/gamejam/2020/04/21/asset.png" alt></p>
 <h3 id="Day3：爆肝场景，解决杂项"><a href="#Day3：爆肝场景，解决杂项" class="headerlink" title="Day3：爆肝场景，解决杂项"></a>Day3：爆肝场景，解决杂项</h3><p>这一天基本都在做场景，当时还挺急的，一方面既然寻找是玩家的目标那么场景不能太小，另一方面绘制想metroidvania的大场景我没有经验，最后的场景基本就是一些小谜题放至在大场景框架下的不同地方。</p>
 <p>而且，在做场景期间我突然想到个点子，让玩家有能力与地图中的Item交换位置，这样玩家就有能力自己改变地形。当时没多想就去肝这个功能去了，最后完是完成了，但场景还有大半没做完，所有有些场景做的比较草率。</p>
 <p>然后就是杂项，音乐、UI、发布、托管这些基本都是按照最简单的方式去做的，音乐的话我觉得选的Dont touch it 还是不错的，音效没有找到适合的自己也不敢做就放弃了；UI也是精简为主，一个显示药品余量，一个表示镜头大小。最后就是itch托管和ludumdare发布，当时以为发布的游戏内容可以修改的，就没有挂图片，只提供了个Windows版的，后来发现改不了，有点难受。</p>
-<p><img src="/posts/undefined.htm/start.png" alt></p>
+<p><img src="/posts/gamejam/2020/04/21/start.png" alt></p>
 <h3 id="关于游戏"><a href="#关于游戏" class="headerlink" title="关于游戏"></a>关于游戏</h3><p>以下是我写在KeepTheCamAive的游戏介绍</p>
 <blockquote>
 <p>You going to find the author of this game and beat his ass off(in game!), and always remember Keep the Camera Alive. </p>
-<p>↑↓←→ to move;</p>
-<p>Z to Dash </p>
-<p>X to Throw </p>
-<p>C to Switch </p>
-<p>E to Eat</p>
+<p>↑↓←→ to move; Z to Dash; X to Throw ; C to Switch; E to Eat</p>
 </blockquote>
 <p>这里有个操作想稍微解释下（当时给朋友玩他就没懂），X会扔出一个小球，小球扔到游戏内某些Item会消失（原本想做一个爆炸的动画，但是忘掉了…），此时玩家就与这个Item联系上了，然后再Switch…..</p>
 <h3 id="经历反思"><a href="#经历反思" class="headerlink" title="经历反思"></a>经历反思</h3><p>整个过程体验其实比较憋屈，主要原因还是自己太菜了，没有能力快速实现自己的想法。而对于Jam而言，我的所有想法都受限于我的技术水平（我不敢跳脱出2D Plateformer），单从技术上去看，也没有用到U3D的一些关键技术URP啊Shader啊，最后有些问题我都没有解决，比如游戏画面的闪白线条，可能是由于素材重叠造成的，但是尝试了一系列解决方案后都无效。还是因为缺乏对图形学基本原理和引擎操作的扎实基础。</p>
@@ -579,7 +575,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
