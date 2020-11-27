@@ -567,6 +567,8 @@ R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)</script></li>
 <p><img src="/posts/graphics/2020/11/27/image-20201127211022450.png" alt="image-20201127211022450"></p>
 <p>最后得出A,B</p>
 <p><img src="/posts/graphics/2020/11/27/image-20201127211039149.png" alt="image-20201127211039149"></p>
+<p>本节的思考题是在可视空间中非视平面上的点的Z轴的值是如何变化的，直观的感受我们知道Z轴的值肯定是变大的（因为远小），也可以利用矩阵计算验证，如下。</p>
+<p><img src="/posts/graphics/2020/11/27/44B0C4A76D6E4E248776D089B16AA050.png" alt="img"></p>
 ]]></content>
       <categories>
         <category>graphics</category>
