@@ -432,7 +432,7 @@
   <entry>
     <title>GAMES101 - 现代计算机图形学入门 - 原理总结(Updating)</title>
     <url>/posts/graphics/2020/11/27/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3><span id="preface">Preface</span></h3><p>最近想好好打下计算机图形学的基础，于是掏出了收藏夹里积灰许久的GAMES101课程。GAMES101是GAMES (<em>Graphics And Mixed Environment Seminar</em>）系列公益课程的第一部，授课老师为UCSB的助理教授闫令琪老师。GAMES101因为专注于原理的分析与解释，并提供了BBS、助教和作业提交系统等一套完备的学习设施，课程质量广受好评。官方地址：<a href="http://games-cn.org/intro-graphics/" target="_blank" rel="noopener">http://games-cn.org/intro-graphics/</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3><span id="preface">Preface</span></h3><p>最近想好好打下计算机图形学的基础，于是掏出了收藏夹里积灰许久的GAMES101课程。GAMES101是GAMES (<em>Graphics And Mixed Environment Seminar</em>）系列公益课程的第一部，授课老师为UCSB的助理教授闫令琪老师。GAMES101因为专注于原理的分析与解释，并提供了BBS、助教和作业提交系统等一套完备的学习设施，课程质量广受好评。课程地址：<a href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html" target="_blank" rel="noopener">https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html</a></p>
 <p>本文章主要包括以下几个内容：</p>
 <ul>
 <li>计算机图形学基本原理和分析方法的记录</li>
@@ -462,6 +462,11 @@
 <li><a href="#perspective-transform">Perspective Transform</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#rasterization">Rasterization</a><ul>
+<li><a href="#antialiasing">Antialiasing</a></li>
+<li><a href="#antialiasing-today">Antialiasing Today</a></li>
 </ul>
 </li>
 </ul>
@@ -568,7 +573,46 @@ R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)</script></li>
 <p>最后得出A,B</p>
 <p><img src="/posts/graphics/2020/11/27/image-20201127211039149.png" alt="image-20201127211039149"></p>
 <p>本节的思考题是在可视空间中非视平面上的点的Z轴的值是如何变化的，直观的感受我们知道Z轴的值肯定是变大的（因为远小），也可以利用矩阵计算验证，如下。</p>
-<p><img src="/posts/graphics/2020/11/27/44B0C4A76D6E4E248776D089B16AA050.png" alt="img"></p>
+<p><img src="/posts/graphics/2020/11/27/44B0C4A76D6E4E248776D089B16AA050.png" alt="img" style="zoom:50%;"></p>
+<h3><span id="rasterization">Rasterization</span></h3><p>光栅化 (Rasterization) 是原德语的音译，实际做的就是把正则观测矩阵的信息投在屏幕上。</p>
+<ul>
+<li>Field-of-View (FOV) 相机到近平面中点的连线与其到近平面边的连线的夹角</li>
+<li>Aspect Ratio 横纵比 <script type="math/tex">\frac WH</script></li>
+</ul>
+<p>本章节定义屏幕像素是一个由RGB三色空间组成的纯色块，采用XY平面坐标系。Raster要做的是把连续的图像信息投影到离散的像素平面上，首先利用<script type="math/tex">M_{viewport}</script>将观测平面大小拉伸至屏幕平面大小，然后对观测空间中的三角形做离散采样。第二步具体表现为，根据每个三角形的顶点坐标定义一个操作空间，之后对操作空间每一个像素点经过<script type="math/tex">inside(tri,x,y)</script>函数判断其是否处在三角形内（叉乘的性质），从而判断某一像素是否需要被投影（渲染？）</p>
+<p>这里有几个假设需要提及</p>
+<ol>
+<li><p>选择三角形的原因</p>
+<p>a. 最简单的多边形</p>
+<p>b. 三角形的三个顶点一定在一个平面，不存在凹运算</p>
+<p>c. 与b相似，由于三角形不存在凹运算因此内外的定义也很直接</p>
+</li>
+<li><p>假设像素是投影的最小单元，每个像素仅有一个采样点为其中点。</p>
+</li>
+<li>采样方式不一定是选取操作空间，也可以选取一个顶点作为根进行遍历。</li>
+</ol>
+<p><img src="/posts/graphics/2020/11/27/image-20201128213237552.png" alt="image-20201128213237552"></p>
+<h4><span id="antialiasing">Antialiasing</span></h4><p>既然是采样，肯定就要涉及奈奎斯特-香农采样定理，也肯定要涉及Aliasing（信号中译为混叠，图形学译为锯齿），为了实现Antialiasing，就需要补充一些信号与系统在图形学中的解释。</p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128214234227.png" alt="image-20201128214234227" style="zoom:50%;"></p>
+<p>我们假设图像信号是连续的波形函数，在频域中我们可以通过傅里叶级数将其分解多个不同频率的简谐函数。我们想象计算机以特定频率<script type="math/tex">F</script>进行采样，如果其中的某一条简谐信号的频率<script type="math/tex">F'</script>远大于<script type="math/tex">F</script>，这个频率下的信息就被错误采样了。这就导致了Aliasing。</p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128215717490.png" alt="image-20201128215717490" style="zoom:50%;"></p>
+<p>显然我们不能对单一的简谐信号操作，想要使特定频率的不被采用只需要对原信号进行滤波即可，而对于图像想好的滤波，直观上有一些比较有趣的结果。</p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128215938138.png" alt="image-20201128215938138" style="zoom:67%;"></p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128215958829.png" alt="image-20201128215958829" style="zoom:67%;"></p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128220011302.png" alt="image-20201128220011302" style="zoom:67%;"></p>
+<p>由图可知，高频保存了边界信息，而低频保存了变化幅度较低的色块信息。解释一下频域图里的横竖亮线，这是由于图像时域信号假设中是在XY两个方向上无穷的，亮线的部分实际就是边界的突变。（这里提一下，我之前看到对抗攻击的防御中，就有通过频域识别扰动的方法，研究结果表明对抗生成的样本在频域图下不止一个高亮点，而是多个高亮点等距离分部）我们用盒形的卷积滤波器的到的图像如下。</p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128220805165.png" alt="image-20201128220805165" style="zoom:67%;"></p>
+<p>以特定频率采样，这个过程实际上就是把图像信号的原始信息进行复制粘贴。（卷积的性质）<img src="/posts/graphics/2020/11/27/image-20201128221214621.png" alt="image-20201128221214621"></p>
+<p>于是图像学的Aliasing和信号系统的联系了起来</p>
+<p><img src="/posts/graphics/2020/11/27/image-20201128221416006.png" alt="image-20201128221416006" style="zoom:67%;"></p>
+<p>解决方法也很直接</p>
+<ol>
+<li>提高采样频率</li>
+<li>整个低通滤波器</li>
+</ol>
+<p>然而在每个像素不止一个采样点的假设下，就能有一种更优的方案。根据每个像素中三角形内的采样点占总采样点数目的比例，我们可以动态的决定每一个像素要如何滤波，而不是对整体运用一个滤波器。这样相当于用更多的采样点换取更少的计算量。这也是MSAA的核心思路。</p>
+<h4><span id="antialiasing-today">Antialiasing Today</span></h4><p><img src="/posts/graphics/2020/11/27/image-20201128222401408.png" alt="image-20201128222401408"></p>
+<p>这里简要介绍一下，FXAA就是拓展了MSAA的假设，即每个像素内的采样点分布不是均匀的，而会根据光栅化类型利用一些算法智能分布。TAA则是通过前一帧或前几帧的采样点设置信息来动态的设置本该帧某些特定的采样点，相当于是将计算在时间上打乱了，目前得到了业界的一致好评。</p>
 ]]></content>
       <categories>
         <category>graphics</category>
