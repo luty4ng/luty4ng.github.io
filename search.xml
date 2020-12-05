@@ -813,4 +813,38 @@ R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)</script></li>
         <tag>kojima</tag>
       </tags>
   </entry>
+  <entry>
+    <title>GAMES101实验环境搭建（Vscode + CMakeTools + CppTools + Mingw64）</title>
+    <url>/posts/uncategorized/2020/12/05/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3><span id="games101-vscode可行配置">GAMES101 Vscode可行配置</span></h3><p>Vscode中C++引入第三方库的方式大致有以下三种：</p>
+<ol>
+<li>对于非Cmake项目，利用CppTools（Miscrosoft官方为Vscode提供的编译和调试插件）的IntelliSense功能，通过设置<code>c_cpp_properties.json</code>中的includePath项引入对应库的<code>/include</code>目录。</li>
+<li>对于Cmake项目，利用CMakeTools （Miscrosoft官方为Vscode提供的Cmake插件）一键基于<code>CMakeList.txt</code>生成<code>/build</code>目录，在通过内置终端make并运行。</li>
+<li><p>对于Cmake项目，同时使用CppTools与CMakeTools ，高度自动化的预设置支持一键build和一键debug，在配置合理的情况下这种方式是最高效的。麻烦点在于需要对<code>setting.json</code>，<code>c_cpp_properties.json</code>，<code>task.json</code>，<code>launch.json</code>进行额外配置。假设使用windows下以mingw64为编译器，具体改动如下。</p>
+<ul>
+<li><p><code>setting.json</code>。在工作区配置中将<em>C_Cpp.default.configurationProvider</em>设置为<em>ms-vscode.cmake-tools</em>，表示通过CMakeTools 引入外部链接而不是内置的includePath。</p>
+</li>
+<li><p><code>c_cpp_properties.json</code>。如果在<code>setting.json</code>中已配置或配置失效，可以添加<em>configurationProvider</em>设置为<em>ms-vscode.cmake-tool</em>从而实现同样的引入效果，两者不冲突。</p>
+</li>
+<li><p><code>task.json</code>。由于CMakeTools 在<code>CMakeList.txt</code>保持的时候就完成了build，因此只需提供make的任务指令即可，具体指令根据环境变量的设置而变，一般为make或mingw32-make，json配置如下</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">// tasks下添加</span><br><span class="line">&#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"make"</span>,</span><br><span class="line">            <span class="attr">"options"</span>: &#123;</span><br><span class="line">                <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;/build"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"mingw32-make -j4"</span>, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>launch.json</code>。注意指定正确的miDebuggerPath和program，并加载<code>task.json</code>中新添加的make为前置任务，json配置如下（Assignments2为例）</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"debug"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;fileDirname&#125;\\build\\Rasterizer.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"D:\\MinGW\\mingw64\\bin\\gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"为 gdb 启用整齐打印"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"make"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3><span id="其他坑">其他坑</span></h3><ol>
+<li>eigen和opencv自带include文件无法被正确引入时，需要自己用Cmake进行本地构建和编译，这里的坑搜一下网上的文章基本能解决。</li>
+<li>在用mingw本地编译opencv时需要使用mingw64-posix离线版，online版的选了posix还不行。</li>
+<li>CMakeList.txt找不着包，是环境变量没有被正确配置。所幸GAMES101的助教提供了写好的CMakeList作为参照，把拥有<code>xxxconfig.cmake</code>的目录添加到对应的环境变量即可（例如设置OpenCv DIR目录为包含<code>opencvconfig.cmake</code>的路径），不必绕进cmake的一堆坑。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>computer-graphics</tag>
+        <tag>fundamentals</tag>
+        <tag>environment</tag>
+      </tags>
+  </entry>
 </search>
