@@ -252,8 +252,7 @@
 <ol>
 <li>对于非Cmake项目，利用CppTools（Miscrosoft官方为Vscode提供的编译和调试插件）的IntelliSense功能，通过设置<code>c_cpp_properties.json</code>中的includePath项引入对应库的<code>/include</code>目录。</li>
 <li>对于Cmake项目，利用CMakeTools （Miscrosoft官方为Vscode提供的Cmake插件）一键基于<code>CMakeList.txt</code>生成<code>/build</code>目录，在通过内置终端make并运行。</li>
-<li><p>对于Cmake项目，同时使用CppTools与CMakeTools ，高度自动化的预设置支持一键build和一键debug，在配置合理的情况下这种方式是最高效的。麻烦点在于需要对<code>setting.json</code>，<code>c_cpp_properties.json</code>，<code>task.json</code>，<code>launch.json</code>进行额外配置。假设使用windows下以mingw64为编译器，具体改动如下。</p>
-<ul>
+<li>对于Cmake项目，同时使用CppTools与CMakeTools ，高度自动化的预设置支持一键build和一键debug，在配置合理的情况下这种方式是最高效的。麻烦点在于需要对<code>setting.json</code>，<code>c_cpp_properties.json</code>，<code>task.json</code>，<code>launch.json</code>进行额外配置。假设使用windows下以mingw64为编译器，具体改动如下。<ul>
 <li><p><code>setting.json</code>。在工作区配置中将<em>C_Cpp.default.configurationProvider</em>设置为<em>ms-vscode.cmake-tools</em>，表示通过CMakeTools 引入外部链接而不是内置的includePath。</p>
 </li>
 <li><p><code>c_cpp_properties.json</code>。如果在<code>setting.json</code>中已配置或配置失效，可以添加<em>configurationProvider</em>设置为<em>ms-vscode.cmake-tool</em>从而实现同样的引入效果，两者不冲突。</p>
@@ -267,8 +266,7 @@
             &#125;,
             <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;shell&quot;</span>,
             <span class="hljs-attr">&quot;command&quot;</span>: <span class="hljs-string">&quot;mingw32-make -j4&quot;</span>, 
-&#125;</code></pre></div>
-</li>
+&#125;</code></pre></div></li>
 <li><p><code>launch.json</code>。注意指定正确的miDebuggerPath和program，并加载<code>task.json</code>中新添加的make为前置任务，json配置如下（Assignments2为例）</p>
 <div class="hljs code-wrapper"><pre><code class="hljs json"><span class="hljs-string">&quot;configurations&quot;</span>: [
         &#123;
@@ -292,8 +290,7 @@
             ],
             <span class="hljs-attr">&quot;preLaunchTask&quot;</span>: <span class="hljs-string">&quot;make&quot;</span>
         &#125;
-    ]</code></pre></div>
-</li>
+    ]</code></pre></div></li>
 </ul>
 </li>
 </ol>

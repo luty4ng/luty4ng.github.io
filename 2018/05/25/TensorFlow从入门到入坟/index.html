@@ -249,6 +249,7 @@
             <div class="markdown-body">
               <p>记录对这个框架的基本理解，一些重要的API和一些工程实践。</p>
 <span id="more"></span>
+
 <h2 id="三个核心："><a href="#三个核心：" class="headerlink" title="三个核心："></a>三个核心：</h2><ol>
 <li>所有的数据都是张量</li>
 <li>所有计算都是计算图</li>
@@ -281,6 +282,11 @@ Returns a <span class="hljs-built_in">list</span> of files that match the given 
 图：一些Tensor和Operation的集合
     
 实际上，Tensorflow而是首先将 python 代码所描绘的图转换（即“序列化”）成 Protocol Buffer，再通过 C/C++/CUDA 运行 Protocol Buffer 所定义的图。</code></pre></div>
+
+
+
+
+
 <h2 id="基础又重要的内容"><a href="#基础又重要的内容" class="headerlink" title="基础又重要的内容"></a>基础又重要的内容</h2><h3 id="1-Part-1"><a href="#1-Part-1" class="headerlink" title="1. Part 1"></a>1. Part 1</h3><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#计算图和会话的基本使用</span>
 g1 = tf.graph()
 <span class="hljs-keyword">with</span> g1.as_default():
@@ -317,6 +323,9 @@ x = tf.placeholder(<span class="hljs-built_in">type</span>=tf.float32, shape=(<s
 
 <span class="hljs-comment">#定义了反向传播算法和梯度下降优化器</span>
 train_step = tf.train.GradientDescentOptimizer(learning_rate).minimizer(cross_entropy)</code></pre></div>
+
+
+
 <h3 id="2-Part-2"><a href="#2-Part-2" class="headerlink" title="2. Part 2"></a>2. Part 2</h3><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#tf.reduce_mean 函数用于计算张量tensor某个维度上的的平均值，tf.clip_by_value可以吧数据限制在一个范围之内</span>
 
 <span class="hljs-comment">#例中利用_y张量计算了平均交叉熵。</span>
@@ -341,6 +350,11 @@ loss = tf.reduce_mean(tf.square(y_ - y)) + tf.contrib.layers<span class="hljs-nu
 <span class="hljs-comment">#以下代码定义了一个滑动平均类ema，并定义了滑动平均操作maintain_averages_op，其中decay_rate衰减率，越接近1模型越稳定，step是控制衰减率的变量。</span>
 ema = tf.train.ExponentialMovingAverage(decay_rate,step)
 maintain_averages_op = ema.apply([v1])</code></pre></div>
+
+
+
+
+
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="1-简单前馈神经网络"><a href="#1-简单前馈神经网络" class="headerlink" title="1. 简单前馈神经网络"></a>1. 简单前馈神经网络</h3><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># -*-coding:utf-8 -*-</span>
 <span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
 <span class="hljs-keyword">from</span> numpy.random <span class="hljs-keyword">import</span> RandomState
@@ -381,6 +395,9 @@ Y = [[<span class="hljs-built_in">int</span>(x1+x2 &lt; <span class="hljs-number
     <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;\n&quot;</span>
     <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;w1:&quot;</span>, sess.run(w1)
     <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;w2:&quot;</span>, sess.run(w2)</code></pre></div>
+
+
+
 <h3 id="2-MNIST手写数据集-CNN版"><a href="#2-MNIST手写数据集-CNN版" class="headerlink" title="2. MNIST手写数据集 - CNN版"></a>2. MNIST手写数据集 - CNN版</h3><p><strong>定义前向传播流程</strong></p>
 <div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># -*-coding:utf-8-*-</span>
 <span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
@@ -450,6 +467,7 @@ FC_SIZE = <span class="hljs-number">512</span>       <span class="hljs-comment">
         logit = tf.matmul(fc1, fc2_weights) + fc2_biases
 
     <span class="hljs-keyword">return</span> logit</code></pre></div>
+
 <p><strong>定义训练流程</strong></p>
 <div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># -*-coding:utf-8-*-</span>
 <span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
@@ -544,6 +562,9 @@ MOVING_AVERAGE_DECAY = <span class="hljs-number">0.99</span>		<span class="hljs-
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
     main()
 </code></pre></div>
+
+
+
 <h3 id="3-MNIST手写数据集-GAN版"><a href="#3-MNIST手写数据集-GAN版" class="headerlink" title="3. MNIST手写数据集 - GAN版"></a>3. MNIST手写数据集 - GAN版</h3><p><strong>这里挂的是别人的代码，自己的代码一直出问题没解决。</strong></p>
 <p><strong>生成器和判断器同样采用简单的三层全连接网络。</strong></p>
 <div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf <span class="hljs-comment">#导入tensorflow</span>
@@ -696,6 +717,7 @@ i = <span class="hljs-number">0</span> <span class="hljs-comment">#训练过程�
 <span class="hljs-string">原文：https://blog.csdn.net/jiongnima/article/details/80033169 </span>
 <span class="hljs-string">&#x27;&#x27;&#x27;</span>
 </code></pre></div>
+
 
             </div>
             <hr>
