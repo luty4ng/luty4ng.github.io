@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录打比赛时期做的一些web练习题
+因为框架变复杂了，没有记录后几周的内容，但思路差不多。">
+  <meta name="author" content="Luty">
+  <meta name="keywords" content="">
+  
+  <title>CTF题解记录 | Luty.tech</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"luty.tech","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Luty's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/blackhole.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CTF题解记录">
+              
+                CTF题解记录
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luty
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-11-13 22:26" pubdate>
+        2018年11月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CTF题解记录</h1>
+            
+            <div class="markdown-body">
+              <p>记录打比赛时期做的一些web练习题</p>
+<p>因为框架变复杂了，没有记录后几周的内容，但思路差不多。</p>
+<span id="more"></span>
+<h1 id="WEEK-1"><a href="#WEEK-1" class="headerlink" title="WEEK 1"></a>WEEK 1</h1><h2 id="加了报错的注入"><a href="#加了报错的注入" class="headerlink" title="加了报错的注入"></a>加了报错的注入</h2><blockquote>
+<p>实验吧：<a target="_blank" rel="noopener" href="http://ctf5.shiyanbar.com/web/baocuo/index.php">http://ctf5.shiyanbar.com/web/baocuo/index.php</a></p>
+</blockquote>
+<ol>
+<li>查看页面源码，注释说明有sql注入<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/baocuo1.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>然后测试一下username和password，发现有过滤<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/poc.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>bp简单爆破一下过滤字符，得出结果：<br> username过滤了<code>(</code> <code>)</code> <code>=</code> <code>#</code>等字符以及<code>order by</code>等关键字, password过滤了<code>#</code> <code>=</code> <code>;</code> 等字符以及<code>updatexml()</code>和<code>ext()</code>两个报错函数。<br>  <img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/filter.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>在伟大的搜索引擎的帮助下，我们查到了这两个报错函数的信息,顺便搜到了注入格式。<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/updatexml.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>爆数据库测试一下可用<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/database.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>然后爆表名，列名，flag，注意到<code>=</code>被过滤，换<code>LIKE</code>，结果<code>LIKE</code>也被过滤，于是换上了正则<code>regexp</code>,同样<code>show</code>也被过滤。<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/table.png" srcset="/img/loading.gif" lazyload alt></li>
+</ol>
+<div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">payload</span>:
+
+<span class="hljs-attribute">username</span>=<span class="hljs-number">1</span>&#x27; and updatexml/*&amp;password=*/(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x<span class="hljs-number">24</span>,(select database()),<span class="hljs-number">0</span>x<span class="hljs-number">24</span>),<span class="hljs-number">1</span>) and &#x27;<span class="hljs-number">1</span>
+
+<span class="hljs-attribute">username</span>=<span class="hljs-number">1</span>&#x27; or updatexml/*&amp;password=*/(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x<span class="hljs-number">3</span>b,(select group_concat(table_name) from information_schema.tables where table_schema regexp database())),<span class="hljs-number">1</span>) and &#x27;<span class="hljs-number">1</span>
+
+<span class="hljs-attribute">username</span>=<span class="hljs-number">1</span>&#x27; or updatexml/*&amp;password=*/(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x<span class="hljs-number">3</span>a,(select group_concat(column_name) from information_schema.columns where table_name regexp &#x27;ffll<span class="hljs-number">44</span>jj&#x27; )),<span class="hljs-number">1</span>) and &#x27;<span class="hljs-number">1</span>
+
+<span class="hljs-attribute">username</span>=<span class="hljs-number">1</span>&#x27; or updatexml/*&amp;password=*/(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x<span class="hljs-number">3</span>a,(select value from ffll<span class="hljs-number">44</span>jj)),<span class="hljs-number">1</span>) adn &#x27;<span class="hljs-number">1</span>
+</code></pre></div>
+<p>看了dalao的wp后发现password并没有过滤<code>exp()</code>函数可以直接利用<code>password</code>构造payload，不用分割注入。</p>
+<blockquote>
+<p>flag{err0r<em>b4sed_sqli</em>+_hpf}</p>
+</blockquote>
+<h2 id="上传绕过"><a href="#上传绕过" class="headerlink" title="上传绕过"></a>上传绕过</h2><blockquote>
+<p>实验吧：<a target="_blank" rel="noopener" href="http://ctf5.shiyanbar.com/web/upload/">http://ctf5.shiyanbar.com/web/upload/</a></p>
+</blockquote>
+<ol>
+<li>这道题看上去是一个文件上传漏洞，查看源码，注意到了<code>hidden</code>表单，感觉有用。<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/hidden.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>按要求传文件，报错要jpg，传jpg又报错要php，估计是有两次验证。<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/error3.png" srcset="/img/loading.gif" lazyload alt><br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/error23.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>直接字符截断没有用，想起那个表单，估计是要构造路径截断。</li>
+<li>构造路径，进hex改包再发即可得flag！<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/hex.png" srcset="/img/loading.gif" lazyload alt><blockquote>
+<p>flag{SimCTF_huachuan}</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="后台登录"><a href="#后台登录" class="headerlink" title="后台登录"></a>后台登录</h2><blockquote>
+<p>实验吧：<a target="_blank" rel="noopener" href="http://ctf5.shiyanbar.com/web/houtai/ffifdyop.php">http://ctf5.shiyanbar.com/web/houtai/ffifdyop.php</a></p>
+</blockquote>
+<ol>
+<li>源码有代码，估计是要构造md5注入。<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/hh.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>怎么构造？</li>
+<li>怎么构造？</li>
+<li>怎么构造？</li>
+<li>算了看wp吧</li>
+<li>……</li>
+<li>直接用文件名<code>ffifdyop</code>构造md5有了<code>&#39;or&#39;xxxx&#39;</code>的语句，注入成功，告辞。</li>
+</ol>
+<blockquote>
+<p>flag{ffifdyop_has_trash}</p>
+</blockquote>
+<hr>
+<h1 id="WEEK-2"><a href="#WEEK-2" class="headerlink" title="WEEK 2"></a>WEEK 2</h1><h2 id="1-没时间解释了"><a href="#1-没时间解释了" class="headerlink" title="1. 没时间解释了"></a>1. 没时间解释了</h2><blockquote>
+<p>moctf: <a target="_blank" rel="noopener" href="http://119.23.73.3:5006/web2/index2.php">http://119.23.73.3:5006/web2/index2.php</a></p>
+<p>抓包阻止重定向-&gt;路径构造-&gt;时间竞争</p>
+</blockquote>
+<p>常规性的<code>F12</code>查看源码，并没有找到什么有用的信息，测试一波<code>.svn</code>和<code>.git</code>的源码泄露，仍然并没有什么有用的信息，遂放弃。</p>
+<p>自闭一段时间后，观察到url<code>index2.php</code>觉得可能有问题，然后尝试访问<code>index.php</code>，重定向回了<code>index2.php</code>,于是改用BP截包，得到<code>index.php</code>返回如下：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-1.png" srcset="/img/loading.gif" lazyload alt="uploadsomething"></p>
+<p>访问<code>uploadsomething.php</code>，令人熟悉的表单映入眼帘，随意输入后显示:</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-2.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-3.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>估计是一个路径构造，写了php一句话webshell并没有连上，试着访问了一下返回<code>Too Slow</code>，根据标题和该返回猜测是一个<strong>时间竞争</strong>，同时观察到不同提交返回的base64的路径是相同的，那么可以写脚本去构造路径并读取。<br>然而……</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-4.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>脚本都是<code>Too Slow</code>！这不合理啊！后来用BP Intruder持续抓包，获得<code>flag</code>，至于脚本比BP慢这实在没有想到。</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-5.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="2-welcome-to-bugkuctf"><a href="#2-welcome-to-bugkuctf" class="headerlink" title="2. welcome to bugkuctf"></a>2. welcome to bugkuctf</h2><blockquote>
+<p>bugkuctf: <a target="_blank" rel="noopener" href="http://123.206.87.240:8006/test1/">http://123.206.87.240:8006/test1/</a></p>
+<p>php协议-&gt;文件包含-&gt;php反序列化</p>
+</blockquote>
+<p>这道题小硬核。<br>常规<code>F12</code>得到源码：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-1.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>尝试直接访问<code>hint.php</code>无果，注意到源码中文件包含函数<code>file_get_contents()</code>,<br>于是可以利用php协议操作数据流的方法，将字符串构造文件利用<code>php://input</code>上传<code>$user</code>，再利用<code>php://filter</code>获取返回的数据里，相关参考PHP官方文档：<a target="_blank" rel="noopener" href="http://php.net/manual/zh/wrappers.php.php">http://php.net/manual/zh/wrappers.php.php</a> 。<br><code>php://filter</code>相关信息：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-1.5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>利用这个方法我们可以这样构造<code>payload</code>：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-1.9.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>从而获得<code>index.php</code>和<code>hint.php</code>的源码<strong>base64</strong>:</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-2.5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-3.5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>继续代码审计。</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-2.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-3.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>观察得到这是一个php反序列化漏洞，利用在<code>hint.php</code>中得到的类名为<code>Flag</code>，使用的是<code>__toString</code>魔法函数，由此我们可以构造反序列化<code>payload</code>为<code>O:4:&quot;Flag&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;flag.php&quot;;&#125;</code>，<br>并得到<code>flag</code>：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-4.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="3-never-give-up"><a href="#3-never-give-up" class="headerlink" title="3. never give up"></a>3. never give up</h2><blockquote>
+<p>bugkuctf: <a target="_blank" rel="noopener" href="http://123.206.87.240:8006/test/hello.php">http://123.206.87.240:8006/test/hello.php</a></p>
+<p>php任意文件读取-&gt;解码*3-&gt;字符截断</p>
+</blockquote>
+<p>这道题比较逗逼。<br>常规<code>F12</code>得到两行代码，带入注释里的<code>1p.html</code>发现重定向到了BugkuCTF的首页，于是Postman抓包得到如下结果：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>URL解码一把梭！</strong></p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-2.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>base64解码一把梭！</strong></p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-3.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>又是URL?一把梭！</strong></p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-4.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>经过三次大起大落的编码转化，最后得到源码：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>注意到代码中有两处矛盾：</p>
+<ol>
+<li><code>$id</code>即是<code>0</code>又不是<code>0</code></li>
+<li><code>$b</code>的首位字符必须是<code>4</code>又不能是<code>4</code></li>
+</ol>
+<p>对于前者，采用php松散比较，利用<code>&#39;aaa&#39; == 0</code>的特性绕过，对于后者，采用字符截断（对于php版本的判断可以根据<code>$data</code>实现，这里已确定可截断）</p>
+<p>那么！那么！那么！<br>就阔以构造粗配楼德<code>payload</code>:<br> <code>id=aaa&amp;a=php://input&amp;b=%00lutyhhh</code></p>
+<p>得到<code>flag</code>：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-6.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>似乎安排得明明白白…直到我看到其他大佬的wp…</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-7.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>我的表情：</p>
+<p><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/myface.jpg" srcset="/img/loading.gif" lazyload alt></p>
+<p>看来似出题人忘记屏蔽隔离了，不然这题也是小硬核。</p>
+<h1 id="WEEK-3"><a href="#WEEK-3" class="headerlink" title="WEEK 3"></a>WEEK 3</h1><h2 id="Shrine"><a href="#Shrine" class="headerlink" title="Shrine"></a>Shrine</h2><blockquote>
+<p>Tokyo Western CTF 2018<br>Link: <a target="_blank" rel="noopener" href="https://github.com/CTFTraining/westerns_2018_shrine">https://github.com/CTFTraining/westerns_2018_shrine</a><br>Python模板注入 Python沙箱绕过 flask审计</p>
+</blockquote>
+<p>因为了解Python方面的审计去网上找到了这道CTF题目，这道题是用docker本地复现的，因为涉及到不会的知识点，所以到一半就照着WP继续了。</p>
+<h3 id="1-代码审计"><a href="#1-代码审计" class="headerlink" title="1. 代码审计"></a>1. 代码审计</h3><p>这道题目非常直接，进入就是代码，在调整格式后我们可以得到源码如下:<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-1.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>从源码可知：</p>
+<ol>
+<li>设定了两个路由，一个路由读取文件源码，另一个路由读进一个字符串对象。</li>
+<li>第二个路由中读进的字符串，经过了函数<code>safe_jinja</code>的过滤，过滤函数删除了<code>(</code>和<code>)</code>并强行将<code>config</code>和<code>self</code>字符设为空。</li>
+</ol>
+<p>这时候思路已经比较明确了，要么读<code>config[&#39;FLAG&#39;]</code>要么读<code>os.envrion.pop(&#39;FLAG&#39;)</code>，但因<code>(</code> <code>)</code>被过滤第二个显然不行，<code>config</code>和<code>self</code>都被强制置空，那么就只能想别的方法，然而我没有想到。</p>
+<h3 id="SSTI"><a href="#SSTI" class="headerlink" title="SSTI"></a>SSTI</h3><p>继续分析元源码，程序利用模板向后端传入了变量，因此存在模板注入(SSTI),我们可以简单构造一个Poc验证：<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-2.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>在这里现补充模板的相关知识，模板用于将服务端返还内容渲染成前端页面，为了分离前端代码和后端变量，模板中设定<code> {{ }}</code>包括的内容为后端变量，<code>{% %}</code> 包括的内容为逻辑语句。</p>
+<p>相关模板类型的Poc可以参考下图：<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-3.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="沙箱逃逸"><a href="#沙箱逃逸" class="headerlink" title="沙箱逃逸"></a>沙箱逃逸</h3><p>之后参考了一个大佬的WP(<a target="_blank" rel="noopener" href="http://shaobaobaoer.cn/archives/665/tokyo-westerns-ctf-2018-web-wp#shrine">tokyo-westerns-ctf-2018-web-wp</a>)<br>，学习到了一些骚炫的姿势，这里复现一下他的思路</p>
+<ol>
+<li>既然<code>config</code>和<code>self</code>都被置空了，那么只能用其他方法读取到这个全局变量，就需要参考Flask框架的文档，这里应用到了python沙箱逃逸的方法，就我理解这方法就是<strong>利用python对象之间的引用关系来调用被禁用的函数对象</strong>，文中提供了一个flask上下文本地变量<code>current_app</code>，使用方法<code>__globals__[&#39;current_app&#39;].config[&#39;FLAG&#39;]</code>。,通过在尝试这个<code>payload</code>后的到以下结果:<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-4.png" srcset="/img/loading.gif" lazyload alt></li>
+</ol>
+<p>显然不能直接访问<code>__globals__</code>全局变量，目测有WAF需要再次逃逸。</p>
+<ol>
+<li>文中又提供了两种方法：<code>get_flashed_messages</code>和<code>url_for</code>这两个函数添加了<code>current_app</code>的引用，于是构造：<code>url_for.__globals__[&#39;current_app&#39;].config[&#39;FLAG&#39;]</code><br>最后<code>payload</code>：<code>http://127.0.0.1:8081/shrine/&#123;&#123;url_for.__globals__['current_app'].config['FLAG']&#125;&#125;</code><br>获得flag：<br><img src="/2018/11/13/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-5.png" srcset="/img/loading.gif" lazyload alt></li>
+</ol>
+<p>在沙箱逃逸这一块的还有很多问题，比如怎么查到各对象之间的引用关系，哪些对象在哪些作用域有效，这里只积累了一个思路，以后需要在挖掘。</p>
+<p>PS:刚刚写完SSTI的内容，<code>hexo deploy</code>的时候报错，一查结果是前面模板的花括号导致了解析，妙啊妙啊。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ctf/">ctf</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf-web/">ctf-web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                      <a class="hover-with-bg" href="/tags/writeup/">writeup</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E3%80%8A%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85%E3%80%8B%E7%9A%84%E8%A7%A3%E6%9E%84/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">小吹一波死亡搁浅</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/">
+                        <span class="hidden-mobile">Scrapy豆瓣ADHD小组爬虫实例</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

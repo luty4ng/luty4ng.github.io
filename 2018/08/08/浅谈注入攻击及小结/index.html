@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。
+">
+  <meta name="author" content="Luty">
+  <meta name="keywords" content="">
+  
+  <title>浅谈注入攻击及小结 | Luty.tech</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"luty.tech","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Luty's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/blackhole.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="浅谈注入攻击及小结">
+              
+                浅谈注入攻击及小结
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luty
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-08-08 11:24" pubdate>
+        2018年8月8日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">浅谈注入攻击及小结</h1>
+            
+            <div class="markdown-body">
+              <p>最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。</p>
+<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" srcset="/img/loading.gif" lazyload alt="疲惫"><br><span id="more"></span></p>
+<h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了`<strong>一切输入有害</strong>的重要安全思想。</p>
+<h2 id="注入如何产生？"><a href="#注入如何产生？" class="headerlink" title="注入如何产生？"></a>注入如何产生？</h2><p>个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。</p>
+<p>例如在PHP + MySQL平台下：<br><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+<span class="hljs-variable">$name</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;name&#x27;</span>]; 
+<span class="hljs-variable">$con</span> = mysqli_connect(<span class="hljs-string">&quot;127.0.0.1&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;test&quot;</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;error&quot;</span>);
+
+<span class="hljs-variable">$query</span> = <span class="hljs-string">&quot;SELECT * FROM person WHERE name=&#x27;<span class="hljs-subst">$name</span>&#x27;;&quot;</span>;
+<span class="hljs-variable">$result</span> = mysqli_query(<span class="hljs-variable">$con</span>,<span class="hljs-variable">$query</span>);
+<span class="hljs-keyword">while</span>(<span class="hljs-variable">$row</span>=mysqli_fetch_assoc(<span class="hljs-variable">$result</span>))
+	<span class="hljs-keyword">echo</span> <span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;age&#x27;</span>];
+​```
+
+这是一个用户通过输入name从person表查询对应age的场景，但是代码中没有对输入变量<span class="hljs-variable">$name</span>进行任何检测和过滤，如果我们构造<span class="hljs-variable">$name</span>为`<span class="hljs-number">1</span><span class="hljs-string">&#x27;or&#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27;=&#x27;</span><span class="hljs-number">1</span>`，那么查询语句<span class="hljs-variable">$query</span>就会变成：`<span class="hljs-string">&quot;SELECT * FROM person WHERE name=&#x27;1&#x27; or &#x27;1&#x27;=&#x27;1&#x27;;&quot;</span>`，然而该查询语句恒成立，意味着这样的输入将会爆出数据库person表中所有人的age，造成信息泄露。
+
+在上面这个案例中，如果我们对<span class="hljs-variable">$name</span>或者<span class="hljs-variable">$query</span>进行过滤，比如将`<span class="hljs-string">&#x27;`和`&quot;`转义，或者字符处理掉`=`，那么上面构造的输入数据不会被执行。这只是一个最简单的案例，想了解和实践更多可以部署[DVWA](http://www.dvwa.co.uk/)进行本地或者远程测试。</span>
+<span class="hljs-string">## SQL注入</span>
+<span class="hljs-string">根据是否有直接反馈信息分为 普通注入 和 盲注，盲注往往要利用`sleep()`时间盲注或者利用`ascii()`进行布尔盲注。</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">大概流程是这样的：</span>
+<span class="hljs-string">1.注入POC</span>
+<span class="hljs-string">2.猜字段数</span>
+<span class="hljs-string">3.猜字段顺序</span>
+<span class="hljs-string">4.爆数据库名</span>
+<span class="hljs-string">5.爆表名</span>
+<span class="hljs-string">6.爆字段</span>
+<span class="hljs-string">7.脱裤</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">有些步骤根据实际情况可有可无的，爆库过程中需要用到`information_schema`，在这里我就不XJB说了，具体参考：</span>
+<span class="hljs-string">[DVWA-1.9全级别教程之SQL Injection](http://www.freebuf.com/articles/web/120747.html)</span>
+<span class="hljs-string">[DVWA-1.9全级别教程之SQL Injection(Blind)](http://www.freebuf.com/articles/web/120985.html)</span>
+<span class="hljs-string">## SQL注入绕过</span>
+<span class="hljs-string">我参考文章做了一些本地测试，记录了一些可能常用的绕过方法，环境为lamp，以下就算是是笔记了，一开简单记录，后面有时间会细化。</span>
+<span class="hljs-string">1. 空格：`/**/` `%a0` `()`</span>
+<span class="hljs-string">2. `&#x27;</span>`引号：`hex()` `urlencode()`
+<span class="hljs-number">3</span>. `=`等号：`like` `rlike` `regexp`
+<span class="hljs-number">4</span>. `&lt;&gt;`比较符：`greatest()` `least()` `strcmp()` `in` `between`
+<span class="hljs-number">5</span>. `,`逗号：`substr()`和`mid()`用`<span class="hljs-keyword">from</span> to`代替，`limit`用`offset`
+<span class="hljs-number">6</span>. 其他绕过： 大小写、字符嵌套、内联注释等
+还有一个没看懂的先mark：[一些报错注入](https:<span class="hljs-comment">//blog.csdn.net/airuozhaoyang/article/details/47036923)</span>
+
+**宽字节注入**：
+这个注入方式比较特殊，有两个产生条件。
+- 涉及到gbk编码 (iconv等含有编码转化功能的函数)
+- 涉及到转义`\`(魔术引号、addslashes、htmlspecialchars)
+
+原理大概是，正常字符为<span class="hljs-number">2</span>字节，汉字字符为<span class="hljs-number">4</span>字节，在gbk的编码环境下可以`%df\`这样的字符，应为`\`的编码是`%<span class="hljs-number">5</span>c`，结合起来为`%df%<span class="hljs-number">5</span>c`，解码结果为汉字`運`，从而绕过了`\`的转义消毒。
+**注：gbk2312应不存在低位范围无法进行宽字节注入，具体参考[这里](http:<span class="hljs-comment">//www.bubuko.com/infodetail-2100074.html)。**</span>
+
+后续会慢慢添加实例帮助理解和实践。
+
+参考:
+[SQL注入绕过技巧](https:<span class="hljs-comment">//www.cnblogs.com/Vinson404/p/7253255.html)</span>
+[sql关键词绕过【积累中】](https:<span class="hljs-comment">//blog.csdn.net/wy_97/article/details/78085664)</span>
+
+<span class="hljs-comment">## 小结</span>
+无论是XSS、sqli还是commandi，只要有输入数据添加到指令的场景，就有注入攻击发生的风险，开发者也在努力寻找通用性解决方案。
+PHP和python中不正确的使用`system()` `exec()`等函数会导致命令注入，前段不对js代码进行过滤会导致XSS，windows平台还有dll注入（不明觉厉），感觉都很刺激啊。
+PHP5.<span class="hljs-number">4</span>后使用的PDO技术和Mysqli几乎已经杜绝了sql注入，其他平台的防御策略也越来越完善，所以sql在实际渗透环境中可能作用并不大，但是这种思想还是很有意思的。
+
+![我也很绝望啊](./<span class="hljs-number">1</span>.jpg)
+吐槽几句，贵阳这天气是魔鬼吗，阳光直射出门半小时后大暴雨，学车能遇到军事行动，四妹又在发情期，真是每天都有新乐趣hhhh
+</code></pre></div></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ctf/">ctf</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sqli/">sqli</a>
+                    
+                      <a class="hover-with-bg" href="/tags/commandi/">commandi</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Scrapy豆瓣ADHD小组爬虫实例</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/05/25/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9D%9F/">
+                        <span class="hidden-mobile">TensorFlow快进到入坟</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

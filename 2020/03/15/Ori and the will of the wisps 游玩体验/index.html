@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="前言本文行文比较随意，作为即时记录通关之后的想法。
+主要思考了下第二部在level-up机制，boss战，核心玩法上的改变。">
+  <meta name="author" content="Luty">
+  <meta name="keywords" content="">
+  
+  <title>Ori and the will of the wisps 游玩体验 | Luty.tech</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"luty.tech","root":"/","version":"1.8.11","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Luty's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/blackhole.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Ori and the will of the wisps 游玩体验">
+              
+                Ori and the will of the wisps 游玩体验
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luty
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-15 15:59" pubdate>
+        2020年3月15日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Ori and the will of the wisps 游玩体验</h1>
+            
+            <div class="markdown-body">
+              <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文行文比较随意，作为即时记录通关之后的想法。</p>
+<p>主要思考了下第二部在level-up机制，boss战，核心玩法上的改变。</p>
+<span id="more"></span>
+<h3 id="安全区"><a href="#安全区" class="headerlink" title="安全区"></a><strong>安全区</strong></h3><p>设立了一个类似基地和安全区一样的场景——泉源林地，在这里你可以和基莫聊天，了解它们的故事，可以和各类功能性NPC对话提升自己的能力，同样通过以种树和修缮的方式看到自己冒险对森林和栖息之中的生物带来的改变。“安全区”的设定容易与剧情关联增强代入感，同时提供更持久更完整且贯穿游戏主线的反馈。</p>
+<h3 id="Level-up机制"><a href="#Level-up机制" class="headerlink" title="Level-up机制"></a><strong>Level-up机制</strong></h3><p>Level-up机制：奥日中的level-up机制主要由精灵碎片（装备）和精灵技能（技能）组成。精灵碎片可以通过地图探索或精灵之光获得，升级则中能通过精灵之光；精灵技能可以通过探索吸收精灵之树获得，或者通过精灵之光购买。这种level-up机制显然提供了更多样性的体验，Ori2 将游戏的探索体验和战斗体验大致分离，分别由碎片和技能两个不同的机制承担，但探索和战斗的分离却不是完全独立的，精灵碎片同样提供了战斗加成（例如增伤和减防等熟悉BUFF），精灵技能同样为探索提供了便利（炮弹跳跃，精灵猛击，闪光，灵光迸发，煽动），但是不难发现，技能对探索和碎片对战斗提供的帮助并不是必要的，但是能够提供非常多样的游戏策略和体验。</p>
+<p>以精灵碎片和精灵技能作为主导，以精灵生命、精灵能量和碎片栏位提供基本属性加强，就是Ori2基本的level-up机制，也是提供本质体验的游戏机制。我记忆中前作的三维线性技能树，三条线分别管理战斗、属性、探索，都使用技能加点的机制来推进，而Ori2这种明确特定机制创造特定体验更符合设计直觉和设计逻辑，而这种机制-体验对应的设计也并非完全分离的，部分非必要机制的交错往往可以增强体验的多样性，这种设计方法虽然看似基础仍是值得学习并贯穿游戏设计的全过程。</p>
+<h3 id="BOSS战"><a href="#BOSS战" class="headerlink" title="BOSS战"></a><strong>BOSS战</strong></h3><p>BOSS战设计：游戏中总共6个BOSS，老狼，蜘蛛，青蛙，甲虫，大鸟和…石头圈？Metroidvania游戏拥有景深的BOSS设计是个难点，主要难在设计合理的碰撞体的同时还要保证其与动画效果的契合。例如DeadCell的巨人，动画效果让人感觉是拳头在带动肢体，Skeleton仍然有僵硬感。蜘蛛和大鸟在这一点上很优秀，动画效果流畅得让人怀疑他们根本没做Skeleton。单看BOSS机制的话总的来说比较传统，有景深的碰撞体放头部，没景深的全身碰撞体，放技能你就躲，放完技能僵直你就揍他，玩家唯一能选择就是如何揍他，BOSS战线性感十足，难度也不大，基本交完学费而且不像我这么手残就能很轻松过。</p>
+<p>这里我想提一下蜘蛛的BOSS战，尤其是召唤的三只小蜘蛛，感觉简直无处不在，我回去看自己的视频好多遍都没有看懂这个算法的。但是有几个现象是可以描述的：</p>
+<p>a. 小蜘蛛很少选择主动攻击玩家，更倾向于在玩家一定距离内停顿。</p>
+<p>b. 在墙面的停顿时间受与玩家距离影响，距离越远，停顿越久，在地面则没有影响。</p>
+<p>c. 三只小蜘蛛中总有一只会一直跟着玩家走，其余的偏向于停留。</p>
+<p>这会形成一个什么作用呢？例如，玩家带着两只小蜘蛛上了墙面，之后玩家利用Dash和猛击快速转移到另一侧，此时两只小蜘蛛会受条件b的限制，在墙面停留很长时间，当玩家重新回到原本的墙面附近导致小蜘蛛停留时间缩短，其中一只在条件c下小蜘蛛会提前移动，当玩家躲过条件c小蜘蛛，另一只墙面上的蜘蛛会在条件b的影响下移动并和之前的小蜘蛛的形成包夹。这就是为什么在蜘蛛BOSS战感觉小蜘蛛无处不在的原因，不同的AI改变了小蜘蛛的停顿时间，从而形成了“包夹”的效果。虽然上述条件只是根据自己视频回顾的猜测，但游戏体验告诉我小蜘蛛的算法绝对不会是简单的随机，大概率有吃豆人幽灵类似的AI设计。如何用三只小蜘蛛制造无处不在和包夹的效果是很值得摸索的。</p>
+<h3 id="核心玩法设计"><a href="#核心玩法设计" class="headerlink" title="核心玩法设计"></a><strong>核心玩法设计</strong></h3><p>Ori区别于其他Metroidvania的玩法实际上是追逐战和猛击。</p>
+<p>追逐战是一种线性化和模式化明显的玩法，所以设计重点就应该放在场景、难度和画面上。Ori的场景设计是非常优秀的，将沙盒场景作为追逐战场景会造成许多困难，要求场景设计时需要兼顾可探索性与追逐战的流畅性，大部分设计师在设计追逐战时都会选择一个特定的不可重复探索的场景，例如武士零里的机车追逐和我的朋友佩德罗里的坠落战。ori的场景很好的兼容这两点，谁能想到第一次遇到触手怪的地方居然会有一大坨精灵之光呢。难度实际上决定于场景和一些设计技巧，例如橡皮筋法则，当你距离怪物近的时候，怪物会减速你会加速，场景坍塌速度也会减慢，而当你距离怪物远的时候，怪物会加速你会减速，场景探索速度也变快，就像被框在一个橡皮筋里一样，这样动态难度的设定是平衡难度很好的方法，也十分常见，像神海和古墓类似作品里经常采用。画面就不必多说了，没有艺术细菌的我只能赞叹Ori追逐战力每一帧画面都是艺术品。</p>
+<p>第二个核心玩法猛击，是Ori区别于其他Metroidvania的最大特点，Ori必须要键鼠操作也因如此。这个玩法几乎贯穿了整个游戏流程，你需要用猛击进行地图探索，逃离追逐并且反击BOSS的攻击，更巧妙的是，猛击引入了时停的效果，并借此控制了游戏难度、玩家的注意力和心流。猛击效果简单反馈迅速，却对游戏各方面的设计起到了举足轻重的影响，是一个非常天才的设计，甚至可以说Ori其他玩法都是用来服务这一项机制的。</p>
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a><strong>一些问题</strong></h3><p>a. 大量新机制的引入却没有更大的场景提供发挥空间。</p>
+<p>b. 一些无意义的精灵碎片</p>
+<p>c. 甲虫和石头圈这种不明所以的BOSS</p>
+<p>d. 意义不明的装备系统却装满了任务道具</p>
+<p>e. 如果多一些支线那就更好了</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ol>
+<li>“安全区”的设计参考</li>
+<li>一个机制对应一个玩法对应一个体验，但要有交错</li>
+<li>敌人的AI设计值得考究</li>
+<li>BOSS战去线性化的一个方法：引入其他敌人（小蜘蛛）形成多线</li>
+<li>把握核心玩法，控制游戏体量</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/games/">games</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ori/">ori</a>
+                    
+                      <a class="hover-with-bg" href="/tags/games/">games</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GameJam - LudumDare46</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/17/%E6%B8%B8%E6%88%8F%E8%A7%A3%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">游戏解构的基本框架</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
