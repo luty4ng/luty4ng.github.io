@@ -247,9 +247,7 @@
             <h1 style="display: none">Scrapy豆瓣ADHD小组爬虫实例</h1>
             
             <div class="markdown-body">
-              <p>让自己熟悉<code>数据资源获取</code>-&gt;<code>数据持久化并整理</code>-&gt;<code>数据可视化</code>的数据处理流程，顺便记录下Scrapy的框架的使用过程。</p>
-<span id="more"></span>
-
+              <p>让自己熟悉<code>数据资源获取</code>-&gt;<code>数据持久化并整理</code>-&gt;<code>数据可视化</code>的数据处理流程，顺便记录下Scrapy的框架的使用过程。<br><span id="more"></span></p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p><strong>数据获取及持久化：</strong>利用Scrapy爬取ADHD豆瓣小组的所有帖子的标题、作者、以及最后回复时间，保存在cvs文件中。</p>
 <p><strong>数据处理：</strong>对每一个标题字符串过滤无意义词汇、分词、关键字提取，Kmeans近义词聚类，统计出现次数最多的10个关键词。</p>
 <p><strong>数据可视化：</strong>使用Echarts自动生成前十关键词图表。</p>
@@ -352,12 +350,9 @@ ITEM_PIPELINES = &#123;
     author=scrapy.Field()
     time=scrapy.Field()
     <span class="hljs-keyword">pass</span></code></pre></div>
-
-<h4 id="run-py"><a href="#run-py" class="headerlink" title="run.py"></a>run.py</h4><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<h4 id="run-py"><a href="#run-py" class="headerlink" title="run.py"></a>run.py</h4><h2 id><a href="#" class="headerlink" title></a><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> cmdline
-cmdline.execute(<span class="hljs-string">&quot;scrap crawl adhd&quot;</span>.split())</code></pre></div>
-<hr>
-<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/result.png" srcset="/img/loading.gif" lazyload alt="运行结果"></p>
+cmdline.execute(<span class="hljs-string">&quot;scrap crawl adhd&quot;</span>.split())</code></pre></div></h2><h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="/2018/10/26/Scrapy%E8%B1%86%E7%93%A3ADHD%E5%B0%8F%E7%BB%84%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/result.png" srcset="/img/loading.gif" lazyload alt="运行结果"></p>
 <h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><blockquote>
 <ol>
 <li>使用jieba库进行了简单的分词和关键词提取</li>

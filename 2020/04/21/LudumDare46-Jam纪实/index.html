@@ -249,24 +249,23 @@
             
             <div class="markdown-body">
               <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本着「 Learning by Doing 」的想法，刚入坑两周的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。</p>
-<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/find.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/find.png" srcset="/img/loading.gif" lazyload alt></p>
 <span id="more"></span>
-
 <h3 id="Day1：-构思想法，实现原型"><a href="#Day1：-构思想法，实现原型" class="headerlink" title="Day1： 构思想法，实现原型"></a>Day1： 构思想法，实现原型</h3><p>第一天公布早上八点半起床，嗦碗粉到九点Twitter确认主题 <em>Keep it alive</em>。当时U3D技术水平只做过一些2D Platformer的实现，因此我能做的游戏形式并没有多少选择。很快我就决定做2D Platformer了，综合看来这一唯一可行的方案，回到主题 <em>Keep it alive</em>，当时立刻想到了一款忘记名字的游戏Demo，主角的生命进入倒计时，通过击杀敌人可以延续倒计时时长，玩家需要在固定场景内击杀不断涌现的敌人来延续生命（怒火攻心内味）。</p>
 <p>但是这种方案对我来说工作量可能较大，而且这个想法比较容易想到，就没有采用。之后我基本上是围绕 <em>it</em> 去想，代入了很多游戏元素，最后决定让 <em>it</em> = <em>the camera</em>，让玩家需要时刻保持游戏镜头的移动否则镜头会持续缩小，而移动会让镜头逐渐增大。</p>
 <p>镜头大小影响的核心机制肯定是探索和寻找，因此我没有多想就把游戏目标设为「 在一个开放场景下找到这个游戏的作者，然后Beat his ass off 」。</p>
 <p>由于玩家需要持续移动，所以2D Plateformer的移动系统一定要做好，要能够给玩家足够的移动控件，最后我决定参考《蔚蓝》的移动系统，将比较断节奏的爬墙改成了持续蹬墙。</p>
 <p>然后是决定游戏的互动机制，因为Jam作品要求小而精，所以在确定奖惩机制后如何互动的问题也就解决了，传统2D Plateformer里的尖刺、电锯啥的元素肯定都有（我也搞不出新的素材）。最后决定奖惩也围绕着核心机制设计：受伤缩小镜头，使用消耗品药片增大镜头。</p>
 <p>大概下午1点左右就基本确定了核心机制、游戏目标、移动系统和反馈机制，然后…..我就摸鱼去了，摸到3点开始用U3D做原型，晚上11点基本写完，查文档和论坛找解决方案的过程着实痛苦，那天晚上整个人昏昏沉沉的，像条死鱼。</p>
-<p><img src="https://media.giphy.com/media/VdWXU2JnrCstn0oSMs/giphy.gif" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://media.giphy.com/media/VdWXU2JnrCstn0oSMs/giphy.gif" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="Day2-优化机制，搞定美术"><a href="#Day2-优化机制，搞定美术" class="headerlink" title="Day2: 优化机制，搞定美术"></a>Day2: 优化机制，搞定美术</h3><p>第二天啥时候起的给忘了，总之是摸鱼到了中午才开始做。内容是优化原先设计的机制，主要分两点：一是调整手感，二是精简内容。调整手感本质上就是调整一系列动力参数，什么JumpForce, runSpeed, dashSpeed这些， 整个过程有DL炼丹内味了，总之就是不断的试错调整。精简内容上主要是删除了一些游戏元素，删掉了前一天做的磁力装置，考虑到磁力装置更多要求的玩家在慢节奏下做策略决定，然后确定了游戏元素的范围。</p>
 <p>然后是美术，这一点我不头大，我完全了解自己的上限，绘制简易Item动画和Tilemap就行，人物动作素材必须找，自己画就过于抽象了。</p>
 <p>人物素材就用了一个比较经典的 Virtual Boy 形象，B站不少UP的案例里用的也是这个，然后用Aseprite修改颜色统一素材基调。Item和Map素材比较简单就用Aseprite绘制了（因为Procreate怎么设置笔刷像素点都会扩散）。</p>
-<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/asset.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/asset.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="Day3：爆肝场景，解决杂项"><a href="#Day3：爆肝场景，解决杂项" class="headerlink" title="Day3：爆肝场景，解决杂项"></a>Day3：爆肝场景，解决杂项</h3><p>这一天基本都在做场景，当时还挺急的，一方面既然寻找是玩家的目标那么场景不能太小，另一方面绘制想metroidvania的大场景我没有经验，最后的场景基本就是一些小谜题放至在大场景框架下的不同地方。</p>
 <p>而且，在做场景期间我突然想到个点子，让玩家有能力与地图中的Item交换位置，这样玩家就有能力自己改变地形。当时没多想就去肝这个功能去了，最后完是完成了，但场景还有大半没做完，所有有些场景做的比较草率。</p>
 <p>然后就是杂项，音乐、UI、发布、托管这些基本都是按照最简单的方式去做的，音乐的话我觉得选的Dont touch it 还是不错的，音效没有找到适合的自己也不敢做就放弃了；UI也是精简为主，一个显示药品余量，一个表示镜头大小。最后就是itch托管和ludumdare发布，当时以为发布的游戏内容可以修改的，就没有挂图片，只提供了个Windows版的，后来发现改不了，有点难受。</p>
-<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/start.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2020/04/21/LudumDare46-Jam%E7%BA%AA%E5%AE%9E/start.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="关于游戏"><a href="#关于游戏" class="headerlink" title="关于游戏"></a>关于游戏</h3><p>以下是我写在KeepTheCamAive的游戏介绍</p>
 <blockquote>
 <p>You going to find the author of this game and beat his ass off(in game!), and always remember Keep the Camera Alive. </p>

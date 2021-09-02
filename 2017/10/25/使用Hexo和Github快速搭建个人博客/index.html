@@ -17,7 +17,6 @@
   <meta name="description" content="前言这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。
 
 为阅读本文章，你需要同时阅读：Hexo官方文档Next主题官方文档Markdown语法参考
-
 Hexo + Github模式优点
 节省购置服务器的费用
 快速搭建，快速部署
@@ -257,16 +256,13 @@ Hexo + Github模式优点
               <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。</p>
 <blockquote>
 <p>为阅读本文章，你需要同时阅读：<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a><br><a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/getting-started.html">Next主题官方文档</a><br><a target="_blank" rel="noopener" href="https://github.com/younghz/Markdown">Markdown语法参考</a></p>
-</blockquote>
 <h2 id="Hexo-Github模式优点"><a href="#Hexo-Github模式优点" class="headerlink" title="Hexo + Github模式优点"></a>Hexo + Github模式优点</h2><ul>
 <li>节省购置服务器的费用</li>
 <li>快速搭建，快速部署</li>
 <li>学习成本低，学习价值高<span id="more"></span>
-<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><blockquote>
-<p>一. 建立github仓库<br>二. 建立本地Hexo博客<br>三. 配置本地Hexo博客<br>四. 连接本地Hexo与gitpages</p>
-</blockquote>
-</li>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2>一. 建立github仓库<br>二. 建立本地Hexo博客<br>三. 配置本地Hexo博客<br>四. 连接本地Hexo与gitpages</li>
 </ul>
+</blockquote>
 <h2 id="开始搭建吧！"><a href="#开始搭建吧！" class="headerlink" title="开始搭建吧！"></a>开始搭建吧！</h2><h3 id="建立github仓库"><a href="#建立github仓库" class="headerlink" title="建立github仓库"></a>建立github仓库</h3><p>开始之前确保已注册github帐号并下载gitbash。<br>如果还没有，请参考：<a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/github-basics/sign-up.html">极客学院github初识教程</a>完成注册和下载。</p>
 <blockquote>
 <p>点击创建仓库</p>
@@ -281,34 +277,29 @@ Hexo + Github模式优点
 <ol>
 <li><p><strong>安装Node.js</strong><br>从<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js官网</a>下载并安装Node.js环境，推荐LTS（Long-Term-Support）版本。</p>
 </li>
-<li><p><strong>本地下载Hexo</strong><br>首先选择你要配置本地博客的目录，右击选择 <strong>Git Bash Here</strong>，<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash.png" srcset="/img/loading.gif" lazyload alt="gitbahs"><br>从而进入如图gitbash环境<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash_cli.png" srcset="/img/loading.gif" lazyload alt="gitbash2"></p>
+<li><p><strong>本地下载Hexo</strong><br>首先选择你要配置本地博客的目录，右击选择 <strong>Git Bash Here</strong>，<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash.png" srcset="/img/loading.gif" lazyload alt="gitbahs"><br>从而进入如图gitbash环境<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash_cli.png" srcset="/img/loading.gif" lazyload alt="gitbash2"><br><strong>注意：明白这一步直很重要，之后所有命令都是在gitbash中完成！</strong></p>
 </li>
-</ol>
-<p><strong>注意：明白这一步直很重要，之后所有命令都是在gitbash中完成！</strong></p>
-<ol start="3">
-<li><strong>安装hexo</strong><br>gitbash输入:<code>npm install -g hexo-cli </code>会开始安装Hexo，安装完成后会有如图所示目录文件。</li>
+<li><p><strong>安装hexo</strong><br>gitbash输入:<code>npm install -g hexo-cli</code>会开始安装Hexo，安装完成后会有如图所示目录文件。</p>
+</li>
 </ol>
 <p>各目录的作用请参考：<a href>Hexo官方文档-建站</a></p>
 <h3 id="配置本地Hexo博客"><a href="#配置本地Hexo博客" class="headerlink" title="配置本地Hexo博客"></a>配置本地Hexo博客</h3><p>请先自主阅读<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration.html">Hexo官方文档-配置</a>与<a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/getting-started.html">NexT官网文档-开始使用</a>，若按照官方文档已完成部署，可以跳过该步骤。</p>
 <ol>
 <li><p><strong>下载并部署NexT主题</strong><br>前往<a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next/releases">NexT版本发布页面</a>下载官方Source code.zip并解压，将解压后的文件名修改为<strong>next</strong>后置于你本地博客目录的themes文件夹。</p>
 </li>
-<li><p><strong>本地预览</strong><br>在博客目录下的gitbash中输入<br><code>hexo clean</code><br><code>hexo g</code><br>完成初始化，之后使用命令<br><code>hexo s</code><br>完成本地部署。<br>本地部署后可，通过访问<code>localhost:4000</code>从而访问本地博客。至此，你已经可以看到你的博客首页了。<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A2%84%E8%A7%88.png" srcset="/img/loading.gif" lazyload alt="预览"></p>
+<li><p><strong>本地预览</strong><br>在博客目录下的gitbash中输入<br><code>hexo clean</code><br><code>hexo g</code><br>完成初始化，之后使用命令<br><code>hexo s</code><br>完成本地部署。<br>本地部署后可，通过访问<code>localhost:4000</code>从而访问本地博客。至此，你已经可以看到你的博客首页了。<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/预览.png" srcset="/img/loading.gif" lazyload alt="预览"></p>
 </li>
 </ol>
-<ol start="3">
-<li><strong>区别本地配置和主题配置</strong><br>两个配置文件均为<code>_config.yml</code>，但有本质区别，之后配置需注意不要混淆。</li>
+<ol>
+<li><p><strong>区别本地配置和主题配置</strong><br>两个配置文件均为<code>_config.yml</code>，但有本质区别，之后配置需注意不要混淆。<br><strong>本地配置</strong>：位于 本地博客根目录下<code>_config.yml</code><br><strong>主题配置</strong>：位于 本地博客目录/themes/主题目录(如next)下的<code>_config.yml</code></p>
+</li>
+<li><p><strong>配置本地配置</strong><br>打开本地配置的<code>_config.yml</code>，找到如图Themes字段：<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/theme.png" srcset="/img/loading.gif" lazyload alt="theme"><br>将字段修改为<code>theme: next</code>从而应用布置好的NexT主题<br>同样可以找到如图字段：<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/site.png" srcset="/img/loading.gif" lazyload alt="site"><br>将language字段修改为<code>language: zh-Hans</code>即可应用主题为中文版，在其他字段中可以直接修改个人博客的标题、子标题、描述等信息。</p>
+</li>
 </ol>
-<p><strong>本地配置</strong>：位于 本地博客根目录下<code>_config.yml</code><br><strong>主题配置</strong>：位于 本地博客目录/themes/主题目录(如next)下的<code>_config.yml</code></p>
-<ol start="4">
-<li><strong>配置本地配置</strong><br>打开本地配置的<code>_config.yml</code>，找到如图Themes字段：<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/theme.png" srcset="/img/loading.gif" lazyload alt="theme"><br>将字段修改为<code>theme: next</code>从而应用布置好的NexT主题<br>同样可以找到如图字段：<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/site.png" srcset="/img/loading.gif" lazyload alt="site"><br>将language字段修改为<code>language: zh-Hans</code>即可应用主题为中文版，在其他字段中可以直接修改个人博客的标题、子标题、描述等信息。</li>
-</ol>
-<ol start="5">
-<li><strong>配置主题配置</strong><br>打开主题配置中的<code>_config.yml</code>可以看到主题配置内容，此步骤只强调几个终点配置。</li>
-</ol>
+<ol>
+<li><p><strong>配置主题配置</strong><br>打开主题配置中的<code>_config.yml</code>可以看到主题配置内容，此步骤只强调几个终点配置。</p>
 <ul>
-<li><p><strong>配置菜单</strong><br>找到如图menu配置，修改menu中的字段对应博客主页菜单的变化<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/menu.png" srcset="/img/loading.gif" lazyload alt="menu"></p>
-</li>
+<li><strong>配置菜单</strong><br>找到如图menu配置，修改menu中的字段对应博客主页菜单的变化<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/menu.png" srcset="/img/loading.gif" lazyload alt="menu"></li>
 <li><p><strong>配置NexT主题</strong><br>找到如图Schemes配置，修改scheme字段可以修改NexT子主题<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/scheme.png" srcset="/img/loading.gif" lazyload alt="scheme"></p>
 </li>
 <li><p><strong>配置博客头像</strong><br>在配置文件任意独立行输入<code>avatar: /images/avatar.png</code>，之后在本地博客目录下<code>source</code>文件夹下新建文件夹<code>images</code>，选择自己喜欢的博客头像改为<code>avatar.png</code>同名文件放置在该目录下即可。</p>
@@ -316,13 +307,14 @@ Hexo + Github模式优点
 <li><p><strong>配置favicon图标</strong><br>所谓favicon如图，可以想<code>images</code>文件夹下添加名为<code>favicon.ico</code>的图标文件修改。</p>
 </li>
 </ul>
+</li>
+</ol>
 <h3 id="连接本地Hexo和gitpages"><a href="#连接本地Hexo和gitpages" class="headerlink" title="连接本地Hexo和gitpages"></a>连接本地Hexo和gitpages</h3><ol>
 <li><p><strong>配置与Github Pages关联</strong><br>打开本地配置的<code>_config.yml</code>，找到如图deploy字段：<br><img src="/2017/10/25/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy.png" srcset="/img/loading.gif" lazyload alt="deploy">并如图配置,其中红框为你的github帐号，白框为github密码，灰框(最右)为你建立的仓库地址。</p>
 </li>
-<li><p><strong>部署github托管</strong><br>很简单，本地博客目录打开gitbash，输入<code>hexo d</code>即完成在线部署。</p>
+<li><p><strong>部署github托管</strong><br>很简单，本地博客目录打开gitbash，输入<code>hexo d</code>即完成在线部署。<br><strong>至此，你的个人博客线上部署已经完成！</strong></p>
 </li>
 </ol>
-<p><strong>至此，你的个人博客线上部署已经完成！</strong></p>
 
             </div>
             <hr>

@@ -249,13 +249,10 @@
             
             <div class="markdown-body">
               <p>最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。</p>
-<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" srcset="/img/loading.gif" lazyload alt="疲惫"></p>
-<span id="more"></span>
-
+<p><img src="/2018/08/08/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" srcset="/img/loading.gif" lazyload alt="疲惫"><br><span id="more"></span></p>
 <h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了`<strong>一切输入有害</strong>的重要安全思想。</p>
 <h2 id="注入如何产生？"><a href="#注入如何产生？" class="headerlink" title="注入如何产生？"></a>注入如何产生？</h2><p>个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。</p>
-<p>例如在PHP + MySQL平台下：</p>
-<div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+<p>例如在PHP + MySQL平台下：<br><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
 <span class="hljs-variable">$name</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;name&#x27;</span>]; 
 <span class="hljs-variable">$con</span> = mysqli_connect(<span class="hljs-string">&quot;127.0.0.1&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;test&quot;</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;error&quot;</span>);
 
@@ -314,7 +311,8 @@ PHP5.<span class="hljs-number">4</span>后使用的PDO技术和Mysqli几乎已�
 
 ![我也很绝望啊](./<span class="hljs-number">1</span>.jpg)
 吐槽几句，贵阳这天气是魔鬼吗，阳光直射出门半小时后大暴雨，学车能遇到军事行动，四妹又在发情期，真是每天都有新乐趣hhhh
-</code></pre></div>
+</code></pre></div></p>
+
             </div>
             <hr>
             <div>
