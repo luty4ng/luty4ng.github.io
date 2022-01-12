@@ -14,7 +14,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，授课老师为UCSB的助理教授闫令琪老师。GAMES101因为专注于原理的分析与解释，并提供了BBS、助教和作业提交系统等一套完备的学习设施，课程质量广受好评。课程地址：https://sites.cs.ucsb.edu/~lingqi/teaching/">
+  <meta name="description" content="PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于计算机图形学基本原理的分析与解释。课程地址：https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html
+">
   <meta name="author" content="Luty">
   <meta name="keywords" content="">
   
@@ -204,7 +205,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      2.3k 字
     </span>
   
 
@@ -214,7 +215,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      26
        分钟
     </span>
   
@@ -247,14 +248,7 @@
             <h1 style="display: none">GAMES101 - 现代计算机图形学入门</h1>
             
             <div class="markdown-body">
-              <h3 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h3><p>GAMES101是GAMES (<em>Graphics And Mixed Environment Seminar</em>）系列公益课程的第一部，授课老师为UCSB的助理教授闫令琪老师。GAMES101因为专注于原理的分析与解释，并提供了BBS、助教和作业提交系统等一套完备的学习设施，课程质量广受好评。课程地址：<a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html</a></p>
-<p>本文章主要包括以下几个内容：</p>
-<ul>
-<li>计算机图形学基本原理和分析方法的记录</li>
-<li>该课程作业分析和解决方案</li>
-<li>该课程的部分涉及内容的拓展</li>
-</ul>
-<p>本人容易遗忘原理类的知识，所以做好记录还是蛮有必要的。本文不属于详尽的内容笔记，倾向于记录学习中主观容易遗忘的重点难点。</p>
+              <h3 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h3><p>GAMES101是GAMES (<em>Graphics And Mixed Environment Seminar</em>）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于计算机图形学基本原理的分析与解释。课程地址：<a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html</a></p>
 <!-- toc -->
 <span id="more"></span>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p><img src="/2020/11/27/GAMES101/image-20201127165907506.png" srcset="/img/loading.gif" lazyload alt></p>
@@ -397,7 +391,7 @@ R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)</script></li>
 </ol>
 <p>然而在每个像素不止一个采样点的假设下，就能有一种更优的方案。根据每个像素中三角形内的采样点占总采样点数目的比例，我们可以动态的决定每一个像素要如何滤波，而不是对整体运用一个滤波器。这样相当于用更多的采样点换取更少的计算量。这也是MSAA的核心思路。</p>
 <h4 id="Antialiasing-Today"><a href="#Antialiasing-Today" class="headerlink" title="Antialiasing Today"></a>Antialiasing Today</h4><p><img src="/2020/11/27/GAMES101/image-20201128222401408.png" srcset="/img/loading.gif" lazyload alt="image-20201128222401408"></p>
-<p>这里简要介绍一下，FXAA就是拓展了MSAA的假设，即每个像素内的采样点分布不是均匀的，而会根据光栅化类型利用一些算法智能分布。TAA则是通过前一帧或前几帧的采样点设置信息来动态的设置本该帧某些特定的采样点，相当于是将计算在时间上打乱了，目前得到了业界的一致好评。</p>
+<p>这里简要介绍一下，FXAA就是拓展了MSAA的假设，即每个像素内的采样点分布不是均匀的，而会根据光栅化类型利用一些算法智能分布。TAA则是通过前一帧或前几帧的采样点设置信息来动态的设置本该帧某些特定的采样点，相当于是将计算在时间上打乱了。</p>
 
             </div>
             <hr>
