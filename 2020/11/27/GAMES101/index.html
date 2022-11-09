@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于计算机图形学基本原理的分析与解释。课程地址：https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html
+  <meta name="description" content="PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于图形学基本原理的分析与解释。本文内容为Transformation, Rasterization笔记。
 ">
   <meta name="author" content="Luty">
   <meta name="keywords" content="">
@@ -248,10 +248,10 @@
             <h1 style="display: none">GAMES101 - 现代计算机图形学入门</h1>
             
             <div class="markdown-body">
-              <h3 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h3><p>GAMES101是GAMES (<em>Graphics And Mixed Environment Seminar</em>）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于计算机图形学基本原理的分析与解释。课程地址：<a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html</a></p>
+              <h3 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h3><p>GAMES101是GAMES (<em>Graphics And Mixed Environment Seminar</em>）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于图形学基本原理的分析与解释。本文内容为Transformation, Rasterization笔记。</p>
 <!-- toc -->
 <span id="more"></span>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p><img src="/2020/11/27/GAMES101/image-20201127165907506.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><img src="/2020/11/27/GAMES101/image-20201127165907506.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4 id="Covered-Topics"><a href="#Covered-Topics" class="headerlink" title="Covered Topics"></a>Covered Topics</h4><ul>
 <li>Rasterization</li>
 <li>Curves and Meshes</li>
@@ -261,6 +261,7 @@
 <h4 id="References"><a href="#References" class="headerlink" title="References"></a>References</h4><blockquote>
 <p>Fundamentals Of Computer Graphics 3th Edition</p>
 </blockquote>
+<hr>
 <h3 id="Transformation"><a href="#Transformation" class="headerlink" title="Transformation"></a>Transformation</h3><p>图形学中 Transformation 的核心问题是找到一个变换矩阵 $ M $ ，使得空间中任意一个Vetcor可以利用$M$ 进行缩放、反转、切边、旋转和平移。其中平移变换的引入需要利用齐次坐标表示$M$的仿射变换，因此，在三维向量空间中$M$应为一个4x4的矩阵。 Transformation的所有内容将基于齐次坐标构建的变换矩阵。Transformation中一个重要假设是任何复合变换都可以依次分解为各个独立变换，复合变换中，优先平移，其次线性变换。</p>
 <h4 id="点和向量的表示"><a href="#点和向量的表示" class="headerlink" title="点和向量的表示"></a>点和向量的表示</h4><p><strong>Point</strong> = $(x,y,z,1)^\intercal$ or $(wx,wy,wz,w)^\intercal$ subject to $w&gt;0$</p>
 <p><strong>Vector </strong>= $(x,y,z,0)^\intercal$（$w=0$实际上保护了Vector的平移不变性）</p>
@@ -353,6 +354,7 @@ R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)</script></li>
 <p><img src="/2020/11/27/GAMES101/image-20201127211039149.png" srcset="/img/loading.gif" lazyload alt="image-20201127211039149"></p>
 <p>本节的思考题是在可视空间中非视平面上的点的Z轴的值是如何变化的，直观的感受我们知道Z轴的值肯定是变大的（因为远小），也可以利用矩阵计算验证，如下。</p>
 <p><img src="/2020/11/27/GAMES101/44B0C4A76D6E4E248776D089B16AA050.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:50%;"></p>
+<hr>
 <h3 id="Rasterization"><a href="#Rasterization" class="headerlink" title="Rasterization"></a>Rasterization</h3><p>光栅化 (Rasterization) 是原德语的音译，实际做的就是把正则观测矩阵的信息投在屏幕上。</p>
 <ul>
 <li>Field-of-View (FOV) 相机到近平面中点的连线与其到近平面边的连线的夹角</li>
@@ -409,9 +411,7 @@ R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)</script></li>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/computer-graphics/">computer-graphics</a>
-                    
-                      <a class="hover-with-bg" href="/tags/fundamentals/">fundamentals</a>
+                      <a class="hover-with-bg" href="/tags/graphics/">graphics</a>
                     
                   </div>
                 
