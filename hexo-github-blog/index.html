@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用Hexo和Github快速搭建个人博客 | Luty.tech</title><meta name="author" content="Luty"><meta name="copyright" content="Luty"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。  为阅读本文章，你需要同时阅读：Hexo官方文档Next主题官方文档Markdown语法参考  Hexo + Github模式优点 节省购置服务器的费用 快速搭建，快速部署 学习成本低，学习价值高    主要步骤一. 建立github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo和Github快速搭建个人博客">
+<meta property="og:url" content="http://luty.tech/hexo-github-blog/index.html">
+<meta property="og:site_name" content="Luty.tech">
+<meta property="og:description" content="前言这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。  为阅读本文章，你需要同时阅读：Hexo官方文档Next主题官方文档Markdown语法参考  Hexo + Github模式优点 节省购置服务器的费用 快速搭建，快速部署 学习成本低，学习价值高    主要步骤一. 建立github">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luty.tech/img/avatar.png">
+<meta property="article:published_time" content="2017-10-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-11T08:29:51.632Z">
+<meta property="article:author" content="Luty">
+<meta property="article:tag" content="legacy">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luty.tech/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用Hexo和Github快速搭建个人博客",
+  "url": "http://luty.tech/hexo-github-blog/",
+  "image": "http://luty.tech/img/avatar.png",
+  "datePublished": "2017-10-24T16:00:00.000Z",
+  "dateModified": "2026-07-11T08:29:51.632Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Luty",
+      "url": "https://github.com/luty4ng"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://luty.tech/hexo-github-blog/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用Hexo和Github快速搭建个人博客',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/default-top-img.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Luty.tech</span></a><a class="nav-page-title" href="/"><span class="site-name">使用Hexo和Github快速搭建个人博客</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">使用Hexo和Github快速搭建个人博客</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2017-10-24T16:00:00.000Z" title="发表于 2017-10-25 00:00:00">2017-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-11T08:29:51.632Z" title="更新于 2026-07-11 16:29:51">2026-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/miscs/">miscs</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。</p>
+<blockquote>
+<p>为阅读本文章，你需要同时阅读：<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a><br><a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/getting-started.html">Next主题官方文档</a><br><a target="_blank" rel="noopener" href="https://github.com/younghz/Markdown">Markdown语法参考</a></p>
+</blockquote>
+<h2 id="Hexo-Github模式优点"><a href="#Hexo-Github模式优点" class="headerlink" title="Hexo + Github模式优点"></a>Hexo + Github模式优点</h2><ul>
+<li>节省购置服务器的费用</li>
+<li>快速搭建，快速部署</li>
+<li>学习成本低，学习价值高</li>
+</ul>
+<!-- toc -->
+
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><p>一. 建立github仓库<br>二. 建立本地Hexo博客<br>三. 配置本地Hexo博客<br>四. 连接本地Hexo与gitpages</p>
+<h2 id="开始搭建吧！"><a href="#开始搭建吧！" class="headerlink" title="开始搭建吧！"></a>开始搭建吧！</h2><h3 id="建立github仓库"><a href="#建立github仓库" class="headerlink" title="建立github仓库"></a>建立github仓库</h3><p>开始之前确保已注册github帐号并下载gitbash。<br>如果还没有，请参考：<a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/github-basics/sign-up.html">极客学院github初识教程</a>完成注册和下载。</p>
+<blockquote>
+<p>点击创建仓库</p>
+</blockquote>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/github1.png" alt="github1"></p>
+<blockquote>
+<p>如图输入仓库名，其中方框部分应与github用户名一致</p>
+</blockquote>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/github2.png" alt="github2"></p>
+<p><strong>强调：红色方框中的输入内容应为用户名，否则无法托管。</strong></p>
+<h3 id="建立本地Hexo博客"><a href="#建立本地Hexo博客" class="headerlink" title="建立本地Hexo博客"></a>建立本地Hexo博客</h3><p>请先自主阅读<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方文档-概述</a>，若按照官方文档已完成安装，可以跳过该步骤。</p>
+<ol>
+<li><p><strong>安装Node.js</strong><br>从<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js官网</a>下载并安装Node.js环境，推荐LTS（Long-Term-Support）版本。</p>
+</li>
+<li><p><strong>本地下载Hexo</strong><br>首先选择你要配置本地博客的目录，右击选择 <strong>Git Bash Here</strong>，<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash.png" alt="gitbash"><br>从而进入如图gitbash环境<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/gitbash_cli.png" alt="gitbash2"><br><strong>注意：明白这一步直很重要，之后所有命令都是在gitbash中完成！</strong></p>
+</li>
+<li><p><strong>安装hexo</strong><br>gitbash输入:<code>npm install -g hexo-cli</code>会开始安装Hexo，安装完成后会有如图所示目录文件。</p>
+</li>
+</ol>
+<p>各目录的作用请参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方文档-建站</a></p>
+<h3 id="配置本地Hexo博客"><a href="#配置本地Hexo博客" class="headerlink" title="配置本地Hexo博客"></a>配置本地Hexo博客</h3><p>请先自主阅读<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration.html">Hexo官方文档-配置</a>与<a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/getting-started.html">NexT官网文档-开始使用</a>，若按照官方文档已完成部署，可以跳过该步骤。</p>
+<ol>
+<li><p><strong>下载并部署NexT主题</strong><br>前往<a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next/releases">NexT版本发布页面</a>下载官方Source code.zip并解压，将解压后的文件名修改为<strong>next</strong>后置于你本地博客目录的themes文件夹。</p>
+</li>
+<li><p><strong>本地预览</strong><br>在博客目录下的gitbash中输入<br><code>hexo clean</code><br><code>hexo g</code><br>完成初始化，之后使用命令<br><code>hexo s</code><br>完成本地部署。<br>本地部署后可，通过访问<code>localhost:4000</code>从而访问本地博客。至此，你已经可以看到你的博客首页了。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%A2%84%E8%A7%88.png" alt="预览"></p>
+</li>
+<li><p><strong>区别本地配置和主题配置</strong><br>两个配置文件均为<code>_config.yml</code>，但有本质区别，之后配置需注意不要混淆。<br><strong>本地配置</strong>：位于 本地博客根目录下<code>_config.yml</code><br><strong>主题配置</strong>：位于 本地博客目录&#x2F;themes&#x2F;主题目录(如next)下的<code>_config.yml</code></p>
+</li>
+<li><p><strong>配置本地配置</strong><br>打开本地配置的<code>_config.yml</code>，找到如图Themes字段：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/theme.png" alt="theme"><br>将字段修改为<code>theme: next</code>从而应用布置好的NexT主题<br>同样可以找到如图字段：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/site.png" alt="site"><br>将language字段修改为<code>language: zh-Hans</code>即可应用主题为中文版，在其他字段中可以直接修改个人博客的标题、子标题、描述等信息。</p>
+</li>
+<li><p><strong>配置主题配置</strong><br>打开主题配置中的<code>_config.yml</code>可以看到主题配置内容，此步骤只强调几个终点配置。</p>
+<ul>
+<li><p><strong>配置菜单</strong><br>找到如图menu配置，修改menu中的字段对应博客主页菜单的变化<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/menu.png" alt="menu"></p>
+</li>
+<li><p><strong>配置NexT主题</strong><br>找到如图Schemes配置，修改scheme字段可以修改NexT子主题<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/scheme.png" alt="scheme"></p>
+</li>
+<li><p><strong>配置博客头像</strong><br>在配置文件任意独立行输入<code>avatar: /images/avatar.png</code>，之后在本地博客目录下<code>source</code>文件夹下新建文件夹<code>images</code>，选择自己喜欢的博客头像改为<code>avatar.png</code>同名文件放置在该目录下即可。</p>
+</li>
+<li><p><strong>配置favicon图标</strong><br>所谓favicon如图，可以想<code>images</code>文件夹下添加名为<code>favicon.ico</code>的图标文件修改。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="连接本地Hexo和gitpages"><a href="#连接本地Hexo和gitpages" class="headerlink" title="连接本地Hexo和gitpages"></a>连接本地Hexo和gitpages</h3><ol>
+<li><p><strong>配置与Github Pages关联</strong><br>打开本地配置的<code>_config.yml</code>，找到如图deploy字段：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy.png" alt="deploy"><br>并如图配置,其中红框为你的github帐号，白框为github密码，灰框(最右)为你建立的仓库地址。</p>
+</li>
+<li><p><strong>部署github托管</strong><br>很简单，本地博客目录打开gitbash，输入<code>hexo d</code>即完成在线部署。<br><strong>至此，你的个人博客线上部署已经完成！</strong></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/luty4ng">Luty</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://luty.tech/hexo-github-blog/">http://luty.tech/hexo-github-blog/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://luty.tech" target="_blank">Luty.tech</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/legacy/">legacy</a><a class="post-meta__tags" href="/tags/hexo/">hexo</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/sql-injection/" title="浅谈注入攻击及小结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">浅谈注入攻击及小结</div></div><div class="info-2"><div class="info-item-1">最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。    什么是注入？注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了&#96;一切输入有害的重要安全思想。 注入如何产生？个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。 例如在PHP + MySQL平台下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960&lt;?php $name = $_POST[&#x27;name&#x27;]; $con = mysqli_connect(&quo...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/games101/" title="GAMES101小记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-27</div><div class="info-item-2">GAMES101小记</div></div><div class="info-2"><div class="info-item-1">PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于图形学基本原理的分析与解释。本文内容为Transformation, Rasterization笔记。   LabConfig环境：Vscode + CMakeTools + CppTools + Mingw64 Vscode中C++引入第三方库的方式大致有以下三种：  对于非Cmake项目，利用CppTools（Miscrosoft官方为Vscode提供的编译和调试插件）的IntelliSense功能，通过设置c_cpp_properties.json中的includePath项引入对应库的/include目录。  对于Cmake项目，利用CMakeTools （Miscrosoft官方为Vscode提供的Cmake插件）一键基于CMakeList.txt生成/build目录，在通过内置终端make并运行。  对于Cmake项目，同时使用CppTools与CMakeTools ，高度自动化的...</div></div></div></a><a class="pagination-related" href="/analysis/" title="游戏解构的基本框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-17</div><div class="info-item-2">游戏解构的基本框架</div></div><div class="info-2"><div class="info-item-1">前言主要根据个人的学习情况记录一些游戏分析与解构的常用框架、关注重心和实际方法。仅代表个人观点，可能与他人观点或书本有出入。   基本框架这里首先需要明确框架的意义，其主要目的是通过提供偏范式化的思维体系帮助游戏设计师更全面而细致的观察、分析或是构建一款游戏，切勿陷入完全的教条主义，使用时需同时结合思维体系和实践经验对游戏无论是优秀或是缺陷的设计进行更深入的认知。 常见的游戏分析框架有三种：MDA、FDD和四元法，每种框架都有各自的侧重点。 MDAMDA即机制（Mechanics）、动态（Dynamics）、美学（Aesthetics），于2004年的游戏学论文《MDA：游戏设计的和研究的形式方法》中正式提出，主要强调设计师应首先关注游戏的美学，其次再处理动态和机制。 使用MDA框架的重点在于如何认知包含的机制、动态、美学三大元素。它们的标准化定义如下： 机制：游戏数据层面的组件、算法和逻辑 动态：玩家行为与游戏系统之间的互动反馈 美学：玩家交互时产生的体验与情感。 说简洁点，机制、动态、美学分别代表工程，互动和体验。这里容易产生的一个误区是，美术、音效、音乐等资源更适合归类于动...</div></div></div></a><a class="pagination-related" href="/ori-wotw/" title="奥日萤火之森第一体验"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-15</div><div class="info-item-2">奥日萤火之森第一体验</div></div><div class="info-2"><div class="info-item-1">前言本文行文比较随意，作为即时记录通关之后的想法。 主要思考了下第二部在level-up机制，boss战，核心玩法上的改变。   安全区设立了一个类似基地和安全区一样的场景——泉源林地，在这里你可以和基莫聊天，了解它们的故事，可以和各类功能性NPC对话提升自己的能力，同样通过以种树和修缮的方式看到自己冒险对森林和栖息之中的生物带来的改变。“安全区”的设定容易与剧情关联增强代入感，同时提供更持久更完整且贯穿游戏主线的反馈。 Level-up机制Level-up机制：奥日中的level-up机制主要由精灵碎片（装备）和精灵技能（技能）组成。精灵碎片可以通过地图探索或精灵之光获得，升级则中能通过精灵之光；精灵技能可以通过探索吸收精灵之树获得，或者通过精灵之光购买。这种level-up机制显然提供了更多样性的体验，Ori2 将游戏的探索体验和战斗体验大致分离，分别由碎片和技能两个不同的机制承担，但探索和战斗的分离却不是完全独立的，精灵碎片同样提供了战斗加成（例如增伤和减防等熟悉BUFF），精灵技能同样为探索提供了便利（炮弹跳跃，精灵猛击，闪光，灵光迸发，煽动），但是不难发现，技能对探索和...</div></div></div></a><a class="pagination-related" href="/ctf-web/" title="CTF题解记录-web篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-13</div><div class="info-item-2">CTF题解记录-web篇</div></div><div class="info-2"><div class="info-item-1">记录打比赛时期做的一些web练习题 后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。   WEEK 1加了报错的注入 实验吧：http://ctf5.shiyanbar.com/web/baocuo/index.php   查看页面源码，注释说明有sql注入 然后测试一下username和password，发现有过滤 bp简单爆破一下过滤字符，得出结果： username过滤了( ) = #等字符以及order by等关键字, password过滤了# = ; 等字符以及updatexml()和ext()两个报错函数。   在伟大的搜索引擎的帮助下，我们查到了这两个报错函数的信息,顺便搜到了注入格式。 爆数据库测试一下可用 然后爆表名，列名，flag，注意到=被过滤，换LIKE，结果LIKE也被过滤，于是换上了正则regexp,同样show也被过滤。  12345678910payload:username=1&#x27; and updatexml/*&amp;password=*/(1,concat(0x24,(select database()),0x24),1)...</div></div></div></a><a class="pagination-related" href="/tensorflow/" title="TensorFlow从入门到入坟"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-25</div><div class="info-item-2">TensorFlow从入门到入坟</div></div><div class="info-2"><div class="info-item-1">记录对这个框架的基本理解，一些重要的API和一些工程实践。   三个核心： 所有的数据都是张量 所有计算都是计算图 执行运算和管理资源都要使用会话  一些基本运行原理：Tensorflow的所有计算都在计算图（Graph）中运行，通过集合（Collection）管理资源（变量、张量、队列资源），其中TensorFlow维护了一个tf.GraphKeys.VARIABLES的集合，该集合包含了所有的变量。 例如a = tf.constan([1.0,2.0],name=&quot;a&quot;)中，tf.constant是一个计算，计算的结果是一个Tensor，每一个Tensor都有三个属性：  名字（name），作为张量的唯一标识符。 维度（shape），描述张量的维度信息，例如shape=(3,3,1)表示该张量有三个维度（可以理解为多维数组），各个维度长度分别为3,3,1，采用None则表示该维度不定长。 类型（type），数据类型，同其他编程语言。  logits:  一个事件发生与该事件不发生的比值的对数 note1234567891011121314151617181...</div></div></div></a><a class="pagination-related" href="/ludumdare46/" title="GameJam - LudumDare46"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-21</div><div class="info-item-2">GameJam - LudumDare46</div></div><div class="info-2"><div class="info-item-1">前言本着「 Learning by Doing 」的想法，刚入坑两周的我决定参加LudumDare46去体验完整的小游戏开发过程，由于并没有学过原型实现工具，因此工程上就采用速成的U3D，美术素材部分基于现有素材的二次修改，其余用Aseprite绘制，音乐选自opengameart.org的Dont touch it，个人觉得不错就使用了。    Day1： 构思想法，实现原型第一天公布早上八点半起床，嗦碗粉到九点Twitter确认主题 Keep it alive。当时U3D技术水平只做过一些2D Platformer的实现，因此我能做的游戏形式并没有多少选择。很快我就决定做2D Platformer了，综合看来这一唯一可行的方案，回到主题 Keep it alive，当时立刻想到了一款忘记名字的游戏Demo，主角的生命进入倒计时，通过击杀敌人可以延续倒计时时长，玩家需要在固定场景内击杀不断涌现的敌人来延续生命（怒火攻心内味）。 但是这种方案对我来说工作量可能较大，而且这个想法比较容易想到，就没有采用。之后我基本上是围绕 it 去想，代入了很多游戏元素，最后决定让 it &#x3...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Luty</div><div class="author-info-description">现役游戏行业牛马</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/luty4ng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lutydata@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/lutyzh" target="_blank" title="知乎"><i class="fab fa-zhihu" style="color: #0066FF;"></i></a><a class="social-icon" href="https://space.bilibili.com/22862815" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a><a class="social-icon" href="https://xhslink.com/m/37rTvMt1qaF" target="_blank" title="小红书"><i class="fas fa-book-open" style="color: #FF2442;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Github%E6%A8%A1%E5%BC%8F%E4%BC%98%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">Hexo + Github模式优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">主要步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E5%90%A7%EF%BC%81"><span class="toc-number">4.</span> <span class="toc-text">开始搭建吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8Bgithub%E4%BB%93%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">建立github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0Hexo%E5%8D%9A%E5%AE%A2"><span class="toc-number">4.2.</span> <span class="toc-text">建立本地Hexo博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Hexo%E5%8D%9A%E5%AE%A2"><span class="toc-number">4.3.</span> <span class="toc-text">配置本地Hexo博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%AC%E5%9C%B0Hexo%E5%92%8Cgitpages"><span class="toc-number">4.4.</span> <span class="toc-text">连接本地Hexo和gitpages</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-restart/" title="2026复更">2026复更</a><time datetime="2026-07-10T16:00:00.000Z" title="发表于 2026-07-11 00:00:00">2026-07-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games101/" title="GAMES101小记">GAMES101小记</a><time datetime="2020-11-27T08:51:00.000Z" title="发表于 2020-11-27 16:51:00">2020-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ludumdare46/" title="GameJam - LudumDare46">GameJam - LudumDare46</a><time datetime="2020-04-21T03:30:00.000Z" title="发表于 2020-04-21 11:30:00">2020-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2017 - 2026 By Luty</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

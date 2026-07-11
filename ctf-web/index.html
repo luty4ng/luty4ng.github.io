@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CTF题解记录-web篇 | Luty.tech</title><meta name="author" content="Luty"><meta name="copyright" content="Luty"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="记录打比赛时期做的一些web练习题 后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF题解记录-web篇">
+<meta property="og:url" content="http://luty.tech/ctf-web/index.html">
+<meta property="og:site_name" content="Luty.tech">
+<meta property="og:description" content="记录打比赛时期做的一些web练习题 后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luty.tech/img/avatar.png">
+<meta property="article:published_time" content="2018-11-13T14:26:02.000Z">
+<meta property="article:modified_time" content="2026-07-11T08:29:54.190Z">
+<meta property="article:author" content="Luty">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="writeup">
+<meta property="article:tag" content="legacy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luty.tech/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CTF题解记录-web篇",
+  "url": "http://luty.tech/ctf-web/",
+  "image": "http://luty.tech/img/avatar.png",
+  "datePublished": "2018-11-13T14:26:02.000Z",
+  "dateModified": "2026-07-11T08:29:54.190Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Luty",
+      "url": "https://github.com/luty4ng"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://luty.tech/ctf-web/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CTF题解记录-web篇',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/default-top-img.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Luty.tech</span></a><a class="nav-page-title" href="/"><span class="site-name">CTF题解记录-web篇</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CTF题解记录-web篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-11-13T14:26:02.000Z" title="发表于 2018-11-13 22:26:02">2018-11-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-11T08:29:54.190Z" title="更新于 2026-07-11 16:29:54">2026-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>记录打比赛时期做的一些web练习题</p>
+<p>后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。</p>
+<span id="more"></span>
+
+<h1 id="WEEK-1"><a href="#WEEK-1" class="headerlink" title="WEEK 1"></a>WEEK 1</h1><h2 id="加了报错的注入"><a href="#加了报错的注入" class="headerlink" title="加了报错的注入"></a>加了报错的注入</h2><blockquote>
+<p>实验吧：<a target="_blank" rel="noopener" href="http://ctf5.shiyanbar.com/web/baocuo/index.php">http://ctf5.shiyanbar.com/web/baocuo/index.php</a></p>
+</blockquote>
+<ol>
+<li>查看页面源码，注释说明有sql注入<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/baocuo1.png"></li>
+<li>然后测试一下username和password，发现有过滤<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/poc.png"></li>
+<li>bp简单爆破一下过滤字符，得出结果：<br> username过滤了<code>(</code> <code>)</code> <code>=</code> <code>#</code>等字符以及<code>order by</code>等关键字, password过滤了<code>#</code> <code>=</code> <code>;</code> 等字符以及<code>updatexml()</code>和<code>ext()</code>两个报错函数。<br>  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/filter.png"></li>
+<li>在伟大的搜索引擎的帮助下，我们查到了这两个报错函数的信息,顺便搜到了注入格式。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/updatexml.png"></li>
+<li>爆数据库测试一下可用<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/database.png"></li>
+<li>然后爆表名，列名，flag，注意到<code>=</code>被过滤，换<code>LIKE</code>，结果<code>LIKE</code>也被过滤，于是换上了正则<code>regexp</code>,同样<code>show</code>也被过滤。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/table.png"></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">payload:</span><br><span class="line"></span><br><span class="line">username=1&#x27; and updatexml/*&amp;password=*/(1,concat(0x24,(select database()),0x24),1) and &#x27;1</span><br><span class="line"></span><br><span class="line">username=1&#x27; or updatexml/*&amp;password=*/(1,concat(0x3b,(select group_concat(table_name) from information_schema.tables where table_schema regexp database())),1) and &#x27;1</span><br><span class="line"></span><br><span class="line">username=1&#x27; or updatexml/*&amp;password=*/(1,concat(0x3a,(select group_concat(column_name) from information_schema.columns where table_name regexp &#x27;ffll44jj&#x27; )),1) and &#x27;1</span><br><span class="line"></span><br><span class="line">username=1&#x27; or updatexml/*&amp;password=*/(1,concat(0x3a,(select value from ffll44jj)),1) adn &#x27;1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>看了dalao的wp后发现password并没有过滤<code>exp()</code>函数可以直接利用<code>password</code>构造payload，不用分割注入。</p>
+<blockquote>
+<p>flag{err0r_b4sed_sqli_+_hpf}</p>
+</blockquote>
+<h2 id="上传绕过"><a href="#上传绕过" class="headerlink" title="上传绕过"></a>上传绕过</h2><blockquote>
+<p>实验吧：<a target="_blank" rel="noopener" href="http://ctf5.shiyanbar.com/web/upload/">http://ctf5.shiyanbar.com/web/upload/</a></p>
+</blockquote>
+<ol>
+<li>这道题看上去是一个文件上传漏洞，查看源码，注意到了<code>hidden</code>表单，感觉有用。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/hidden.png"></li>
+<li>按要求传文件，报错要jpg，传jpg又报错要php，估计是有两次验证。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/error3.png"><br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/error23.png"></li>
+<li>直接字符截断没有用，想起那个表单，估计是要构造路径截断。</li>
+<li>构造路径，进hex改包再发即可得flag！<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/hex.png"><blockquote>
+<p>flag{SimCTF_huachuan}</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="后台登录"><a href="#后台登录" class="headerlink" title="后台登录"></a>后台登录</h2><blockquote>
+<p>实验吧：<a target="_blank" rel="noopener" href="http://ctf5.shiyanbar.com/web/houtai/ffifdyop.php">http://ctf5.shiyanbar.com/web/houtai/ffifdyop.php</a></p>
+</blockquote>
+<ol>
+<li>源码有代码，估计是要构造md5注入。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/hh.png"></li>
+<li>怎么构造？</li>
+<li>怎么构造？</li>
+<li>怎么构造？</li>
+<li>算了看wp吧</li>
+<li>……</li>
+<li>直接用文件名<code>ffifdyop</code>构造md5有了<code>&#39;or&#39;xxxx&#39;</code>的语句，注入成功，告辞。</li>
+</ol>
+<blockquote>
+<p>flag{ffifdyop_has_trash}</p>
+</blockquote>
+<hr>
+<h1 id="WEEK-2"><a href="#WEEK-2" class="headerlink" title="WEEK 2"></a>WEEK 2</h1><h2 id="1-没时间解释了"><a href="#1-没时间解释了" class="headerlink" title="1. 没时间解释了"></a>1. 没时间解释了</h2><blockquote>
+<p>moctf: <a target="_blank" rel="noopener" href="http://119.23.73.3:5006/web2/index2.php">http://119.23.73.3:5006/web2/index2.php</a></p>
+<p>抓包阻止重定向-&gt;路径构造-&gt;时间竞争</p>
+</blockquote>
+<p>常规性的<code>F12</code>查看源码，并没有找到什么有用的信息，测试一波<code>.svn</code>和<code>.git</code>的源码泄露，仍然并没有什么有用的信息，遂放弃。</p>
+<p>自闭一段时间后，观察到url<code>index2.php</code>觉得可能有问题，然后尝试访问<code>index.php</code>，重定向回了<code>index2.php</code>,于是改用BP截包，得到<code>index.php</code>返回如下：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-1.png" alt="uploadsomething"></p>
+<p>访问<code>uploadsomething.php</code>，令人熟悉的表单映入眼帘，随意输入后显示:</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-2.png"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-3.png"></p>
+<p>估计是一个路径构造，写了php一句话webshell并没有连上，试着访问了一下返回<code>Too Slow</code>，根据标题和该返回猜测是一个<strong>时间竞争</strong>，同时观察到不同提交返回的base64的路径是相同的，那么可以写脚本去构造路径并读取。<br>然而……</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-4.png"></p>
+<p>脚本都是<code>Too Slow</code>！这不合理啊！后来用BP Intruder持续抓包，获得<code>flag</code>，至于脚本比BP慢这实在没有想到。</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/1-5.png"></p>
+<h2 id="2-welcome-to-bugkuctf"><a href="#2-welcome-to-bugkuctf" class="headerlink" title="2. welcome to bugkuctf"></a>2. welcome to bugkuctf</h2><blockquote>
+<p>bugkuctf: <a target="_blank" rel="noopener" href="http://123.206.87.240:8006/test1/">http://123.206.87.240:8006/test1/</a></p>
+<p>php协议-&gt;文件包含-&gt;php反序列化</p>
+</blockquote>
+<p>这道题小硬核。<br>常规<code>F12</code>得到源码：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-1.png"></p>
+<p>尝试直接访问<code>hint.php</code>无果，注意到源码中文件包含函数<code>file_get_contents()</code>,<br>于是可以利用php协议操作数据流的方法，将字符串构造文件利用<code>php://input</code>上传<code>$user</code>，再利用<code>php://filter</code>获取返回的数据里，相关参考PHP官方文档：<a target="_blank" rel="noopener" href="http://php.net/manual/zh/wrappers.php.php">http://php.net/manual/zh/wrappers.php.php</a> 。<br><code>php://filter</code>相关信息：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-1.5.png"></p>
+<p>利用这个方法我们可以这样构造<code>payload</code>：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-1.9.png"></p>
+<p>从而获得<code>index.php</code>和<code>hint.php</code>的源码<strong>base64</strong>:</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-2.5.png"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-3.5.png"></p>
+<p>继续代码审计。</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-2.png"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-3.png"></p>
+<p>观察得到这是一个php反序列化漏洞，利用在<code>hint.php</code>中得到的类名为<code>Flag</code>，使用的是<code>__toString</code>魔法函数，由此我们可以构造反序列化<code>payload</code>为<code>O:4:&quot;Flag&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;flag.php&quot;;&#125;</code>，<br>并得到<code>flag</code>：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/2-4.png"></p>
+<h2 id="3-never-give-up"><a href="#3-never-give-up" class="headerlink" title="3. never give up"></a>3. never give up</h2><blockquote>
+<p>bugkuctf: <a target="_blank" rel="noopener" href="http://123.206.87.240:8006/test/hello.php">http://123.206.87.240:8006/test/hello.php</a></p>
+<p>php任意文件读取-&gt;解码*3-&gt;字符截断</p>
+</blockquote>
+<p>这道题比较逗逼。<br>常规<code>F12</code>得到两行代码，带入注释里的<code>1p.html</code>发现重定向到了BugkuCTF的首页，于是Postman抓包得到如下结果：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1.png"></p>
+<p><strong>URL解码一把梭！</strong></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-2.png"></p>
+<p><strong>base64解码一把梭！</strong></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-3.png"></p>
+<p><strong>又是URL?一把梭！</strong></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-4.png"></p>
+<p>经过三次大起大落的编码转化，最后得到源码：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-5.png"></p>
+<p>注意到代码中有两处矛盾：</p>
+<ol>
+<li><code>$id</code>即是<code>0</code>又不是<code>0</code></li>
+<li><code>$b</code>的首位字符必须是<code>4</code>又不能是<code>4</code></li>
+</ol>
+<p>对于前者，采用php松散比较，利用<code>&#39;aaa&#39; == 0</code>的特性绕过，对于后者，采用字符截断（对于php版本的判断可以根据<code>$data</code>实现，这里已确定可截断）</p>
+<p>那么！那么！那么！<br>就阔以构造粗配楼德<code>payload</code>:<br> <code>id=aaa&amp;a=php://input&amp;b=%00lutyhhh</code></p>
+<p>得到<code>flag</code>：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-6.png"></p>
+<p>似乎安排得明明白白…直到我看到其他大佬的wp…</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-7.png"></p>
+<p>我的表情：</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/myface.jpg"></p>
+<p>看来似出题人忘记屏蔽隔离了，不然这题也是小硬核。</p>
+<h1 id="WEEK-3"><a href="#WEEK-3" class="headerlink" title="WEEK 3"></a>WEEK 3</h1><h2 id="Shrine"><a href="#Shrine" class="headerlink" title="Shrine"></a>Shrine</h2><blockquote>
+<p>Tokyo Western CTF 2018<br>Link: <a target="_blank" rel="noopener" href="https://github.com/CTFTraining/westerns_2018_shrine">https://github.com/CTFTraining/westerns_2018_shrine</a><br>Python模板注入 Python沙箱绕过 flask审计</p>
+</blockquote>
+<p>因为了解Python方面的审计去网上找到了这道CTF题目，这道题是用docker本地复现的，因为涉及到不会的知识点，所以到一半就照着WP继续了。</p>
+<h3 id="1-代码审计"><a href="#1-代码审计" class="headerlink" title="1. 代码审计"></a>1. 代码审计</h3><p>这道题目非常直接，进入就是代码，在调整格式后我们可以得到源码如下:<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-1.png"></p>
+<p>从源码可知：</p>
+<ol>
+<li>设定了两个路由，一个路由读取文件源码，另一个路由读进一个字符串对象。</li>
+<li>第二个路由中读进的字符串，经过了函数<code>safe_jinja</code>的过滤，过滤函数删除了<code>(</code>和<code>)</code>并强行将<code>config</code>和<code>self</code>字符设为空。</li>
+</ol>
+<p>这时候思路已经比较明确了，要么读<code>config[&#39;FLAG&#39;]</code>要么读<code>os.envrion.pop(&#39;FLAG&#39;)</code>，但因<code>(</code> <code>)</code>被过滤第二个显然不行，<code>config</code>和<code>self</code>都被强制置空，那么就只能想别的方法，然而我没有想到。</p>
+<h3 id="SSTI"><a href="#SSTI" class="headerlink" title="SSTI"></a>SSTI</h3><p>继续分析元源码，程序利用模板向后端传入了变量，因此存在模板注入(SSTI),我们可以简单构造一个Poc验证：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-2.png"></p>
+<p>在这里现补充模板的相关知识，模板用于将服务端返还内容渲染成前端页面，为了分离前端代码和后端变量，模板中设定<code> {{ }}</code>包括的内容为后端变量，<code>{% %}</code> 包括的内容为逻辑语句。</p>
+<p>相关模板类型的Poc可以参考下图：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-3.png"></p>
+<h3 id="沙箱逃逸"><a href="#沙箱逃逸" class="headerlink" title="沙箱逃逸"></a>沙箱逃逸</h3><p>之后参考了一个大佬的WP(<a target="_blank" rel="noopener" href="http://shaobaobaoer.cn/archives/665/tokyo-westerns-ctf-2018-web-wp#shrine">tokyo-westerns-ctf-2018-web-wp</a>)<br>，学习到了一些骚炫的姿势，这里复现一下他的思路</p>
+<ol>
+<li>既然<code>config</code>和<code>self</code>都被置空了，那么只能用其他方法读取到这个全局变量，就需要参考Flask框架的文档，这里应用到了python沙箱逃逸的方法，就我理解这方法就是<strong>利用python对象之间的引用关系来调用被禁用的函数对象</strong>，文中提供了一个flask上下文本地变量<code>current_app</code>，使用方法<code>__globals__[&#39;current_app&#39;].config[&#39;FLAG&#39;]</code>。,通过在尝试这个<code>payload</code>后的到以下结果:<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-4.png"></li>
+</ol>
+<p>显然不能直接访问<code>__globals__</code>全局变量，目测有WAF需要再次逃逸。<br>2. 文中又提供了两种方法：<code>get_flashed_messages</code>和<code>url_for</code>这两个函数添加了<code>current_app</code>的引用，于是构造：<code>url_for.__globals__[&#39;current_app&#39;].config[&#39;FLAG&#39;]</code><br>最后<code>payload</code>：<code>http://127.0.0.1:8081/shrine/&#123;&#123;url_for.__globals__['current_app'].config['FLAG']&#125;&#125;</code><br>获得flag：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/CTF%E9%A2%98%E8%A7%A3%E8%AE%B0%E5%BD%95-web%E7%AF%87/3-1-5.png"></p>
+<p>在沙箱逃逸这一块的还有很多问题，比如怎么查到各对象之间的引用关系，哪些对象在哪些作用域有效，这里只积累了一个思路，以后需要在挖掘。</p>
+<p>PS:刚刚写完SSTI的内容，<code>hexo deploy</code>的时候报错，一查结果是前面模板的花括号导致了解析，妙啊妙啊。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/luty4ng">Luty</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://luty.tech/ctf-web/">http://luty.tech/ctf-web/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://luty.tech" target="_blank">Luty.tech</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ctf/">ctf</a><a class="post-meta__tags" href="/tags/writeup/">writeup</a><a class="post-meta__tags" href="/tags/legacy/">legacy</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/tensorflow/" title="TensorFlow从入门到入坟"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">TensorFlow从入门到入坟</div></div><div class="info-2"><div class="info-item-1">记录对这个框架的基本理解，一些重要的API和一些工程实践。   三个核心： 所有的数据都是张量 所有计算都是计算图 执行运算和管理资源都要使用会话  一些基本运行原理：Tensorflow的所有计算都在计算图（Graph）中运行，通过集合（Collection）管理资源（变量、张量、队列资源），其中TensorFlow维护了一个tf.GraphKeys.VARIABLES的集合，该集合包含了所有的变量。 例如a = tf.constan([1.0,2.0],name=&quot;a&quot;)中，tf.constant是一个计算，计算的结果是一个Tensor，每一个Tensor都有三个属性：  名字（name），作为张量的唯一标识符。 维度（shape），描述张量的维度信息，例如shape=(3,3,1)表示该张量有三个维度（可以理解为多维数组），各个维度长度分别为3,3,1，采用None则表示该维度不定长。 类型（type），数据类型，同其他编程语言。  logits:  一个事件发生与该事件不发生的比值的对数 note1234567891011121314151617181...</div></div></div></a><a class="pagination-related" href="/sql-injection/" title="浅谈注入攻击及小结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">浅谈注入攻击及小结</div></div><div class="info-2"><div class="info-item-1">最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。    什么是注入？注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了&#96;一切输入有害的重要安全思想。 注入如何产生？个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。 例如在PHP + MySQL平台下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960&lt;?php $name = $_POST[&#x27;name&#x27;]; $con = mysqli_connect(&quo...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/ori-wotw/" title="奥日萤火之森第一体验"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-15</div><div class="info-item-2">奥日萤火之森第一体验</div></div><div class="info-2"><div class="info-item-1">前言本文行文比较随意，作为即时记录通关之后的想法。 主要思考了下第二部在level-up机制，boss战，核心玩法上的改变。   安全区设立了一个类似基地和安全区一样的场景——泉源林地，在这里你可以和基莫聊天，了解它们的故事，可以和各类功能性NPC对话提升自己的能力，同样通过以种树和修缮的方式看到自己冒险对森林和栖息之中的生物带来的改变。“安全区”的设定容易与剧情关联增强代入感，同时提供更持久更完整且贯穿游戏主线的反馈。 Level-up机制Level-up机制：奥日中的level-up机制主要由精灵碎片（装备）和精灵技能（技能）组成。精灵碎片可以通过地图探索或精灵之光获得，升级则中能通过精灵之光；精灵技能可以通过探索吸收精灵之树获得，或者通过精灵之光购买。这种level-up机制显然提供了更多样性的体验，Ori2 将游戏的探索体验和战斗体验大致分离，分别由碎片和技能两个不同的机制承担，但探索和战斗的分离却不是完全独立的，精灵碎片同样提供了战斗加成（例如增伤和减防等熟悉BUFF），精灵技能同样为探索提供了便利（炮弹跳跃，精灵猛击，闪光，灵光迸发，煽动），但是不难发现，技能对探索和...</div></div></div></a><a class="pagination-related" href="/games101/" title="GAMES101小记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-27</div><div class="info-item-2">GAMES101小记</div></div><div class="info-2"><div class="info-item-1">PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于图形学基本原理的分析与解释。本文内容为Transformation, Rasterization笔记。   LabConfig环境：Vscode + CMakeTools + CppTools + Mingw64 Vscode中C++引入第三方库的方式大致有以下三种：  对于非Cmake项目，利用CppTools（Miscrosoft官方为Vscode提供的编译和调试插件）的IntelliSense功能，通过设置c_cpp_properties.json中的includePath项引入对应库的/include目录。  对于Cmake项目，利用CMakeTools （Miscrosoft官方为Vscode提供的Cmake插件）一键基于CMakeList.txt生成/build目录，在通过内置终端make并运行。  对于Cmake项目，同时使用CppTools与CMakeTools ，高度自动化的...</div></div></div></a><a class="pagination-related" href="/tensorflow/" title="TensorFlow从入门到入坟"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-25</div><div class="info-item-2">TensorFlow从入门到入坟</div></div><div class="info-2"><div class="info-item-1">记录对这个框架的基本理解，一些重要的API和一些工程实践。   三个核心： 所有的数据都是张量 所有计算都是计算图 执行运算和管理资源都要使用会话  一些基本运行原理：Tensorflow的所有计算都在计算图（Graph）中运行，通过集合（Collection）管理资源（变量、张量、队列资源），其中TensorFlow维护了一个tf.GraphKeys.VARIABLES的集合，该集合包含了所有的变量。 例如a = tf.constan([1.0,2.0],name=&quot;a&quot;)中，tf.constant是一个计算，计算的结果是一个Tensor，每一个Tensor都有三个属性：  名字（name），作为张量的唯一标识符。 维度（shape），描述张量的维度信息，例如shape=(3,3,1)表示该张量有三个维度（可以理解为多维数组），各个维度长度分别为3,3,1，采用None则表示该维度不定长。 类型（type），数据类型，同其他编程语言。  logits:  一个事件发生与该事件不发生的比值的对数 note1234567891011121314151617181...</div></div></div></a><a class="pagination-related" href="/sql-injection/" title="浅谈注入攻击及小结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-08-08</div><div class="info-item-2">浅谈注入攻击及小结</div></div><div class="info-2"><div class="info-item-1">最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。    什么是注入？注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了&#96;一切输入有害的重要安全思想。 注入如何产生？个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。 例如在PHP + MySQL平台下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960&lt;?php $name = $_POST[&#x27;name&#x27;]; $con = mysqli_connect(&quo...</div></div></div></a><a class="pagination-related" href="/analysis/" title="游戏解构的基本框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-17</div><div class="info-item-2">游戏解构的基本框架</div></div><div class="info-2"><div class="info-item-1">前言主要根据个人的学习情况记录一些游戏分析与解构的常用框架、关注重心和实际方法。仅代表个人观点，可能与他人观点或书本有出入。   基本框架这里首先需要明确框架的意义，其主要目的是通过提供偏范式化的思维体系帮助游戏设计师更全面而细致的观察、分析或是构建一款游戏，切勿陷入完全的教条主义，使用时需同时结合思维体系和实践经验对游戏无论是优秀或是缺陷的设计进行更深入的认知。 常见的游戏分析框架有三种：MDA、FDD和四元法，每种框架都有各自的侧重点。 MDAMDA即机制（Mechanics）、动态（Dynamics）、美学（Aesthetics），于2004年的游戏学论文《MDA：游戏设计的和研究的形式方法》中正式提出，主要强调设计师应首先关注游戏的美学，其次再处理动态和机制。 使用MDA框架的重点在于如何认知包含的机制、动态、美学三大元素。它们的标准化定义如下： 机制：游戏数据层面的组件、算法和逻辑 动态：玩家行为与游戏系统之间的互动反馈 美学：玩家交互时产生的体验与情感。 说简洁点，机制、动态、美学分别代表工程，互动和体验。这里容易产生的一个误区是，美术、音效、音乐等资源更适合归类于动...</div></div></div></a><a class="pagination-related" href="/hexo-github-blog/" title="使用Hexo和Github快速搭建个人博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2017-10-25</div><div class="info-item-2">使用Hexo和Github快速搭建个人博客</div></div><div class="info-2"><div class="info-item-1">前言这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。  为阅读本文章，你需要同时阅读：Hexo官方文档Next主题官方文档Markdown语法参考  Hexo + Github模式优点 节省购置服务器的费用 快速搭建，快速部署 学习成本低，学习价值高    主要步骤一. 建立github仓库二. 建立本地Hexo博客三. 配置本地Hexo博客四. 连接本地Hexo与gitpages 开始搭建吧！建立github仓库开始之前确保已注册github帐号并下载gitbash。如果还没有，请参考：极客学院github初识教程完成注册和下载。  点击创建仓库    如图输入仓库名，其中方框部分应与github用户名一致   强调：红色方框中的输入内容应为用户名，否则无法托管。 建立本地Hexo博客请先自主阅读Hexo官方文档-概述，若按照官方文档已完成安装，可以跳过该步骤。  安装Node.js从Node.js官网下载并安装Node.js环境，推荐LTS（Long-Term-Su...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Luty</div><div class="author-info-description">现役游戏行业牛马</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/luty4ng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lutydata@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/lutyzh" target="_blank" title="知乎"><i class="fab fa-zhihu" style="color: #0066FF;"></i></a><a class="social-icon" href="https://space.bilibili.com/22862815" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a><a class="social-icon" href="https://xhslink.com/m/37rTvMt1qaF" target="_blank" title="小红书"><i class="fas fa-book-open" style="color: #FF2442;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WEEK-1"><span class="toc-number">1.</span> <span class="toc-text">WEEK 1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E4%BA%86%E6%8A%A5%E9%94%99%E7%9A%84%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">加了报错的注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87"><span class="toc-number">1.2.</span> <span class="toc-text">上传绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">后台登录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEEK-2"><span class="toc-number">2.</span> <span class="toc-text">WEEK 2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B2%A1%E6%97%B6%E9%97%B4%E8%A7%A3%E9%87%8A%E4%BA%86"><span class="toc-number">2.1.</span> <span class="toc-text">1. 没时间解释了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-welcome-to-bugkuctf"><span class="toc-number">2.2.</span> <span class="toc-text">2. welcome to bugkuctf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-never-give-up"><span class="toc-number">2.3.</span> <span class="toc-text">3. never give up</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEEK-3"><span class="toc-number">3.</span> <span class="toc-text">WEEK 3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shrine"><span class="toc-number">3.1.</span> <span class="toc-text">Shrine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 代码审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSTI"><span class="toc-number">3.1.2.</span> <span class="toc-text">SSTI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8"><span class="toc-number">3.1.3.</span> <span class="toc-text">沙箱逃逸</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-restart/" title="2026复更">2026复更</a><time datetime="2026-07-10T16:00:00.000Z" title="发表于 2026-07-11 00:00:00">2026-07-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games101/" title="GAMES101小记">GAMES101小记</a><time datetime="2020-11-27T08:51:00.000Z" title="发表于 2020-11-27 16:51:00">2020-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ludumdare46/" title="GameJam - LudumDare46">GameJam - LudumDare46</a><time datetime="2020-04-21T03:30:00.000Z" title="发表于 2020-04-21 11:30:00">2020-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2017 - 2026 By Luty</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

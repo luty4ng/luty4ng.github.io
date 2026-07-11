@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>浅谈注入攻击及小结 | Luty.tech</title><meta name="author" content="Luty"><meta name="copyright" content="Luty"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈注入攻击及小结">
+<meta property="og:url" content="http://luty.tech/sql-injection/index.html">
+<meta property="og:site_name" content="Luty.tech">
+<meta property="og:description" content="最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luty.tech/img/avatar.png">
+<meta property="article:published_time" content="2018-08-08T03:24:09.000Z">
+<meta property="article:modified_time" content="2026-07-11T08:29:50.135Z">
+<meta property="article:author" content="Luty">
+<meta property="article:tag" content="legacy">
+<meta property="article:tag" content="sqli">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="commandi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luty.tech/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "浅谈注入攻击及小结",
+  "url": "http://luty.tech/sql-injection/",
+  "image": "http://luty.tech/img/avatar.png",
+  "datePublished": "2018-08-08T03:24:09.000Z",
+  "dateModified": "2026-07-11T08:29:50.135Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Luty",
+      "url": "https://github.com/luty4ng"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://luty.tech/sql-injection/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浅谈注入攻击及小结',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/default-top-img.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Luty.tech</span></a><a class="nav-page-title" href="/"><span class="site-name">浅谈注入攻击及小结</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">浅谈注入攻击及小结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-08-08T03:24:09.000Z" title="发表于 2018-08-08 11:24:09">2018-08-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-11T08:29:50.135Z" title="更新于 2026-07-11 16:29:50">2026-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>最近科三考试临近，疲惫的练车时光就要结束了，彩六也是打到手软才突然想起要学习，决定挤出了点时间研究下sql inject，在这里做下记录和小结。</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E6%B5%85%E8%B0%88%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8F%8A%E5%B0%8F%E7%BB%93/2.jpg" alt="疲惫"></p>
+<span id="more"></span>
+
+<h2 id="什么是注入？"><a href="#什么是注入？" class="headerlink" title="什么是注入？"></a>什么是注入？</h2><p>注入(inject)攻击产生的本质原因是输入过滤机制的不完善，导致攻击者可以利用输入数据构造执行代码，从而造成信息泄露、数据损坏、服务宕机等一系列问题。由于注入(inject)攻击常常导致严重后果，进一步催生了&#96;<strong>一切输入有害</strong>的重要安全思想。</p>
+<h2 id="注入如何产生？"><a href="#注入如何产生？" class="headerlink" title="注入如何产生？"></a>注入如何产生？</h2><p>个人认为注入攻击产生的本质是：当一段输入数据需要添加到另一端执行指令或代码中时，攻击者可以根据指令或代码的语法刻意构造一段输入数据，造成的输入数据作为指令执行的错误。</p>
+<p>例如在PHP + MySQL平台下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="variable">$name</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;name&#x27;</span>]; </span><br><span class="line"><span class="variable">$con</span> = <span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&quot;127.0.0.1&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="string">&quot;test&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$query</span> = <span class="string">&quot;SELECT * FROM person WHERE name=&#x27;<span class="subst">$name</span>&#x27;;&quot;</span>;</span><br><span class="line"><span class="variable">$result</span> = <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$con</span>,<span class="variable">$query</span>);</span><br><span class="line"><span class="keyword">while</span>(<span class="variable">$row</span>=<span class="title function_ invoke__">mysqli_fetch_assoc</span>(<span class="variable">$result</span>))</span><br><span class="line">	<span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;age&#x27;</span>];</span><br><span class="line">​```</span><br><span class="line"></span><br><span class="line">这是一个用户通过输入name从person表查询对应age的场景，但是代码中没有对输入变量<span class="variable">$name</span>进行任何检测和过滤，如果我们构造<span class="variable">$name</span>为`<span class="number">1</span><span class="string">&#x27;or&#x27;</span><span class="number">1</span><span class="string">&#x27;=&#x27;</span><span class="number">1</span>`，那么查询语句<span class="variable">$query</span>就会变成：`<span class="string">&quot;SELECT * FROM person WHERE name=&#x27;1&#x27; or &#x27;1&#x27;=&#x27;1&#x27;;&quot;</span>`，然而该查询语句恒成立，意味着这样的输入将会爆出数据库person表中所有人的age，造成信息泄露。</span><br><span class="line"></span><br><span class="line">在上面这个案例中，如果我们对<span class="variable">$name</span>或者<span class="variable">$query</span>进行过滤，比如将`<span class="string">&#x27;`和`&quot;`转义，或者字符处理掉`=`，那么上面构造的输入数据不会被执行。这只是一个最简单的案例，想了解和实践更多可以部署[DVWA](http://www.dvwa.co.uk/)进行本地或者远程测试。</span></span><br><span class="line"><span class="string">## SQL注入</span></span><br><span class="line"><span class="string">根据是否有直接反馈信息分为 普通注入 和 盲注，盲注往往要利用`sleep()`时间盲注或者利用`ascii()`进行布尔盲注。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">大概流程是这样的：</span></span><br><span class="line"><span class="string">1.注入POC</span></span><br><span class="line"><span class="string">2.猜字段数</span></span><br><span class="line"><span class="string">3.猜字段顺序</span></span><br><span class="line"><span class="string">4.爆数据库名</span></span><br><span class="line"><span class="string">5.爆表名</span></span><br><span class="line"><span class="string">6.爆字段</span></span><br><span class="line"><span class="string">7.脱裤</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">有些步骤根据实际情况可有可无的，爆库过程中需要用到`information_schema`，在这里我就不XJB说了，具体参考：</span></span><br><span class="line"><span class="string">[DVWA-1.9全级别教程之SQL Injection](http://www.freebuf.com/articles/web/120747.html)</span></span><br><span class="line"><span class="string">[DVWA-1.9全级别教程之SQL Injection(Blind)](http://www.freebuf.com/articles/web/120985.html)</span></span><br><span class="line"><span class="string">## SQL注入绕过</span></span><br><span class="line"><span class="string">我参考文章做了一些本地测试，记录了一些可能常用的绕过方法，环境为lamp，以下就算是是笔记了，一开简单记录，后面有时间会细化。</span></span><br><span class="line"><span class="string">1. 空格：`/**/` `%a0` `()`</span></span><br><span class="line"><span class="string">2. `&#x27;</span>`引号：`<span class="title function_ invoke__">hex</span>()` `<span class="title function_ invoke__">urlencode</span>()`</span><br><span class="line"><span class="number">3</span>. `=`等号：`like` `rlike` `regexp`</span><br><span class="line"><span class="number">4</span>. `&lt;&gt;`比较符：`<span class="title function_ invoke__">greatest</span>()` `<span class="title function_ invoke__">least</span>()` `<span class="title function_ invoke__">strcmp</span>()` `in` `between`</span><br><span class="line"><span class="number">5</span>. `,`逗号：`<span class="title function_ invoke__">substr</span>()`和`<span class="title function_ invoke__">mid</span>()`用`<span class="keyword">from</span> to`代替，`limit`用`offset`</span><br><span class="line"><span class="number">6</span>. 其他绕过： 大小写、字符嵌套、内联注释等</span><br><span class="line">还有一个没看懂的先mark：[一些报错注入](https:<span class="comment">//blog.csdn.net/airuozhaoyang/article/details/47036923)</span></span><br><span class="line"></span><br><span class="line">**宽字节注入**：</span><br><span class="line">这个注入方式比较特殊，有两个产生条件。</span><br><span class="line">- 涉及到gbk编码 (iconv等含有编码转化功能的函数)</span><br><span class="line">- 涉及到转义`\`(魔术引号、addslashes、htmlspecialchars)</span><br><span class="line"></span><br><span class="line">原理大概是，正常字符为<span class="number">2</span>字节，汉字字符为<span class="number">4</span>字节，在gbk的编码环境下可以`%df\`这样的字符，应为`\`的编码是`%<span class="number">5</span>c`，结合起来为`%df%<span class="number">5</span>c`，解码结果为汉字`運`，从而绕过了`\`的转义消毒。</span><br><span class="line">**注：gbk2312应不存在低位范围无法进行宽字节注入，具体参考[这里](http:<span class="comment">//www.bubuko.com/infodetail-2100074.html)。**</span></span><br><span class="line"></span><br><span class="line">后续会慢慢添加实例帮助理解和实践。</span><br><span class="line"></span><br><span class="line">参考:</span><br><span class="line">[SQL注入绕过技巧](https:<span class="comment">//www.cnblogs.com/Vinson404/p/7253255.html)</span></span><br><span class="line">[sql关键词绕过【积累中】](https:<span class="comment">//blog.csdn.net/wy_97/article/details/78085664)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 小结</span></span><br><span class="line">无论是XSS、sqli还是commandi，只要有输入数据添加到指令的场景，就有注入攻击发生的风险，开发者也在努力寻找通用性解决方案。</span><br><span class="line">PHP和python中不正确的使用`<span class="title function_ invoke__">system</span>()` `<span class="title function_ invoke__">exec</span>()`等函数会导致命令注入，前段不对js代码进行过滤会导致XSS，windows平台还有dll注入（不明觉厉），感觉都很刺激啊。</span><br><span class="line">PHP5.<span class="number">4</span>后使用的PDO技术和Mysqli几乎已经杜绝了sql注入，其他平台的防御策略也越来越完善，所以sql在实际渗透环境中可能作用并不大，但是这种思想还是很有意思的。</span><br><span class="line"></span><br><span class="line">![我也很绝望啊](浅谈注入攻击及小结/<span class="number">1</span>.jpg)</span><br><span class="line">吐槽几句，贵阳这天气是魔鬼吗，阳光直射出门半小时后大暴雨，学车能遇到军事行动，四妹又在发情期，真是每天都有新乐趣hhhh</span><br><span class="line"></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/luty4ng">Luty</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://luty.tech/sql-injection/">http://luty.tech/sql-injection/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://luty.tech" target="_blank">Luty.tech</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/legacy/">legacy</a><a class="post-meta__tags" href="/tags/sqli/">sqli</a><a class="post-meta__tags" href="/tags/php/">php</a><a class="post-meta__tags" href="/tags/commandi/">commandi</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/ctf-web/" title="CTF题解记录-web篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">CTF题解记录-web篇</div></div><div class="info-2"><div class="info-item-1">记录打比赛时期做的一些web练习题 后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。   WEEK 1加了报错的注入 实验吧：http://ctf5.shiyanbar.com/web/baocuo/index.php   查看页面源码，注释说明有sql注入 然后测试一下username和password，发现有过滤 bp简单爆破一下过滤字符，得出结果： username过滤了( ) = #等字符以及order by等关键字, password过滤了# = ; 等字符以及updatexml()和ext()两个报错函数。   在伟大的搜索引擎的帮助下，我们查到了这两个报错函数的信息,顺便搜到了注入格式。 爆数据库测试一下可用 然后爆表名，列名，flag，注意到=被过滤，换LIKE，结果LIKE也被过滤，于是换上了正则regexp,同样show也被过滤。  12345678910payload:username=1&#x27; and updatexml/*&amp;password=*/(1,concat(0x24,(select database()),0x24),1)...</div></div></div></a><a class="pagination-related" href="/hexo-github-blog/" title="使用Hexo和Github快速搭建个人博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">使用Hexo和Github快速搭建个人博客</div></div><div class="info-2"><div class="info-item-1">前言这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。  为阅读本文章，你需要同时阅读：Hexo官方文档Next主题官方文档Markdown语法参考  Hexo + Github模式优点 节省购置服务器的费用 快速搭建，快速部署 学习成本低，学习价值高    主要步骤一. 建立github仓库二. 建立本地Hexo博客三. 配置本地Hexo博客四. 连接本地Hexo与gitpages 开始搭建吧！建立github仓库开始之前确保已注册github帐号并下载gitbash。如果还没有，请参考：极客学院github初识教程完成注册和下载。  点击创建仓库    如图输入仓库名，其中方框部分应与github用户名一致   强调：红色方框中的输入内容应为用户名，否则无法托管。 建立本地Hexo博客请先自主阅读Hexo官方文档-概述，若按照官方文档已完成安装，可以跳过该步骤。  安装Node.js从Node.js官网下载并安装Node.js环境，推荐LTS（Long-Term-Su...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/hexo-github-blog/" title="使用Hexo和Github快速搭建个人博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2017-10-25</div><div class="info-item-2">使用Hexo和Github快速搭建个人博客</div></div><div class="info-2"><div class="info-item-1">前言这篇文章为纯新手向，主要内容利用github平台快速建立并托管个人Hexo的Next网站，无论文科生和理科生，都能在一个小时左右完成部署，平台为windows。  为阅读本文章，你需要同时阅读：Hexo官方文档Next主题官方文档Markdown语法参考  Hexo + Github模式优点 节省购置服务器的费用 快速搭建，快速部署 学习成本低，学习价值高    主要步骤一. 建立github仓库二. 建立本地Hexo博客三. 配置本地Hexo博客四. 连接本地Hexo与gitpages 开始搭建吧！建立github仓库开始之前确保已注册github帐号并下载gitbash。如果还没有，请参考：极客学院github初识教程完成注册和下载。  点击创建仓库    如图输入仓库名，其中方框部分应与github用户名一致   强调：红色方框中的输入内容应为用户名，否则无法托管。 建立本地Hexo博客请先自主阅读Hexo官方文档-概述，若按照官方文档已完成安装，可以跳过该步骤。  安装Node.js从Node.js官网下载并安装Node.js环境，推荐LTS（Long-Term-Su...</div></div></div></a><a class="pagination-related" href="/ori-wotw/" title="奥日萤火之森第一体验"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-15</div><div class="info-item-2">奥日萤火之森第一体验</div></div><div class="info-2"><div class="info-item-1">前言本文行文比较随意，作为即时记录通关之后的想法。 主要思考了下第二部在level-up机制，boss战，核心玩法上的改变。   安全区设立了一个类似基地和安全区一样的场景——泉源林地，在这里你可以和基莫聊天，了解它们的故事，可以和各类功能性NPC对话提升自己的能力，同样通过以种树和修缮的方式看到自己冒险对森林和栖息之中的生物带来的改变。“安全区”的设定容易与剧情关联增强代入感，同时提供更持久更完整且贯穿游戏主线的反馈。 Level-up机制Level-up机制：奥日中的level-up机制主要由精灵碎片（装备）和精灵技能（技能）组成。精灵碎片可以通过地图探索或精灵之光获得，升级则中能通过精灵之光；精灵技能可以通过探索吸收精灵之树获得，或者通过精灵之光购买。这种level-up机制显然提供了更多样性的体验，Ori2 将游戏的探索体验和战斗体验大致分离，分别由碎片和技能两个不同的机制承担，但探索和战斗的分离却不是完全独立的，精灵碎片同样提供了战斗加成（例如增伤和减防等熟悉BUFF），精灵技能同样为探索提供了便利（炮弹跳跃，精灵猛击，闪光，灵光迸发，煽动），但是不难发现，技能对探索和...</div></div></div></a><a class="pagination-related" href="/games101/" title="GAMES101小记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-27</div><div class="info-item-2">GAMES101小记</div></div><div class="info-2"><div class="info-item-1">PrefaceGAMES101是GAMES (Graphics And Mixed Environment Seminar）系列公益课程的第一部，由UCSB的助理教授闫令琪授课，该课程专注于图形学基本原理的分析与解释。本文内容为Transformation, Rasterization笔记。   LabConfig环境：Vscode + CMakeTools + CppTools + Mingw64 Vscode中C++引入第三方库的方式大致有以下三种：  对于非Cmake项目，利用CppTools（Miscrosoft官方为Vscode提供的编译和调试插件）的IntelliSense功能，通过设置c_cpp_properties.json中的includePath项引入对应库的/include目录。  对于Cmake项目，利用CMakeTools （Miscrosoft官方为Vscode提供的Cmake插件）一键基于CMakeList.txt生成/build目录，在通过内置终端make并运行。  对于Cmake项目，同时使用CppTools与CMakeTools ，高度自动化的...</div></div></div></a><a class="pagination-related" href="/tensorflow/" title="TensorFlow从入门到入坟"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-25</div><div class="info-item-2">TensorFlow从入门到入坟</div></div><div class="info-2"><div class="info-item-1">记录对这个框架的基本理解，一些重要的API和一些工程实践。   三个核心： 所有的数据都是张量 所有计算都是计算图 执行运算和管理资源都要使用会话  一些基本运行原理：Tensorflow的所有计算都在计算图（Graph）中运行，通过集合（Collection）管理资源（变量、张量、队列资源），其中TensorFlow维护了一个tf.GraphKeys.VARIABLES的集合，该集合包含了所有的变量。 例如a = tf.constan([1.0,2.0],name=&quot;a&quot;)中，tf.constant是一个计算，计算的结果是一个Tensor，每一个Tensor都有三个属性：  名字（name），作为张量的唯一标识符。 维度（shape），描述张量的维度信息，例如shape=(3,3,1)表示该张量有三个维度（可以理解为多维数组），各个维度长度分别为3,3,1，采用None则表示该维度不定长。 类型（type），数据类型，同其他编程语言。  logits:  一个事件发生与该事件不发生的比值的对数 note1234567891011121314151617181...</div></div></div></a><a class="pagination-related" href="/analysis/" title="游戏解构的基本框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-17</div><div class="info-item-2">游戏解构的基本框架</div></div><div class="info-2"><div class="info-item-1">前言主要根据个人的学习情况记录一些游戏分析与解构的常用框架、关注重心和实际方法。仅代表个人观点，可能与他人观点或书本有出入。   基本框架这里首先需要明确框架的意义，其主要目的是通过提供偏范式化的思维体系帮助游戏设计师更全面而细致的观察、分析或是构建一款游戏，切勿陷入完全的教条主义，使用时需同时结合思维体系和实践经验对游戏无论是优秀或是缺陷的设计进行更深入的认知。 常见的游戏分析框架有三种：MDA、FDD和四元法，每种框架都有各自的侧重点。 MDAMDA即机制（Mechanics）、动态（Dynamics）、美学（Aesthetics），于2004年的游戏学论文《MDA：游戏设计的和研究的形式方法》中正式提出，主要强调设计师应首先关注游戏的美学，其次再处理动态和机制。 使用MDA框架的重点在于如何认知包含的机制、动态、美学三大元素。它们的标准化定义如下： 机制：游戏数据层面的组件、算法和逻辑 动态：玩家行为与游戏系统之间的互动反馈 美学：玩家交互时产生的体验与情感。 说简洁点，机制、动态、美学分别代表工程，互动和体验。这里容易产生的一个误区是，美术、音效、音乐等资源更适合归类于动...</div></div></div></a><a class="pagination-related" href="/ctf-web/" title="CTF题解记录-web篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-13</div><div class="info-item-2">CTF题解记录-web篇</div></div><div class="info-2"><div class="info-item-1">记录打比赛时期做的一些web练习题 后几周的因为架构变复杂了，就懒得记录里，思路其实都差不多。   WEEK 1加了报错的注入 实验吧：http://ctf5.shiyanbar.com/web/baocuo/index.php   查看页面源码，注释说明有sql注入 然后测试一下username和password，发现有过滤 bp简单爆破一下过滤字符，得出结果： username过滤了( ) = #等字符以及order by等关键字, password过滤了# = ; 等字符以及updatexml()和ext()两个报错函数。   在伟大的搜索引擎的帮助下，我们查到了这两个报错函数的信息,顺便搜到了注入格式。 爆数据库测试一下可用 然后爆表名，列名，flag，注意到=被过滤，换LIKE，结果LIKE也被过滤，于是换上了正则regexp,同样show也被过滤。  12345678910payload:username=1&#x27; and updatexml/*&amp;password=*/(1,concat(0x24,(select database()),0x24),1)...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Luty</div><div class="author-info-description">现役游戏行业牛马</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/luty4ng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lutydata@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/lutyzh" target="_blank" title="知乎"><i class="fab fa-zhihu" style="color: #0066FF;"></i></a><a class="social-icon" href="https://space.bilibili.com/22862815" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a><a class="social-icon" href="https://xhslink.com/m/37rTvMt1qaF" target="_blank" title="小红书"><i class="fas fa-book-open" style="color: #FF2442;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E5%85%A5%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是注入？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E5%A6%82%E4%BD%95%E4%BA%A7%E7%94%9F%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">注入如何产生？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026-restart/" title="2026复更">2026复更</a><time datetime="2026-07-10T16:00:00.000Z" title="发表于 2026-07-11 00:00:00">2026-07-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games101/" title="GAMES101小记">GAMES101小记</a><time datetime="2020-11-27T08:51:00.000Z" title="发表于 2020-11-27 16:51:00">2020-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ludumdare46/" title="GameJam - LudumDare46">GameJam - LudumDare46</a><time datetime="2020-04-21T03:30:00.000Z" title="发表于 2020-04-21 11:30:00">2020-04-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2017 - 2026 By Luty</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
